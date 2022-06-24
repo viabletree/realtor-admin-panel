@@ -11,20 +11,7 @@ import Users from '../Users';
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
     menuUsers: false,
-    menuEvents: false,
-    menuSeasons: false,
-    menuSessions: false,
-    menuPosts: false,
-    menuFeaturedPosts: false,
-    menuPostReports: false,
-    menuInterests: false,
-    menuHashtags: false,
-    menuPages: false,
-    menuFacilities: false,
-    menuGroups: false,
-    menuMeetings: false,
-    menuSearchedkeywords: false,
-    menuFeedbacks: false,
+    menuProperties: false,
 
   });
   const isXSmall = useMediaQuery((theme) => theme.breakpoints.down('xs'));
@@ -49,6 +36,23 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
       >
         <MenuItemLink
           to={'/users'}
+          primaryText={'List'}
+          leftIcon={<Users.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuProperties')}
+        isOpen={state.menuProperties}
+        sidebarIsOpen={open}
+        name="Properties"
+        icon={<Users.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/properties'}
           primaryText={'List'}
           leftIcon={<Users.icon />}
           onClick={onMenuClick}

@@ -1,16 +1,16 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShowProperty from './ShowProperty';
-import UsersList from './UsersList';
+import PropertyList from './PropertyList';
 import { ListGuesser } from 'react-admin';
 import PropertyCreate from './PropertyCreate';
-import UserEdit from './PropertyEdit';
+import PropertyEdit from './PropertyEdit';
 
 const resource = {
-  list: ListGuesser,
-  show: ShowUser,
+  list: PropertyList,
+  show: ShowProperty,
   icon: AccountCircleIcon,
-  create: UserCreate,
-  edit: UserEdit
+  create: PropertyCreate,
+  edit: PropertyEdit
 };
 
 export default resource;

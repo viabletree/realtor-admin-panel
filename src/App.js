@@ -1,9 +1,10 @@
 import { Admin, Resource, defaultTheme } from 'react-admin';
 
 import { createHashHistory } from 'history';
-import customDataProvider from './customDataProvider';
+import customDataProvider from './providers/customDataProvider';
 import authProvider from './providers/authProvider';
 import Users from './Users';
+import Properties from './Properties';
 import { Layout } from './layout';
 
 const history = createHashHistory();
@@ -16,13 +17,13 @@ const history = createHashHistory();
 // };
 const App = () => (
   <Admin
-    // theme={theme}
-    authProvider={authProvider}
+  
     dataProvider={customDataProvider}
     history={history}
     layout={Layout}
   >
     <Resource name="users" {...Users} />
+    <Resource name="properties" {...Properties} />
   </Admin>
 );
 

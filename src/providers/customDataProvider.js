@@ -1,7 +1,7 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import _ from 'lodash';
-import { BASE_URL, getResourcePath } from './constants';
+import { BASE_URL, getResourcePath } from '../constants';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {

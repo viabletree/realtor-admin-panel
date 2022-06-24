@@ -18,13 +18,13 @@ import PropTypes, { element } from 'prop-types';
 import ResponsiveGallery from 'react-responsive-gallery';
 //import moment from 'moment';
 import moment from 'moment-timezone';
-
-moment.tz.setDefault('UTC/Etc');
-
-let offset = new Date().getTimezoneOffset();
+import _ from 'lodash';
 
 import {Calendar, momentLocalizer} from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+moment.tz.setDefault('UTC/Etc');
+
+let offset = new Date().getTimezoneOffset();
 
 const localizer = momentLocalizer(moment);
 
