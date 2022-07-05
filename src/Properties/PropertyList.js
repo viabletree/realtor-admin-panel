@@ -20,26 +20,21 @@ import {
  const PropertyList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="createdAt" />
-            <TextField source="updatedAt" />
             <TextField source="id" />
-            <ReferenceField source="list_user_id" reference="users">
-                <TextField source="agency_name" />
-                </ReferenceField>
-            <TextField source="property_type" />
+            <ReferenceField source="user_id" reference="users"><TextField source="id" /></ReferenceField>
+            <ReferenceField source="property_type_id" reference="property_types"><TextField source="id" /></ReferenceField>
             <TextField source="property_address" />
             <TextField source="property_title" />
-            <TextField source="property_description" />
             <NumberField source="property_price" />
             <NumberField source="property_area" />
-            <DateField source="property_squarefeet" />
+            <NumberField source="property_square_feet" />
             <DateField source="property_year_built" />
             <NumberField source="latitude" />
             <NumberField source="longitude" />
-            <NumberField source="is_favourite" />
-            <DateField source="is_sold" />
-            <TextField source="property_id" />
-            <DateField source="deleted_at" />
+            <TextField source="property_description" />
+            <DateField source="created_at" />
+            <DateField source="updated_at" />
+            
         </Datagrid>
     </List>
 );
