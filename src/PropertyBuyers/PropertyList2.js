@@ -4,12 +4,9 @@ import {
   Datagrid,
   Filter,
   SearchInput,
-  
   DeleteButton,
   FunctionField,
   SimpleList,
-  DateField,
-  ReferenceField,
   EditButton
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
@@ -54,8 +51,7 @@ const UsersList = (props) => {
       {...props}
       filters={<UserFilter />}
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
-      sort={{ field: "created_at", order: "DESC" }}
-      hasShow={true}
+      sort={{ field: "createdAt", order: "DESC" }}
     >
       {isSmall ? (
         <SimpleList
@@ -70,27 +66,21 @@ const UsersList = (props) => {
         />
       ) : (
         <>
-          <Datagrid rowClick="show">
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="id" />
-            <ReferenceField source="id" label="User" reference="users">
-              <TextField source="full_name" />
-              </ReferenceField>
-            <TextField source="agency_name" />
-            <TextField source="bio" />
-            <TextField source="location" />
-            <DateField source="latitude" />
-            <DateField source="longitude" />
-            <TextField source="availability_from" />
-            <TextField source="availability_to" />
-            <DateField source="preferences" />
-            <TextField source="full_name" />
-            <EditButton />
-            <DeleteButton undoable={false}/>
-        </Datagrid>
+          <Datagrid optimized rowClick="show">
+            <ImageAvatar />
+            <TextField source="name" />
+            <UserEmailUsername label="Email / Username" sortBy="email" />
+            <CreatedDate label="Created at" sortBy="createdAt" />
+            <TextField source="roleName" label="Role" sortable={false} />
+            <EditButton/>
+            <MarkAsBlocked />
+            <DeleteButton
+              undoable={false}
+              confirmTitle="Delete user"
+              confirmContent="Are you sure you want to delete this user?"
+            />
+          </Datagrid>
           <Datagrid optimized rowClick="edit">content</Datagrid>
-          
         </>
       )}
     </List>

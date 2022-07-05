@@ -6,11 +6,11 @@ import PropertyCreate from './PropertyCreate';
 import PropertyEdit from './PropertyEdit';
 
 const resource = {
-  list: PropertyList,
-  show: ShowProperty,
-  icon: AccountCircleIcon,
-  create: PropertyCreate,
-  edit: PropertyEdit
+  list: ListGuesser,
+  // show: ShowProperty,
+  // icon: AccountCircleIcon,
+  // create: PropertyCreate,
+  // edit: PropertyEdit
 };
 
 export default resource;

@@ -20,13 +20,20 @@ const UserTitle = ({ record }) => {
 };
   
   const UserEdit = (props) => (
-    <Edit {...props} undoable={false} title={<UserTitle />}  actions={<UserShowActions/>}>
+    <Edit {...props} undoable={false} actions={<UserShowActions/>}>
 
       <SimpleForm>
-        <TextInput source="name" validate={[required()]} />
-        <TextInput source="phone" validate={[required()]} />
-        <TextInput source="info.description" validate={[required()]} />
-        {/* <TextInput source="users" validate={[required()]} /> */}
+      <TextInput disabled label="Id" source="id"/>
+      <TextInput source="property_address" validate={[required()]} />
+            <TextInput source="property_title" validate={[required()]} />
+            <TextInput source="property_description" validate={[required()]} />
+            <TextInput source="property_price" validate={[required()]} />
+            <TextInput source="property_area" validate={[required()]} />
+            <TextInput source="property_square_feet" validate={[required()]} />
+            <TextInput source="property_year_built" validate={[required()]} />
+            <TextInput source="latitude" validate={[required()]} />
+            <TextInput source="longitude" validate={[required()]} />
+            {/* <TextInput source="users" validate={[required()]} /> */}
       </SimpleForm>
     </Edit>
   );

@@ -18,13 +18,13 @@ const validatePassword = [required('Password is required'), minLength(6)];
 const UserCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-    <TextInput source="full_name" validate={[required()]}/>
-              <TextInput source="agency_name" validate={[required()]}/>
-              <TextInput source="location" validate={[required()]}/>
-              <TextInput source="availability_from" validate={[required()]}/>
-              <TextInput source="availability_to" validate={[required()]}/>
-              <TextInput source="bio" validate={[required()]}/>
-
+      <TextInput source="name" validate={validateName} />
+      <TextInput source="email" type="email" validate={validateEmail} />
+      <NumberInput source="phone" />
+      <PasswordInput source="password" validate={validatePassword} />
+      <ReferenceInput label="Role" source="roleId" reference="roles" validate={[required()]}>
+        <AutocompleteInput optionText="role_name" optionValue="id" />
+      </ReferenceInput>
     </SimpleForm>
   </Create>
 );
