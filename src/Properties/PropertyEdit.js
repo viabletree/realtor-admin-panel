@@ -4,9 +4,14 @@ import {
   TextInput,
   required,
   TopToolbar,
-  ListButton
+  ListButton,
+  ReferenceInput,
+  SelectInput,
+  DateTimeInput,
+  DateInput
 } from 'react-admin';
 import PropTypes from 'prop-types';
+import { RESOURCES } from '../constants';
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -25,12 +30,27 @@ const UserTitle = ({ record }) => {
       <SimpleForm>
       <TextInput disabled label="Id" source="id"/>
       <TextInput source="property_address" validate={[required()]} />
+      <ReferenceInput
+				label="select user"
+				source="user_id"
+				reference={RESOURCES.users}
+				//filter={{ is_artist: true }}
+			>
+        <SelectInput optionText="full_name" />
+
+        </ReferenceInput>
+		
             <TextInput source="property_title" validate={[required()]} />
             <TextInput source="property_description" validate={[required()]} />
             <TextInput source="property_price" validate={[required()]} />
+            <SelectInput source="property_type_id" choices={[
+            { id: '1', name: 'residential' },
+            { id: '2', name: 'commercial' },
+            { id: '3', name: 'land' },
+            ]} />
             <TextInput source="property_area" validate={[required()]} />
             <TextInput source="property_square_feet" validate={[required()]} />
-            <TextInput source="property_year_built" validate={[required()]} />
+            <DateInput source="property_year_built" label="property year built" options={{ format: 'YYYY-MM-DD', ampm: false, clearable: true }} />
             <TextInput source="latitude" validate={[required()]} />
             <TextInput source="longitude" validate={[required()]} />
             {/* <TextInput source="users" validate={[required()]} /> */}

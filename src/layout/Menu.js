@@ -60,7 +60,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu>
-      <SubMenu
+      {/* <SubMenu
         handleToggle={() => handleToggle('menuPropertyTypes')}
         isOpen={state.menuPropertyTypes}
         sidebarIsOpen={open}
@@ -76,7 +76,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           sidebarIsOpen={open}
           dense={dense}
         />
-      </SubMenu>
+      </SubMenu> */}
       <SubMenu
         handleToggle={() => handleToggle('menuPropertyBuyers')}
         isOpen={state.menuPropertyBuyers}
