@@ -71,12 +71,15 @@ export default {
   },
 
   getOne: (resource, params) => {
+    
     const mResource = getResourcePath(resource);
     return httpClient(`${BASE_URL}/${mResource}/${params.id}`).then(
       ({ json }) => ({
-        data: json.data
-      })
-    );
+        
+        data: json.data,
+        id:params.id
+      }
+    ));
   },
 
   getMany: (resource, params) => {

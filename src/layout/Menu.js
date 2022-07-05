@@ -60,6 +60,57 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuPropertyTypes')}
+        isOpen={state.menuPropertyTypes}
+        sidebarIsOpen={open}
+        name="PropertyTypes"
+        icon={<Users.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/property_types'}
+          primaryText={'List'}
+          leftIcon={<Users.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuPropertyBuyers')}
+        isOpen={state.menuPropertyBuyers}
+        sidebarIsOpen={open}
+        name="PropertyBuyers"
+        icon={<Users.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/property_buyers'}
+          primaryText={'List'}
+          leftIcon={<Users.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuPropertySellers')}
+        isOpen={state.menuPropertySellers}
+        sidebarIsOpen={open}
+        name="PropertySellers"
+        icon={<Users.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/property_sellers'}
+          primaryText={'List'}
+          leftIcon={<Users.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
 
       {isXSmall && logout}
     </Box>

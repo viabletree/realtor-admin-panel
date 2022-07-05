@@ -5,6 +5,9 @@ import customDataProvider from './providers/customDataProvider';
 import authProvider from './providers/authProvider';
 import Users from './Users';
 import Properties from './Properties';
+import PropertyTypes from './PropertyTypes';
+import PropertyBuyers from './PropertyBuyers';
+import PropertySellers from './PropertySellers';
 import { Layout } from './layout';
 
 const history = createHashHistory();
@@ -24,6 +27,9 @@ const App = () => (
   >
     <Resource name="users" {...Users} />
     <Resource name="properties" {...Properties} />
+    <Resource name="property_types" {...PropertyTypes} />
+    <Resource name="property_buyers" {...PropertyBuyers} />
+    <Resource name="property_sellers" {...PropertySellers} />
   </Admin>
 );
 
