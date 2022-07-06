@@ -4,10 +4,11 @@ import PropertyBuyerList from './PropertyBuyerList';
 import { ListGuesser, ShowGuesser,EditGuesser, CreateGuesser } from 'react-admin';
 import PropertyCreate from './PropertyBuyerCreate';
 import PropertyBuyerEdit from './PropertyBuyerEdit';
+import PropertyBuyerShow from './PropertyBuyerShow';
 
 const resource = {
   list: PropertyBuyerList,
-   show: ShowGuesser,
+   show: PropertyBuyerShow,
   // icon: AccountCircleIcon,
    create: PropertyCreate,
    edit: PropertyBuyerEdit

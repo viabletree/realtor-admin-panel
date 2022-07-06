@@ -112,7 +112,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         />
       </SubMenu>
 
-      {isXSmall && logout}
+      {logout}
     </Box>
   );
 };

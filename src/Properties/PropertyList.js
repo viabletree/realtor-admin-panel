@@ -19,7 +19,7 @@ import {
   import { useMediaQuery } from "@material-ui/core";
  const PropertyList = props => (
     <List {...props}>
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="show">
             <TextField source="id" />
             <ReferenceField source="user_id" reference="users"><TextField source="full_name" /></ReferenceField>
             <ReferenceField source="property_type_id" reference="property_types"><TextField source="category_name" /></ReferenceField>

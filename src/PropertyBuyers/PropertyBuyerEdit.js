@@ -28,23 +28,30 @@ const UserTitle = ({ record }) => {
 
 <SimpleForm>
             <TextInput disabled source="id" />
-            <ReferenceInput source="user_id" reference="users"><SelectInput optionText="full_name" /></ReferenceInput>
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>
         
             <TextInput source="buyer_name" />
             <TextInput source="address" />
             <TextInput source="title_company_closer" />
             <NumberInput source="amount_of_contract" />
-            <DateInput source="contract_to_lender_date" />
             <SelectInput source="is_contract_to_lender" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
+            <DateInput source="contract_to_lender_date" />
+            
             <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
             <DateInput source="earnest_money_received_date" />
+            <SelectInput source="is_home_warranty" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
+          
+            <DateInput source="home_warranty_date" />
+           
             <DateInput source="home_inspection_date" />
             <TextInput source="home_inspection_info" />
             <DateInput source="termite_inspection_date" />
@@ -65,12 +72,6 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
           
-            <SelectInput source="is_home_warranty" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} />
-          
-            <DateInput source="home_warranty_date" />
             <SelectInput source="is_switch_over_utilities" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
