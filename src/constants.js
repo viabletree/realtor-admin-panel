@@ -1,6 +1,6 @@
-const PROD_URL = 'https://4d3d-110-39-172-42.ngrok.io/';
-const DEV_URL = 'https://4d3d-110-39-172-42.ngrok.io/';
-const LOCALHOST_URL = 'http://localhost:8001/';
+const PROD_URL = 'https://rlty-proxy.herokuapp.com/';
+const DEV_URL = 'https://rlty-proxy.herokuapp.com/';
+const LOCALHOST_URL = 'https://rlty-proxy.herokuapp.com/';
 export const BASE_URL = (process.env.REACT_APP_ENVIRONMENT === 'production' ? PROD_URL : (process.env.REACT_APP_ENVIRONMENT === 'staging' ? DEV_URL : LOCALHOST_URL)) + 'api/v1/admin';
 
 export const RESOURCES = {
