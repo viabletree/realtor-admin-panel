@@ -21,7 +21,7 @@ export default {
         return response.json();
       })
       .then((response) => {
-        debugger
+       // debugger
         console.log(response.data);
         console.log(response.data && response.data.isAdmin);
         if(response.data.email == "admin@myrlty.com"){
