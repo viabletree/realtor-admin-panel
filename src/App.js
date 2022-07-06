@@ -22,6 +22,7 @@ const App = () => (
   <Admin
   
     dataProvider={customDataProvider}
+    authProvider={authProvider}
     history={history}
     layout={Layout}
   >

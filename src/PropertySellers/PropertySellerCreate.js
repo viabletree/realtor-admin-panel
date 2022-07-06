@@ -20,7 +20,6 @@ const validatePassword = [required('Password is required'), minLength(6)];
 const UserCreate = (props) => (
   <Create {...props}>
   <SimpleForm>
-            <ReferenceInput source="user_id" reference="users"><SelectInput optionText="full_name" /></ReferenceInput>
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>        
             <TextInput source="seller_name" />
             <DateInput source="address" />

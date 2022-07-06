@@ -1,7 +1,7 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShowProperty from './ShowProperty';
 import PropertyList from './PropertyList';
-import { ListGuesser } from 'react-admin';
+import { ListGuesser,ShowGuesser } from 'react-admin';
 import PropertyCreate from './PropertyCreate';
 import PropertyEdit from './PropertyEdit';
 
