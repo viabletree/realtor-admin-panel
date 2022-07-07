@@ -18,13 +18,13 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 
-const UserFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <SearchInput source="q" alwaysOn />
-    </Filter>
-  );
-};
+// const UserFilter = (props) => {
+//   return (
+//     <Filter {...props}>
+//       <SearchInput source="q" alwaysOn />
+//     </Filter>
+//   );
+// };
 
 const UserEmailUsername = (props) => {
   return props.record && props.record.parentId ? (
@@ -47,12 +47,11 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
-  console.log(props);
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       {...props}
-      filters={<UserFilter />}
+     /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
@@ -71,8 +70,6 @@ const UsersList = (props) => {
       ) : (
         <>
           <Datagrid rowClick="show">
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
             <TextField source="id" />
             <ReferenceField source="id" label="User" reference="users">
               <TextField source="full_name" />
@@ -80,12 +77,9 @@ const UsersList = (props) => {
             <TextField source="agency_name" />
             <TextField source="bio" />
             <TextField source="location" />
-            <DateField source="latitude" />
-            <DateField source="longitude" />
             <TextField source="availability_from" />
             <TextField source="availability_to" />
-            <DateField source="preferences" />
-            <TextField source="full_name" />
+            
             <EditButton />
             <DeleteButton undoable={false}/>
         </Datagrid>

@@ -49,7 +49,7 @@ const ShowUser = (props) => {
               <TextField source="agency_name" />
               <TextField source="location" />
               <TextField source="availability_from" />
-              <TextField source="availabili ty_to" />
+              <TextField source="availability_to" />
               <TextField source="bio" />
               </SimpleShowLayout>
 
