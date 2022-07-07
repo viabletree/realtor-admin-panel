@@ -86,8 +86,8 @@ export default {
   getIdentity: () => {
     return {
       id: localStorage.getItem('login'),
-      fullName: 'Athes',
-      avatar: icon
+     // fullName: 'Athes',
+     // avatar: icon
     };
   }
 };

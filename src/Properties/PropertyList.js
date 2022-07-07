@@ -30,12 +30,7 @@ import {
             <NumberField source="property_square_feet" />
             <DateField source="property_year_built" />
             <TextField source="property_description" />
-            <TextField source="is_sold" />
-          
-            <NumberField source="latitude" />
-            <NumberField source="longitude" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
+           
             <EditButton />
             <DeleteButton undoable={false}/>
         </Datagrid>

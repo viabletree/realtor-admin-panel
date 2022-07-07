@@ -41,8 +41,6 @@ const ShowUser = (props) => {
     
     <Show {...props}>
     <SimpleShowLayout>
-        <DateField source="created_at" />
-        <DateField source="updated_at" />
         <TextField source="id" />
         <TextField source="property_title" />
         <ReferenceField source="user_id" reference="users"><TextField source="id" /></ReferenceField>
@@ -53,10 +51,6 @@ const ShowUser = (props) => {
         <NumberField source="property_area" />
         <NumberField source="property_square_feet" />
         <DateField source="property_year_built" />
-        <NumberField source="latitude" />
-        <NumberField source="longitude" />
-        <DateField source="is_favourite" />
-        <DateField source="is_sold" />
         
     </SimpleShowLayout>
 </Show>
