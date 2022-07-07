@@ -45,9 +45,9 @@ const UserCreate = (props) => (
             <TextInput source="property_price" validate={[required()]} />
             <TextInput source="property_area" validate={[required()]} />
             <TextInput source="property_square_feet" validate={[required()]} />
-            <TextInput source="latitude" validate={[required()]} />
+           {/*  <TextInput source="latitude" validate={[required()]} />
             <TextInput source="longitude" validate={[required()]} />
-      
+       */}
     </SimpleForm>
   </Create>
 );

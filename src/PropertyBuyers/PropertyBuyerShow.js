@@ -72,9 +72,7 @@ const ShowUser = (props) => {
             <DateField source="option_period_end" />
             <TextField source="termite_inspection_info" />
             <TextField source="additional_info_entire" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-       
+         
         </SimpleShowLayout>
 </Show>
      

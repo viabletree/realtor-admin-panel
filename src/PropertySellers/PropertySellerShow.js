@@ -71,8 +71,6 @@ const ShowUser = (props) => {
             <DateField source="title_commit_to_be_rec_date" />
             <TextField source="additional_info_entire" />
             <DateField source="home_warranty_date" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
             
         </SimpleShowLayout>
 </Show>
