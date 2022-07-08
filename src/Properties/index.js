@@ -4,11 +4,12 @@ import PropertyList from './PropertyList';
 import { ListGuesser,ShowGuesser } from 'react-admin';
 import PropertyCreate from './PropertyCreate';
 import PropertyEdit from './PropertyEdit';
+import CottageIcon from '@mui/icons-material/Cottage';
 
 const resource = {
   list: PropertyList,
   show: ShowProperty,
-  icon: AccountCircleIcon,
+  icon: CottageIcon,
   create: PropertyCreate,
   edit: PropertyEdit
 };

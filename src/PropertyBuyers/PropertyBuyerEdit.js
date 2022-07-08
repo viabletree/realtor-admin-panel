@@ -55,7 +55,10 @@ const UserTitle = ({ record }) => {
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
-            <DateInput source="is_new_survey" />
+            <SelectInput source="is_new_survey" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
             <TextInput source="new_survey_info" />
             
             <SelectInput source="is_cda_sent" choices={[

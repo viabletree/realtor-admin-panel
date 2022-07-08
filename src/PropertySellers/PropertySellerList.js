@@ -33,7 +33,7 @@ import {
             <DateField source="earnest_money_received_date" />
             <BooleanField source="is_contract_to_lender" />
             <DateField source="contract_to_lender_date" />
-            <NumberField source="is_home_warranty" />
+            <BooleanField source="is_home_warranty" />
             <DateField source="home_warranty_date" />
             <BooleanField source="is_survey_received" />
             <BooleanField source="is_new_survey" />

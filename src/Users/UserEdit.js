@@ -31,8 +31,8 @@ const UserTitle = ({ record }) => {
               <TextInput source="full_name" validate={[required()]}/>
               <TextInput source="agency_name" validate={[required()]}/>
               <TextInput source="location" validate={[required()]}/>
-              <DateInput source="availability_from" validate={[required()]}/>
-              <DateInput source="availability_to" validate={[required()]}/>
+              <TextInput source="availability_from" validate={[required()]}/>
+              <TextInput source="availability_to" validate={[required()]}/>
               <TextInput source="bio" validate={[required()]}/>
              
         {/* <TextInput source="users" validate={[required()]} /> */}

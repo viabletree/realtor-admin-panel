@@ -48,7 +48,11 @@ const UserCreate = (props) => (
             { id: '1', name: 'yes' },
             ]} />
            
-            <DateInput source="is_new_survey" />
+            <SelectInput source="is_new_survey" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
+            
             <DateInput source="survey_due_date" />
             <TextInput source="new_survey_info" />
             

@@ -5,11 +5,13 @@ import { ListGuesser, ShowGuesser,EditGuesser, CreateGuesser } from 'react-admin
 import PropertyCreate from './PropertyBuyerCreate';
 import PropertyBuyerEdit from './PropertyBuyerEdit';
 import PropertyBuyerShow from './PropertyBuyerShow';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 
 const resource = {
   list: PropertyBuyerList,
    show: PropertyBuyerShow,
-  // icon: AccountCircleIcon,
+   icon: ShoppingCartIcon,
    create: PropertyCreate,
    edit: PropertyBuyerEdit
 };

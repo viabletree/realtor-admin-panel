@@ -7,6 +7,9 @@ import SubMenu from './SubMenu';
 import PropTypes from 'prop-types';
 
 import Users from '../Users';
+import Properties from '../Properties';
+import PropertySeller from '../PropertySellers';
+import PropertyBuyer from '../PropertyBuyers';
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
@@ -48,13 +51,13 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         isOpen={state.menuProperties}
         sidebarIsOpen={open}
         name="Properties"
-        icon={<Users.icon />}
+        icon={<Properties.icon />}
         dense={dense}
       >
         <MenuItemLink
           to={'/properties'}
           primaryText={'List'}
-          leftIcon={<Users.icon />}
+          leftIcon={<Properties.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}
@@ -82,13 +85,13 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         isOpen={state.menuPropertyBuyers}
         sidebarIsOpen={open}
         name="PropertyBuyers"
-        icon={<Users.icon />}
+        icon={<PropertyBuyer.icon />}
         dense={dense}
       >
         <MenuItemLink
           to={'/property_buyers'}
           primaryText={'List'}
-          leftIcon={<Users.icon />}
+          leftIcon={<PropertyBuyer.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}
@@ -99,13 +102,13 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         isOpen={state.menuPropertySellers}
         sidebarIsOpen={open}
         name="PropertySellers"
-        icon={<Users.icon />}
+        icon={<PropertySeller.icon />}
         dense={dense}
       >
         <MenuItemLink
           to={'/property_sellers'}
           primaryText={'List'}
-          leftIcon={<Users.icon />}
+          leftIcon={<PropertySeller.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}

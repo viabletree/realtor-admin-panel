@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../assets/logo.svg';
 
+
 const useStyles = makeStyles({
   title: {
     flex: 1,
@@ -38,8 +39,8 @@ const CustomAppBar = (props) => {
         className={classes.title}
         id="react-admin-title"
       />
-      {/* <img src={logo} alt="Logo" className={classes.imageStyle} />
-       */}
+       <img src={logo} alt="Logo" className={classes.imageStyle} />
+       
        <span className={classes.spacer} />
     </AppBar>
   );

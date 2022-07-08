@@ -14,7 +14,8 @@ import {
   TextInput,
   SimpleShowLayout,
   ReferenceField,
-  NumberField
+  NumberField,
+  BooleanField
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageAvatar from '../components/ImageAvatar';
@@ -49,23 +50,23 @@ const ShowUser = (props) => {
             <DateField source="address" />
             <TextField source="title_company_closer" />
             <NumberField source="amount_of_contract" />
-            <DateField source="is_earnest_money_received" />
+            <BooleanField source="is_earnest_money_received" />
             <DateField source="earnest_money_received_date" />
             <DateField source="home_inspection_date" />
             <TextField source="home_inspection_info" />
             <DateField source="termite_inspection_date" />
             <TextField source="termite_inspection_info" />
-            <DateField source="is_survey_received" />
-            <DateField source="is_new_survey" />
+            <BooleanField source="is_survey_received" />
+            <BooleanField source="is_new_survey" />
             <DateField source="survey_due_date" />
             <TextField source="new_survey_info" />
             <DateField source="appraisal_date" />
             <DateField source="appraisal_due_date" />
             <TextField source="appraisal_additional_info" />
-            <DateField source="is_cda_sent" />
-            <DateField source="is_switch_over_utilities" />
-            <DateField source="is_contract_to_lender" />
-            <DateField source="is_home_warranty" />
+            <BooleanField source="is_cda_sent" />
+            <BooleanField source="is_switch_over_utilities" />
+            <BooleanField source="is_contract_to_lender" />
+            <BooleanField source="is_home_warranty" />
             <DateField source="contract_to_lender_date" />
             <DateField source="option_period_end_date" />
             <DateField source="title_commit_to_be_rec_date" />
