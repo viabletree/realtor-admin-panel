@@ -9,6 +9,8 @@ import {
   DateInput
 } from 'react-admin';
 import PropTypes from 'prop-types';
+import DateFnsUtils from '@date-io/date-fns';
+//import { TimeInput } from "react-admin-date-inputs2";
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />

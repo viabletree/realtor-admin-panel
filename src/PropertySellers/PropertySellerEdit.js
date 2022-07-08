@@ -38,6 +38,7 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
              <DateInput source="earnest_money_received_date" />
+
              <SelectInput source="is_contract_to_lender" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
@@ -49,11 +50,22 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
              <DateInput source="home_warranty_date" label="Home Warranty Date"/>
+             
              <SelectInput source="is_survey_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
             <DateInput source="is_new_survey" />
+            
+            <SelectInput source="is_cda_sent" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
+
+            <SelectInput source="is_switch_over_utilities" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
             <DateInput source="survey_due_date" />
             <TextInput source="new_survey_info" />
             
@@ -65,11 +77,7 @@ const UserTitle = ({ record }) => {
             <DateInput source="appraisal_date" />
             <DateInput source="appraisal_due_date" />
             <TextInput source="appraisal_additional_info" />
-            <DateInput source="is_cda_sent" />
-            <SelectInput source="is_switch_over_utilities" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} />
+           
            
             
             

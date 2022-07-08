@@ -45,28 +45,19 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
             <DateInput source="earnest_money_received_date" />
+
             <SelectInput source="is_home_warranty" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
-          
             <DateInput source="home_warranty_date" />
-           
-            <DateInput source="home_inspection_date" />
-            <TextInput source="home_inspection_info" />
-            <DateInput source="termite_inspection_date" />
             <SelectInput source="is_survey_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
             <DateInput source="is_new_survey" />
             <TextInput source="new_survey_info" />
-            <DateInput source="appraisal_date" />
-            <DateInput source="appraisal_due_date" />
-            <TextInput source="appraisal_additional_info" />
-            <DateInput source="closing_date" />
-            <DateInput source="closing_additional_info" />
-            <DateInput source="title_commitment" />
+            
             <SelectInput source="is_cda_sent" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
@@ -77,6 +68,16 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
           
+            <DateInput source="home_inspection_date" />
+            <TextInput source="home_inspection_info" />
+            <DateInput source="termite_inspection_date" />
+            <DateInput source="appraisal_date" />
+            <DateInput source="appraisal_due_date" />
+            <TextInput source="appraisal_additional_info" />
+            <DateInput source="closing_date" />
+            <DateInput source="closing_additional_info" />
+            <DateInput source="title_commitment" />
+            
             <DateInput source="option_period_end" />
             <TextInput source="termite_inspection_info" />
             <TextInput source="additional_info_entire" />

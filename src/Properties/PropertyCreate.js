@@ -14,6 +14,7 @@ import {
   DateTimeInput,
   SelectField
 } from 'react-admin';
+import { TimeInput } from 'react-admin-date-inputs2';
 import { RESOURCES } from '../constants';
 
 const validateName = [required('Name is required')];
@@ -39,8 +40,8 @@ const UserCreate = (props) => (
             <TextInput source="property_description" validate={[required()]} />
             <SelectInput source="property_type_id" choices={[
             { id: '1', name: 'residential' },
-            { id: '2', name: 'commercial' },
-            { id: '3', name: 'land' },
+            { id: '2', name: 'land' },
+            { id: '3', name: 'commercial' },
             ]} />
             <TextInput source="property_price" validate={[required()]} />
             <TextInput source="property_area" validate={[required()]} />

@@ -29,12 +29,20 @@ const UserCreate = (props) => (
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
-           
             <DateInput source="earnest_money_received_date" />
-            <DateInput source="home_inspection_date" />
-            <TextInput source="home_inspection_info" />
-            <DateInput source="termite_inspection_date" />
-            <TextInput source="termite_inspection_info" />
+            
+            <SelectInput source="is_contract_to_lender" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
+             <DateInput source="contract_to_lender_date" />
+           
+            <SelectInput source="is_home_warranty" choices={[
+            { id: '0', name: 'no' },
+            { id: '1', name: 'yes' },
+            ]} />
+            <DateInput source="home_warranty_date" />
+            
             <SelectInput source="is_survey_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
@@ -43,30 +51,29 @@ const UserCreate = (props) => (
             <DateInput source="is_new_survey" />
             <DateInput source="survey_due_date" />
             <TextInput source="new_survey_info" />
-            <DateInput source="appraisal_date" />
-            <DateInput source="appraisal_due_date" />
-            <TextInput source="appraisal_additional_info" />
+            
             <SelectInput source="is_cda_sent" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
+
             <SelectInput source="is_switch_over_utilities" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
-            <SelectInput source="is_contract_to_lender" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} />
-            <SelectInput source="is_home_warranty" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} />
-            <DateInput source="contract_to_lender_date" />
+            
+            <DateInput source="home_inspection_date" />
+            <TextInput source="home_inspection_info" />
+            <DateInput source="termite_inspection_date" />
+            <TextInput source="termite_inspection_info" />
+            <DateInput source="appraisal_date" />
+            <DateInput source="appraisal_due_date" />
+            <TextInput source="appraisal_additional_info" />
+            
             <DateInput source="option_period_end_date" />
             <DateInput source="title_commit_to_be_rec_date" />
             <TextInput source="additional_info_entire" />
-            <DateInput source="home_warranty_date" />        
+                    
         </SimpleForm>
   </Create>
 );
