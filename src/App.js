@@ -8,6 +8,8 @@ import Properties from './Properties';
 import PropertyTypes from './PropertyTypes';
 import PropertyBuyers from './PropertyBuyers';
 import PropertySellers from './PropertySellers';
+import Notes from './Notes';
+
 import { Layout } from './layout';
 
 const history = createHashHistory();
@@ -31,6 +33,7 @@ const App = () => (
     <Resource name="property_types" {...PropertyTypes} />
     <Resource name="property_buyers" {...PropertyBuyers} />
     <Resource name="property_sellers" {...PropertySellers} />
+    <Resource name="notes" {...Notes} />
   </Admin>
 );
 

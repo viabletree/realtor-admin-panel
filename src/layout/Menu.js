@@ -114,6 +114,23 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuNotes')}
+        isOpen={state.menuNotes}
+        sidebarIsOpen={open}
+        name="Notes"
+        icon={<PropertySeller.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/notes'}
+          primaryText={'List'}
+          leftIcon={<PropertySeller.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
 
       {logout}
     </Box>

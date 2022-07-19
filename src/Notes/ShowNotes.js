@@ -33,7 +33,7 @@ const UserTitle = ({ record }) => {
     <span>{record.name}</span>
   );
 };
-const ShowUser = (props) => {
+const ShowNotes = (props) => {
   console.log({props})
   return (    
     
@@ -44,13 +44,8 @@ const ShowUser = (props) => {
 
                  <SimpleShowLayout>
 
-              <TextField source="id" label="User Id" />
-              <TextField source="full_name" />
-              <TextField label="Agency Name" source="agency_name" />
-              <TextField label="Location" source="location" />
-              <TextField label="Availability From" source="availability_from" />
-              <TextField label="Availability To" source="availability_to" />
-              <TextField label="Bio" source="bio" />
+             <TextField label="Notes Description" source="description" />
+            <TextField label="Property Name" source="propety_id" />
               </SimpleShowLayout>
 
                  
@@ -60,4 +55,4 @@ const ShowUser = (props) => {
   );
 };
 
-export default ShowUser;
+export default ShowNotes;

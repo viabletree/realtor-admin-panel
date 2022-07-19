@@ -9,7 +9,7 @@ const resource = {
   list: UsersList,
   show: ShowUser,
   icon: AccountCircleIcon,
- // create: UserCreate,
+  create: UserCreate,
   edit: UserEdit
 };
 
