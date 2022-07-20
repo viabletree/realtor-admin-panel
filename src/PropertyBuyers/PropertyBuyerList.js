@@ -43,8 +43,8 @@ const useStyles = makeStyles(theme => ({
             <ReferenceField source="property_id" reference="properties"><TextField source="property_title" /></ReferenceField>
            
             <TextField source="buyer_name" label={"Buyer"} />
-            <TextField source="address" label={"Address"} />
-            <TextField source="title_company_closer" label={"TitleCompanyCloser"} />
+            <TextField source="address" label={"Address"} className={classes.descriptionText}/>
+            <TextField source="title_company_closer" label={"TitleCompanyCloser"} className={classes.descriptionText}/>
             <NumberField source="amount_of_contract" label={"AmountOfContract"} />
             <BooleanField source="is_contract_to_lender" label="IsContractToLender"/>
 
@@ -70,7 +70,7 @@ const useStyles = makeStyles(theme => ({
             <BooleanField label="IsCdaSent" source="is_cda_sent" />
             <BooleanField label="IsSwitchOverUtilities" source="is_switch_over_utilities" />
             <DateField label="OptionPeriodEnd" source="option_period_end" />
-            <TextField label="TermiteInspectionInfo" source="termite_inspection_info" />
+            <TextField label="TermiteInspectionInfo" source="termite_inspection_info" className={classes.descriptionText}/>
             <TextField label="AdditionalInfoEntire" source="additional_info_entire" className={classes.descriptionText}/>
             <EditButton />
             <DeleteButton undoable={false} onSuccess={() => {

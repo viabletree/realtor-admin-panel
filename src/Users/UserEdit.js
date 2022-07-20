@@ -30,7 +30,7 @@ const UserTitle = ({ record }) => {
               <TextInput disabled label="Id" source="id"/>
               <TextInput inputProps={{ maxLength: 20 }} multiline={true} source="full_name" validate={[required()]}/>
               <TextInput inputProps={{ maxLength: 20 }} multiline={true} source="agency_name" validate={[required()]}/>
-              <TextInput inputProps={{ maxLength: 50 }} source="location" validate={[required()]}/>
+              <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="location" validate={[required()]}/>
               <TextInput source="availability_from" validate={[required()]}/>
               <TextInput source="availability_to" validate={[required()]}/>
               <TextInput  multiline={true} source="bio" validate={[required()]}/>

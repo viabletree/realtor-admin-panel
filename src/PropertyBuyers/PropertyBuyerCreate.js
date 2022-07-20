@@ -71,7 +71,7 @@ const UserCreate = (props) => (
             <DateInput source="appraisal_due_date" />
             <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="appraisal_additional_info" />
             <DateInput source="closing_date" />
-            <DateInput inputProps={{ maxLength: 200 }} multiline={true} source="closing_additional_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="closing_additional_info" />
             <DateInput source="title_commitment" />
             
             
