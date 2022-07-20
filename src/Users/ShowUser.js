@@ -42,7 +42,7 @@ const ShowUser = (props) => {
                       
         >
 
-                 <SimpleShowLayout>
+                 <SimpleShowLayout className={"textWrapperStyle"}>
 
               <TextField source="id" label="User Id" />
               <TextField source="full_name" />

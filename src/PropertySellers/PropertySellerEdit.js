@@ -24,15 +24,15 @@ const UserTitle = ({ record }) => {
 };
   
   const UserEdit = (props) => (
-    <Edit {...props} undoable={false}  actions={<UserShowActions/>}>
+    <Edit {...props} undoable={false}  actions={<UserShowActions/>} successMessage="Seller updated successfully">
 
 <SimpleForm>
             <TextInput source="id" />
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>        
-            <TextInput source="seller_name" />
-            <TextInput source="address" />
-            <TextInput source="title_company_closer" />
-            <NumberInput source="amount_of_contract" />
+            <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="seller_name" />
+            <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="address" />
+            <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="title_company_closer" />
+            <NumberInput inputProps={{ maxLength: 20 }} source="amount_of_contract" />
             <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
@@ -70,23 +70,23 @@ const UserTitle = ({ record }) => {
             { id: '1', name: 'yes' },
             ]} />
             <DateInput source="survey_due_date" />
-            <TextInput source="new_survey_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="new_survey_info" />
             
               
             <DateInput source="home_inspection_date" />
-            <TextInput source="home_inspection_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="home_inspection_info" />
             <DateInput source="termite_inspection_date" />
-            <TextInput source="termite_inspection_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="termite_inspection_info" />
             <DateInput source="appraisal_date" />
             <DateInput source="appraisal_due_date" />
-            <TextInput source="appraisal_additional_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="appraisal_additional_info" />
            
            
             
             
             <DateInput source="option_period_end_date" />
             <DateInput source="title_commit_to_be_rec_date" />
-            <TextInput source="additional_info_entire" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="additional_info_entire" />
            
         </SimpleForm>
     </Edit>

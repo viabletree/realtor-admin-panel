@@ -18,13 +18,13 @@ const validateEmail = [required('Email is required'), email('Incorrect Email')];
 const validatePassword = [required('Password is required'), minLength(6)];
 
 const UserCreate = (props) => (
-  <Create {...props}>
+  <Create {...props} successMessage="Buyer created successfully">
    <SimpleForm>
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>
      
-            <TextInput source="buyer_name" />
-            <TextInput source="address" />
-            <TextInput source="title_company_closer" />
+            <TextInput inputProps={{ maxLength: 50 }} source="buyer_name" />
+            <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="address" />
+            <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="title_company_closer" />
             <NumberInput source="amount_of_contract" />
             <SelectInput source="is_contract_to_lender" choices={[
             { id: '0', name: 'no' },
@@ -62,22 +62,22 @@ const UserCreate = (props) => (
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} />
-            <TextInput source="new_survey_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="new_survey_info" />
             
             <DateInput source="home_inspection_date" />
-            <TextInput source="home_inspection_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="home_inspection_info" />
             <DateInput source="termite_inspection_date" />
             <DateInput source="appraisal_date" />
             <DateInput source="appraisal_due_date" />
-            <TextInput source="appraisal_additional_info" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="appraisal_additional_info" />
             <DateInput source="closing_date" />
-            <DateInput source="closing_additional_info" />
+            <DateInput inputProps={{ maxLength: 200 }} multiline={true} source="closing_additional_info" />
             <DateInput source="title_commitment" />
             
             
             <DateInput source="option_period_end" />
-            <TextInput source="termite_inspection_info" />
-            <TextInput source="additional_info_entire" />
+            <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="termite_inspection_info" />
+            <TextInput inputProps={{ maxLength: 200 }}  multiline={true} source="additional_info_entire" />
         </SimpleForm>
 
   </Create>

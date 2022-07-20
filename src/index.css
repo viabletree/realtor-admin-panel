@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.listWrap .MuiTableSortLabel-icon {
+  opacity: 1 !important;
+  display: inline !important;
+}
+
+.textWrapperStyle div div div span{
+  overflow-wrap: anywhere;
+}

@@ -4,20 +4,31 @@ import {
   Datagrid,
   Filter,
   SearchInput,
-  
+
   DeleteButton,
   FunctionField,
   SimpleList,
   DateField,
   ReferenceField,
-  EditButton
+  EditButton,
+  useNotify
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+  descriptionText: {
+      display: "block",
+      width: 250,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+  },
+}));
 // const UserFilter = (props) => {
 //   return (
 //     <Filter {...props}>
@@ -46,15 +57,20 @@ const CreatedDate = (props) => {
 };
 
 const UsersList = (props) => {
+  const classes = useStyles();
+    
+  const notify = useNotify();
+    
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       {...props}
-     /*  filters={<UserFilter />} */
+      /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
+      className="listWrap"
     >
       {isSmall ? (
         <SimpleList
@@ -63,9 +79,9 @@ const UsersList = (props) => {
           secondaryText={
             <UserEmailUsername label="Email / Username" sortBy="email" />
           }
-          // tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
-          // linkType={record => record.canEdit ? "edit" : "show"}
-          // rowStyle={record => ({ backgroundColor: record.nb_views >= 500 ? '#efe' : 'white' })}
+        // tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
+        // linkType={record => record.canEdit ? "edit" : "show"}
+        // rowStyle={record => ({ backgroundColor: record.nb_views >= 500 ? '#efe' : 'white' })}
         />
       ) : (
         <>
@@ -73,18 +89,23 @@ const UsersList = (props) => {
             <TextField source="id" />
             <ReferenceField source="id" label="User" reference="users">
               <TextField source="full_name" />
-              </ReferenceField>
+            </ReferenceField>
             <TextField source="agency_name" />
-            <TextField source="bio" />
+            <TextField source="bio" className={classes.descriptionText}/>
             <TextField source="location" />
             <TextField source="availability_from" />
             <TextField source="availability_to" />
-            
+
             <EditButton />
-            <DeleteButton undoable={false}/>
-        </Datagrid>
+            <DeleteButton undoable={false} onSuccess={() => {
+                    notify(`User Deleted`)
+
+                }} onError={() =>{
+                    notify(`Unable to delete`)
+                }}/>
+          </Datagrid>
           <Datagrid optimized rowClick="edit">content</Datagrid>
-          
+
         </>
       )}
     </List>

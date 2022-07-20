@@ -32,7 +32,7 @@ const UserTitle = ({ record }) => {
       <TextInput disabled source="id" />
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>
         
-            <TextInput source="description" />
+            <TextInput fullWidth source="description" />
             
         {/* <TextInput source="users" validate={[required()]} /> */}
       </SimpleForm>

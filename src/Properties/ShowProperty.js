@@ -40,7 +40,7 @@ const ShowUser = (props) => {
   return (    
     
     <Show {...props}>
-    <SimpleShowLayout>
+    <SimpleShowLayout className={"textWrapperStyle"}>
         <TextField source="id" />
         <TextField source="property_title" />
         <ReferenceField source="user_id" reference="users"><TextField source="id" /></ReferenceField>

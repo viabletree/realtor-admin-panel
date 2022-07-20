@@ -24,16 +24,16 @@ const UserTitle = ({ record }) => {
 };
   
   const UserEdit = (props) => (
-    <Edit {...props} undoable={false}   actions={<UserShowActions/>}>
+    <Edit {...props} undoable={false}   actions={<UserShowActions/>} successMessage="User updated successfully">
 
       <SimpleForm>
               <TextInput disabled label="Id" source="id"/>
-              <TextInput source="full_name" validate={[required()]}/>
-              <TextInput source="agency_name" validate={[required()]}/>
-              <TextInput source="location" validate={[required()]}/>
+              <TextInput inputProps={{ maxLength: 20 }} multiline={true} source="full_name" validate={[required()]}/>
+              <TextInput inputProps={{ maxLength: 20 }} multiline={true} source="agency_name" validate={[required()]}/>
+              <TextInput inputProps={{ maxLength: 50 }} source="location" validate={[required()]}/>
               <TextInput source="availability_from" validate={[required()]}/>
               <TextInput source="availability_to" validate={[required()]}/>
-              <TextInput source="bio" validate={[required()]}/>
+              <TextInput  multiline={true} source="bio" validate={[required()]}/>
              
         {/* <TextInput source="users" validate={[required()]} /> */}
       </SimpleForm>

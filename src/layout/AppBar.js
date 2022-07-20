@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     flex: 1
   },
   imageStyle: {
-    height: 30,
+    height: 55,
     width: 200
   },
   header: {
@@ -39,9 +39,9 @@ const CustomAppBar = (props) => {
         className={classes.title}
         id="react-admin-title"
       />
-       <img src={logo} alt="Logo" className={classes.imageStyle} />
-       
-       <span className={classes.spacer} />
+      <img src={logo} alt="Logo" className={classes.imageStyle} />
+
+      <span className={classes.spacer} />
     </AppBar>
   );
 };
