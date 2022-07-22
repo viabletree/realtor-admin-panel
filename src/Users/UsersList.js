@@ -4,29 +4,29 @@ import {
   Datagrid,
   Filter,
   SearchInput,
-
   DeleteButton,
   FunctionField,
   SimpleList,
   DateField,
   ReferenceField,
   EditButton,
-  useNotify
+  useNotify,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import MobileGrid from "./MobileGrid";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   descriptionText: {
-      display: "block",
-      width: 250,
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
+    display: "block",
+    width: 250,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
 }));
 // const UserFilter = (props) => {
@@ -58,11 +58,9 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   const classes = useStyles();
-    
   const notify = useNotify();
-    
-  // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
-  let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+  let isMedium = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       {...props}
@@ -72,17 +70,8 @@ const UsersList = (props) => {
       hasShow={true}
       className="listWrap"
     >
-      {isSmall ? (
-        <SimpleList
-          // leftAvatar={<ImageAvatar />}
-          primaryText={<TextField source="name" />}
-          secondaryText={
-            <UserEmailUsername label="Email / Username" sortBy="email" />
-          }
-        // tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
-        // linkType={record => record.canEdit ? "edit" : "show"}
-        // rowStyle={record => ({ backgroundColor: record.nb_views >= 500 ? '#efe' : 'white' })}
-        />
+      {isMedium ? (
+        <MobileGrid />
       ) : (
         <>
           <Datagrid rowClick="show">
@@ -91,21 +80,25 @@ const UsersList = (props) => {
               <TextField source="full_name" />
             </ReferenceField>
             <TextField source="agency_name" />
-            <TextField source="bio" className={classes.descriptionText}/>
+            <TextField source="bio" className={classes.descriptionText} />
             <TextField source="location" />
             <TextField source="availability_from" />
             <TextField source="availability_to" />
 
             <EditButton />
-            <DeleteButton undoable={false} onSuccess={() => {
-                    notify(`User Deleted`)
-
-                }} onError={() =>{
-                    notify(`Unable to delete`)
-                }}/>
+            <DeleteButton
+              undoable={false}
+              onSuccess={() => {
+                notify(`User Deleted`);
+              }}
+              onError={() => {
+                notify(`Unable to delete`);
+              }}
+            />
           </Datagrid>
-          <Datagrid optimized rowClick="edit">content</Datagrid>
-
+          <Datagrid optimized rowClick="edit">
+            content
+          </Datagrid>
         </>
       )}
     </List>
