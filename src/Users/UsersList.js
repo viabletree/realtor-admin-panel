@@ -60,7 +60,7 @@ const UsersList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
 
-  let isMedium = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
       {...props}
@@ -70,7 +70,7 @@ const UsersList = (props) => {
       hasShow={true}
       className="listWrap"
     >
-      {isMedium ? (
+      {isSmall ? (
         <MobileGrid />
       ) : (
         <>

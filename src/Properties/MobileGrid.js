@@ -42,7 +42,7 @@ const MobileGrid = (props) => {
                 <CardHeader
                   title={
                     <>
-                      User #
+                      Property #
                       <TextField
                         source="id"
                         variant="h6"
@@ -53,48 +53,81 @@ const MobileGrid = (props) => {
                   titleTypographyProps={{ variant: "h6", fontWeight: 800 }}
                   action={
                     <EditButton
-                      onClick={() => redirect("edit", "users", data[record].id)}
+                      onClick={() =>
+                        redirect("edit", "properties", data[record].id)
+                      }
                     />
                   }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Full Name:&nbsp;</span>
+                    <span style={{ fontWeight: 800 }}> User Name:&nbsp;</span>
                     <ReferenceField source="id" reference="users">
                       <TextField source="full_name" />
                     </ReferenceField>
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}>Agency Name:&nbsp;</span>
-                    <TextField source="agency_name" />
+                    <span style={{ fontWeight: 800 }}>Type:&nbsp;</span>
+                    <ReferenceField
+                      source="property_type_id"
+                      reference="property_types"
+                    >
+                      <TextField source="category_name" />
+                    </ReferenceField>
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Bio:&nbsp; </span>
+                    <span style={{ fontWeight: 800 }}> Address:&nbsp; </span>
                     <TextField
-                      source="bio"
+                      source="property_address"
                       className={classes.descriptionText}
                     />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Location:&nbsp; </span>
-                    <TextField source="location" />
+                    <span style={{ fontWeight: 800 }}> Title:&nbsp; </span>
+                    <TextField
+                      source="property_title"
+                      className={classes.descriptionText}
+                    />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}>
-                      Availability From:&nbsp;
-                    </span>
-                    <TextField source="availability_from" />
+                    <span style={{ fontWeight: 800 }}>Price:&nbsp;</span>
+                    <NumberField
+                      source="property_price"
+                      className={classes.descriptionText}
+                    />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}>
-                      Availability To:&nbsp;
-                    </span>
-                    <TextField source="availability_to" />
+                    <span style={{ fontWeight: 800 }}>Area:&nbsp;</span>
+                    <NumberField
+                      source="property_area"
+                      className={classes.descriptionText}
+                    />
+                  </Typography>
+
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}>SQFT:&nbsp;</span>
+                    <NumberField
+                      source="property_square_feet"
+                      className={classes.descriptionText}
+                    />
+                  </Typography>
+
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}>Year Built:&nbsp;</span>
+                    <DateField source="property_year_built" />
+                  </Typography>
+
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}>Description:&nbsp;</span>
+                    <TextField
+                      source="property_description"
+                      className={classes.descriptionText}
+                    />
                   </Typography>
                 </CardContent>
               </Card>
