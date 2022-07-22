@@ -18,7 +18,7 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import MobileGrid from "./MobileGrid";
+import UsersMobileGrid from "./UsersMobileGrid";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -71,7 +71,7 @@ const UsersList = (props) => {
       className="listWrap"
     >
       {isSmall ? (
-        <MobileGrid />
+        <UsersMobileGrid />
       ) : (
         <>
           <Datagrid rowClick="show">
