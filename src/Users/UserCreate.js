@@ -16,18 +16,18 @@ const validateEmail = [required('Email is required'), email('Incorrect Email')];
 const validatePassword = [required('Password is required'), minLength(6)];
 
 const UserCreate = (props) => (
-  <Create {...props}>
+  <Create {...props} successMessage="User created successfully">
     <SimpleForm>
     <TextInput source="name" validate={[required()]}/>
               <TextInput source="email" validate={[required()]}/>
               <TextInput label="Password" source="password" validate={[required()]}/>
               <TextInput label="Confirm Password" source="confirm_password" validate={[required()]}/>
               <NumberInput label="Phone Number" source="phone" validate={[required()]}/>
-              <TextInput label="Agency Name" source="agency_name" validate={[required()]}/>
+              <TextInput multiline={true} label="Agency Name" source="agency_name" validate={[required()]}/>
               <TextInput label="Location" source="location" validate={[required()]}/>
               <TextInput label="Availability From" source="availability_from" validate={[required()]}/>
               <TextInput label="Availability To" source="availability_to" validate={[required()]}/>
-              <TextInput label="Bio" source="bio" validate={[required()]}/>
+              <TextInput multiline={true}label="Bio" source="bio" validate={[required()]}/>
              
             {/*   <TextInput source="agency_name" validate={[required()]}/>
               <TextInput source="location" validate={[required()]}/>

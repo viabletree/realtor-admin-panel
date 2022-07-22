@@ -21,7 +21,7 @@ const NoteCreate = (props) => (
     <SimpleForm>
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>
         
-            <TextInput source="description" />
+            <TextInput fullWidth source="description" />
        
     </SimpleForm>
   </Create>
