@@ -20,3 +20,7 @@ code {
 .textWrapperStyle div div div span{
   overflow-wrap: anywhere;
 }
+
+/* .listWrap th, .listWrap td {
+  text-align: center;
+} */

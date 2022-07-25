@@ -79,11 +79,11 @@ const UsersList = (props) => {
             <ReferenceField source="id" label="User" reference="users">
               <TextField source="full_name" />
             </ReferenceField>
-            <TextField source="agency_name" />
+            <TextField label="AgencyName" source="agency_name" />
             <TextField source="bio" className={classes.descriptionText} />
             <TextField source="location" />
-            <TextField source="availability_from" />
-            <TextField source="availability_to" />
+            <TextField label="AvailabilityFrom" source="availability_from" />
+            <TextField label="AvailabilityTo" source="availability_to" />
 
             <EditButton />
             <DeleteButton
