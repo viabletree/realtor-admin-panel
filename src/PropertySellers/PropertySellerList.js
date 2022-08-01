@@ -80,6 +80,7 @@ const PropertyList = (props) => {
               source="is_contract_to_lender"
             />
             <DateField
+              
               label="ContractToLenderDate"
               source="contract_to_lender_date"
             />

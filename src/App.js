@@ -33,7 +33,7 @@ const App = () => (
     <Resource name="property_types" {...PropertyTypes} />
     <Resource name="property_buyers" {...PropertyBuyers} />
     <Resource name="property_sellers" {...PropertySellers} />
-    {/* <Resource name="notes" {...Notes} /> */}
+    <Resource name="notes" {...Notes} /> 
   </Admin>
 );
 

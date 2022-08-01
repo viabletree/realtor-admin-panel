@@ -5,11 +5,12 @@ import { ListGuesser,ShowGuesser } from 'react-admin';
 
 import NotesEdit from './NotesEdit';
 import ShowNotes from './ShowNotes';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 
 const resource = {
   list: NotesList,
   show: ShowNotes,
-  icon: AccountCircleIcon,
+  icon: EventNoteIcon,
   create: NotesCreate,
   edit: NotesEdit
 };

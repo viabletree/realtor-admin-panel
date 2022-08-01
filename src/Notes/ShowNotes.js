@@ -12,7 +12,8 @@ import {
   TopToolbar,
   DateField,
   TextInput,
-  SimpleShowLayout
+  SimpleShowLayout,
+  ReferenceField
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageAvatar from '../components/ImageAvatar';
@@ -45,7 +46,7 @@ const ShowNotes = (props) => {
                  <SimpleShowLayout>
 
              <TextField label="Notes Description" source="description" />
-            <TextField label="Property Name" source="propety_id" />
+             <ReferenceField source="property_id" label= "Property Name" reference="properties"><TextField source="property_title" /></ReferenceField>
               </SimpleShowLayout>
 
                  

@@ -22,6 +22,8 @@ import { useMediaQuery } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import PropertyBuyersMobileGrid from "./PropertyBuyersMobileGrid";
+import CustomDatePicker from "../components/CustomDatePicker";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -32,6 +34,15 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
 }));
+
+const CustomDateField = (props) => {
+  console.log({ props });
+  const earnestMoneyReceivedDate = props.record.earnest_money_received_date;
+  return (
+    moment(earnestMoneyReceivedDate).isValid() === true ? <span>{earnestMoneyReceivedDate}</span> : <span>-</span>
+  )
+}
+
 const PropertyList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
@@ -83,6 +94,8 @@ const PropertyList = (props) => {
               label="EarnestMoneyReceiveDate"
               source="earnest_money_received_date"
             />
+
+          {/*  <CustomDateField /> */} 
             <BooleanField label="IsHomeWarranty" source="is_home_warranty" />
             <DateField label="HomeWarrantyDate" source="home_warranty_date" />
             <BooleanField

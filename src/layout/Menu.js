@@ -10,6 +10,7 @@ import Users from '../Users';
 import Properties from '../Properties';
 import PropertySeller from '../PropertySellers';
 import PropertyBuyer from '../PropertyBuyers';
+import Notes from '../Notes';
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
@@ -114,23 +115,23 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu>
-      {/* <SubMenu
+       <SubMenu
         handleToggle={() => handleToggle('menuNotes')}
         isOpen={state.menuNotes}
         sidebarIsOpen={open}
         name="Notes"
-        icon={<PropertySeller.icon />}
+        icon={<Notes.icon />}
         dense={dense}
       >
         <MenuItemLink
           to={'/notes'}
           primaryText={'List'}
-          leftIcon={<PropertySeller.icon />}
+          leftIcon={<Notes.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}
         />
-      </SubMenu> */}
+      </SubMenu> 
 
       {logout}
     </Box>
