@@ -8,7 +8,8 @@ import {
   NumberInput,
   DateInput,
   ReferenceInput,
-  SelectInput
+  SelectInput,
+  BooleanInput
 } from 'react-admin';
 import PropTypes from 'prop-types';
 const UserShowActions = ({ basePath }) => (
@@ -33,42 +34,48 @@ const UserTitle = ({ record }) => {
             <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="address" />
             <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="title_company_closer" />
             <NumberInput inputProps={{ maxLength: 20 }} source="amount_of_contract" />
-            <SelectInput source="is_earnest_money_received" choices={[
+            <BooleanInput source="is_earnest_money_received" />
+            {/* <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
+            ]} /> */}
              <DateInput source="earnest_money_received_date" />
-
-             <SelectInput source="is_contract_to_lender" choices={[
+             <BooleanInput source="is_contract_to_lender" />
+             {/* <SelectInput source="is_contract_to_lender" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
+            ]} /> */}
             <DateInput source="contract_to_lender_date" />
            
-            <SelectInput source="is_home_warranty" label="Is Home Warranty" choices={[
+            <BooleanInput source="is_home_warranty" />
+            {/* <BooleanInput source="is_home_warranty" label="Is Home Warranty" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
+            ]} /> */}
              <DateInput source="home_warranty_date" label="Home Warranty Date"/>
+             <BooleanInput source="is_survey_received" />
              
-             <SelectInput source="is_survey_received" choices={[
+             {/* <SelectInput source="is_survey_received" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
-            <SelectInput source="is_new_survey" choices={[
+            ]} /> */}
+            <BooleanInput source="is_new_survey" />
+            {/* <SelectInput source="is_new_survey" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
-            
-            <SelectInput source="is_cda_sent" choices={[
+            ]} /> */}
+              <BooleanInput source="is_cda_sent" />
+          
+            {/* <SelectInput source="is_cda_sent" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
-
-            <SelectInput source="is_switch_over_utilities" choices={[
+            ]} /> */}
+    <BooleanInput source="is_switch_over_utilities" />
+          
+            {/* <SelectInput source="is_switch_over_utilities" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
-            ]} />
+            ]} /> */}
             <DateInput source="survey_due_date" />
             <TextInput inputProps={{ maxLength: 200 }} multiline={true} source="new_survey_info" />
             

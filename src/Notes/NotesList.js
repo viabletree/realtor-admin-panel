@@ -69,7 +69,7 @@ const UsersList = (props) => {
         />
       ) : (
         <>
-          <Datagrid rowClick="edit">
+          <Datagrid rowClick="show">
             <TextField source="id" />
             <ReferenceField source="property_id" reference="properties"><TextField source="property_title" /></ReferenceField>
     
