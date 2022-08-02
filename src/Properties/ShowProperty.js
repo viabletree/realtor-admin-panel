@@ -14,7 +14,8 @@ import {
   TextInput,
   SimpleShowLayout,
   ReferenceField,
-  NumberField
+  NumberField,
+  RichTextField
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageAvatar from '../components/ImageAvatar';
@@ -46,7 +47,7 @@ const ShowUser = (props) => {
         <ReferenceField source="user_id" reference="users"><TextField source="id" /></ReferenceField>
         <ReferenceField source="property_type_id" reference="property_types"><TextField source="category_name" /></ReferenceField>
         <TextField source="property_address" />
-        <TextField source="property_description" />
+        <RichTextField source="property_description" />
         <NumberField source="property_price" />
         <NumberField source="property_area" />
         <NumberField source="property_square_feet" />
