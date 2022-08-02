@@ -76,6 +76,7 @@ const PropertyList = (props) => {
             <NumberField
               source="amount_of_contract"
               label={"AmountOfContract"}
+              options={{ style: "currency", currency: "USD" }}
             />
             <BooleanField
               source="is_contract_to_lender"
@@ -151,7 +152,7 @@ const PropertyList = (props) => {
             <DeleteButton
               undoable={false}
               onSuccess={() => {
-                notify(`Property Deleted`);
+                notify(`Property Buyer Deleted`);
               }}
               onError={() => {
                 notify(`Unable to delete`);

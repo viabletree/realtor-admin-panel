@@ -66,7 +66,8 @@ const PropertyList = (props) => {
               source="title_company_closer"
               className={classes.descriptionText}
             />
-            <NumberField label="AmountOfContract" source="amount_of_contract" />
+            <NumberField label="AmountOfContract" source="amount_of_contract" 
+            options={{ style: "currency", currency: "USD" }}/>
             <BooleanField
               label="IsEarnestMoneyReceived"
               source="is_earnest_money_received"
@@ -139,7 +140,7 @@ const PropertyList = (props) => {
             />
             <EditButton
               onSuccess={() => {
-                notify(`Seller Updated`);
+                notify(`Property Seller Updated`);
               }}
               onError={() => {
                 notify(`Unable to Update`);

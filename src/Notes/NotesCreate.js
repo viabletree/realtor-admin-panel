@@ -12,16 +12,15 @@ import {
   TextField,
   SelectInput
 } from 'react-admin';
-const validateName = [required('Name is required')];
-const validateEmail = [required('Email is required'), email('Incorrect Email')];
-const validatePassword = [required('Password is required'), minLength(6)];
+const validatePropertyID = [required('Property Name')]
+const validateDes = [required('Description is required')]
 
 const NoteCreate = (props) => (
-  <Create {...props}>
+  <Create {...props} successMessage="Property note created successfully">
     <SimpleForm>
-            <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" /></ReferenceInput>
+            <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" validate={validatePropertyID}/></ReferenceInput>
         
-            <TextInput fullWidth source="description" />
+            <TextInput fullWidth source="description" validate={validateDes}/>
        
     </SimpleForm>
   </Create>

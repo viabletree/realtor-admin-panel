@@ -71,6 +71,7 @@ const PropertyList = (props) => {
               label="Price"
               source="property_price"
               className={classes.descriptionText}
+              options={{ style: "currency", currency: "USD" }}
             />
             <NumberField
               label="Area"

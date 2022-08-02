@@ -4,19 +4,21 @@ import {
   Datagrid,
   Filter,
   SearchInput,
-  
+
   DeleteButton,
   FunctionField,
   SimpleList,
   DateField,
   ReferenceField,
-  EditButton
+  EditButton,
+  useNotify
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
+import NotesMobileGrid from "./NotesMobileGrid";
 
 // const UserFilter = (props) => {
 //   return (
@@ -46,43 +48,42 @@ const CreatedDate = (props) => {
 };
 
 const UsersList = (props) => {
+  const notify = useNotify();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
+
     <List
       {...props}
-     /*  filters={<UserFilter />} */
+      /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
     >
       {isSmall ? (
-        <SimpleList
-          // leftAvatar={<ImageAvatar />}
-          primaryText={<TextField source="name" />}
-          secondaryText={
-            <UserEmailUsername label="Email / Username" sortBy="email" />
-          }
-          // tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
-          // linkType={record => record.canEdit ? "edit" : "show"}
-          // rowStyle={record => ({ backgroundColor: record.nb_views >= 500 ? '#efe' : 'white' })}
-        />
+        <NotesMobileGrid />
       ) : (
-        <>
-          <Datagrid rowClick="show">
-            <TextField source="id" />
-            <ReferenceField source="property_id" reference="properties"><TextField source="property_title" /></ReferenceField>
-    
-            <TextField source="description" />
-            <DateField source="created_at" />
-            <EditButton />
-            <DeleteButton undoable={false}/>
-       
-            </Datagrid>
-          <Datagrid optimized rowClick="edit">content</Datagrid>
-          
-        </>
+
+        <Datagrid rowClick="show">
+          <TextField source="id" />
+          <ReferenceField source="property_id" reference="properties"><TextField source="property_title" /></ReferenceField>
+
+          <TextField source="description" />
+          <DateField source="created_at" />
+          <EditButton />
+          <DeleteButton
+            undoable={false}
+            onSuccess={() => {
+              notify(`Property Note Deleted`);
+            }}
+            onError={() => {
+              notify(`Unable to delete`);
+            }}
+          />
+
+        </Datagrid>
       )}
+
     </List>
   );
 };
