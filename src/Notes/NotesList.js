@@ -4,14 +4,13 @@ import {
   Datagrid,
   Filter,
   SearchInput,
-
   DeleteButton,
   FunctionField,
   SimpleList,
   DateField,
   ReferenceField,
   EditButton,
-  useNotify
+  useNotify,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -52,21 +51,22 @@ const UsersList = (props) => {
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-
     <List
       {...props}
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
-      sort={{ field: "created_at", order: "DESC" }}
+      // sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
+      className="listWrap"
     >
       {isSmall ? (
         <NotesMobileGrid />
       ) : (
-
         <Datagrid rowClick="show">
           <TextField source="id" />
-          <ReferenceField source="property_id" reference="properties"><TextField source="property_title" /></ReferenceField>
+          <ReferenceField source="property_id" reference="properties">
+            <TextField source="property_title" />
+          </ReferenceField>
 
           <TextField source="description" />
           <DateField source="created_at" />
@@ -80,10 +80,8 @@ const UsersList = (props) => {
               notify(`Unable to delete`);
             }}
           />
-
         </Datagrid>
       )}
-
     </List>
   );
 };
