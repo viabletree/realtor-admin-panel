@@ -17,10 +17,15 @@ code {
   display: inline !important;
 }
 
-.textWrapperStyle div div div span{
-  overflow-wrap: anywhere;
+.textWrapperStyle div div div span {
+  word-break: break-word;
 }
 
-/* .listWrap th, .listWrap td {
-  text-align: center;
-} */
+.listWrap .MuiTableSortLabel-root {
+  flex-direction: row !important;
+}
+
+.listWrap th,
+.listWrap td {
+  text-align: left;
+}
