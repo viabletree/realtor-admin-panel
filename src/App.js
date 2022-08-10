@@ -9,6 +9,8 @@ import PropertyTypes from './PropertyTypes';
 import PropertyBuyers from './PropertyBuyers';
 import PropertySellers from './PropertySellers';
 import Notes from './Notes';
+import Setting from './Setting';
+import Faqs from './Faqs';
 
 import { Layout } from './layout';
 
@@ -33,7 +35,9 @@ const App = () => (
     <Resource name="property_types" {...PropertyTypes} />
     <Resource name="property_buyers" {...PropertyBuyers} />
     <Resource name="property_sellers" {...PropertySellers} />
-    <Resource name="notes" {...Notes} /> 
+    <Resource name="notes" {...Notes} />
+    <Resource name="setting" {...Setting} /> 
+    <Resource name="faqs" {...Faqs} /> 
   </Admin>
 );
 

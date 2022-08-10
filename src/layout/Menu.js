@@ -11,6 +11,8 @@ import Properties from '../Properties';
 import PropertySeller from '../PropertySellers';
 import PropertyBuyer from '../PropertyBuyers';
 import Notes from '../Notes';
+import Setting from '../Setting';
+import Faqs from '../Faqs';
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
@@ -125,6 +127,40 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
       >
         <MenuItemLink
           to={'/notes'}
+          primaryText={'List'}
+          leftIcon={<Notes.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuFaqs')}
+        isOpen={state.menuFaqs}
+        sidebarIsOpen={open}
+        name="Faqs"
+        icon={<Faqs.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/faqs'}
+          primaryText={'List'}
+          leftIcon={<Faqs.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuSetting')}
+        isOpen={state.menuSetting}
+        sidebarIsOpen={open}
+        name="Setting"
+        icon={<Notes.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/setting'}
           primaryText={'List'}
           leftIcon={<Notes.icon />}
           onClick={onMenuClick}
