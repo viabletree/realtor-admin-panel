@@ -18,6 +18,17 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import FaqsMobileGrid from "./FaqsMobileGrid";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  descriptionText: {
+    display: "block",
+    width: 250,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+}));
 
 // const UserFilter = (props) => {
 //   return (
@@ -48,6 +59,7 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   const notify = useNotify();
+  const classes = useStyles();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
@@ -68,8 +80,8 @@ const UsersList = (props) => {
             <TextField source="property_title" />
           </ReferenceField> */}
 
-          <TextField source="question" />
-          <TextField source="answer" />
+          <TextField source="question" className={classes.descriptionText}/>
+          <TextField source="answer" className={classes.descriptionText}/>
           <DateField source="created_at" />
           <EditButton />
           <DeleteButton

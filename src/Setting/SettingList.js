@@ -18,7 +18,17 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import FaqsMobileGrid from "./FaqsMobileGrid";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+  descriptionText: {
+    display: "block",
+    width: 250,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+}));
 // const UserFilter = (props) => {
 //   return (
 //     <Filter {...props}>
@@ -28,6 +38,7 @@ import FaqsMobileGrid from "./FaqsMobileGrid";
 // };
 
 const UserEmailUsername = (props) => {
+  
   return props.record && props.record.parentId ? (
     <TextField source="username" label={props.label} />
   ) : (
@@ -47,6 +58,7 @@ const CreatedDate = (props) => {
 };
 
 const UsersList = (props) => {
+  const classes = useStyles();
   const notify = useNotify();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -68,9 +80,9 @@ const UsersList = (props) => {
             <TextField source="property_title" />
           </ReferenceField> */}
 
-          <TextField source="term_and_condition" />
-          <TextField source="privacy_policy" />
-          <TextField source="about_us" />
+          <TextField source="term_and_condition" className={classes.descriptionText}/>
+          <TextField source="privacy_policy" className={classes.descriptionText}/>
+          <TextField source="about_us" className={classes.descriptionText}/>
           <DateField source="created_at" />
           <EditButton />
           
