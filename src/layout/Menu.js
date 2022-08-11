@@ -115,7 +115,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu>
-       <SubMenu
+      <SubMenu
         handleToggle={() => handleToggle('menuNotes')}
         isOpen={state.menuNotes}
         sidebarIsOpen={open}
@@ -131,7 +131,24 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           sidebarIsOpen={open}
           dense={dense}
         />
-      </SubMenu> 
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle('menuShowings')}
+        isOpen={state.menuShowings}
+        sidebarIsOpen={open}
+        name="Showings"
+        icon={<Notes.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/showings'}
+          primaryText={'List'}
+          leftIcon={<Notes.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </SubMenu>
 
       {logout}
     </Box>
