@@ -12,7 +12,7 @@ const resource = {
   show: ShowNotes,
   icon: EventShowIcon,
  // create: ShowingsCreate,
-  edit: ShowingsEdit
+ // edit: ShowingsEdit
 };
 
 export default resource;
