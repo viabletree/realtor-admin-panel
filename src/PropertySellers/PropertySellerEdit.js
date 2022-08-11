@@ -24,10 +24,11 @@ const UserTitle = ({ record }) => {
 };
 
 const validateDateInput = [
-  regex(
-    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-    "Must be a valid date"
-  ),
+  // regex(
+  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+  //   "Must be a valid date"
+  // ),
+  required("Poperty year built is required"),
 ];
 
 const UserEdit = (props) => (
@@ -43,21 +44,21 @@ const UserEdit = (props) => (
         <SelectInput optionText="property_title" />
       </ReferenceInput>
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="seller_name"
       />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput inputProps={{ maxLength: 20 }} source="amount_of_contract" />
+      <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" />
       <BooleanInput source="is_earnest_money_received" />
       {/* <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },
@@ -119,7 +120,7 @@ const UserEdit = (props) => (
         source="survey_due_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="new_survey_info"
       />
@@ -130,7 +131,7 @@ const UserEdit = (props) => (
         source="home_inspection_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="home_inspection_info"
       />
@@ -140,7 +141,7 @@ const UserEdit = (props) => (
         source="termite_inspection_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="termite_inspection_info"
       />
@@ -155,7 +156,7 @@ const UserEdit = (props) => (
         source="appraisal_due_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="appraisal_additional_info"
       />
@@ -171,7 +172,7 @@ const UserEdit = (props) => (
         source="title_commit_to_be_rec_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
       />

@@ -21,10 +21,10 @@ import { RESOURCES } from "../constants";
 
 const validatePropertyAdd = [required("Property Address is required")];
 const validatePropertyYearBuilt = [
-  regex(
-    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-    "Must be a valid date"
-  ),
+  // regex(
+  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+  //   "Must be a valid date"
+  // ),
   required("Poperty year built is required"),
 ];
 const validateSqft = [required("SQFT is required")];
@@ -53,7 +53,7 @@ const UserCreate = (props) => {
           <SelectInput optionText="full_name" />
         </ReferenceInput>
 
-        <TextInput source="property_address" validate={validatePropertyAdd} />
+        <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
         <DateInput
           source="property_year_built"
           label="property year built"
@@ -61,12 +61,12 @@ const UserCreate = (props) => {
           validate={validatePropertyYearBuilt}
         />
         <TextInput
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 100 }}
           source="property_title"
           validate={validatePropertyTitle}
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="property_description"
           validate={validatePropertyDes}
@@ -80,14 +80,14 @@ const UserCreate = (props) => {
           ]}
           validate={validateType}
         />
-        <TextInput source="property_price" validate={validatePrice} />
+        <TextInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
         <TextInput
-          inputProps={{ maxLength: 10 }}
+          inputProps={{ maxLength: 100 }}
           source="property_area"
           validate={validateArea}
         />
         <TextInput
-          inputProps={{ maxLength: 8 }}
+          inputProps={{ maxLength: 100 }}
           source="property_square_feet"
           validate={validateSqft}
         />

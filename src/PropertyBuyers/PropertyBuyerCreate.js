@@ -18,27 +18,28 @@ const validateName = [required("Name is required")];
 const validateEmail = [required("Email is required"), email("Incorrect Email")];
 const validatePassword = [required("Password is required"), minLength(6)];
 const validateDateInput = [
-  regex(
-    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-    "Must be a valid date"
-  ),
+  // regex(
+  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+  //   "Must be a valid date"
+  // ),
+  required("Poperty year built is required"),
 ];
 
 const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
       <ReferenceInput source="property_id" reference="properties">
-        <SelectInput optionText="property_title" />
+        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }}/>
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 50 }} source="buyer_name" />
+      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
       />
@@ -116,7 +117,7 @@ const UserCreate = (props) => (
         ]}
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="new_survey_info"
       />
@@ -127,7 +128,7 @@ const UserCreate = (props) => (
         source="home_inspection_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="home_inspection_info"
       />
@@ -147,7 +148,7 @@ const UserCreate = (props) => (
         source="appraisal_due_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="appraisal_additional_info"
       />
@@ -157,7 +158,7 @@ const UserCreate = (props) => (
         source="closing_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="closing_additional_info"
       />
@@ -173,12 +174,12 @@ const UserCreate = (props) => (
         source="option_period_end"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="termite_inspection_info"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
       />
