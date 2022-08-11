@@ -20,8 +20,8 @@ const FaqCreate = (props) => (
     <SimpleForm>
             {/* <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" validate={validatePropertyID}/></ReferenceInput> */}
         
-            <TextInput fullWidth source="question" validate={validateQes}/>
-            <TextInput fullWidth source="answer" validate={validateAns}/>
+            <TextInput fullWidth source="question" inputProps={{ maxLength: 100 }} validate={validateQes}/>
+            <TextInput fullWidth source="answer" inputProps={{ maxLength: 255 }} validate={validateAns}/>
        
     </SimpleForm>
   </Create>

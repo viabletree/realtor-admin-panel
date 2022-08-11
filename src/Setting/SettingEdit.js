@@ -34,9 +34,9 @@ const UserTitle = ({ record }) => {
 
       <SimpleForm>
       <TextInput disabled source="id" />
-      <TextInput fullWidth source="term_and_condition" validate={validatePrivacy}/>
-            <TextInput fullWidth source="privacy_policy" validate={validateTerm}/>
-            <TextInput fullWidth source="about_us" validate={validateAbout}/>    
+      <TextInput fullWidth source="term_and_condition" inputProps={{ maxLength: 255 }} validate={validatePrivacy}/>
+            <TextInput fullWidth source="privacy_policy" inputProps={{ maxLength: 255 }} validate={validateTerm}/>
+            <TextInput fullWidth source="about_us" inputProps={{ maxLength: 255 }} validate={validateAbout}/>    
         {/* <TextInput source="users" validate={[required()]} /> */}
       </SimpleForm>
     </Edit>

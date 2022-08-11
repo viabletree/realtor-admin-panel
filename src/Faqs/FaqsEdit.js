@@ -34,8 +34,8 @@ const UserTitle = ({ record }) => {
 
       <SimpleForm>
       <TextInput disabled source="id" />
-      <TextInput fullWidth source="question" validate={validateQes}/>
-            <TextInput fullWidth source="answer" validate={validateAns}/>    
+      <TextInput fullWidth source="question" inputProps={{ maxLength: 100 }} validate={validateQes}/>
+            <TextInput fullWidth source="answer" inputProps={{ maxLength: 255 }} validate={validateAns}/>    
         {/* <TextInput source="users" validate={[required()]} /> */}
       </SimpleForm>
     </Edit>
