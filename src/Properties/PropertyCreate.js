@@ -53,7 +53,7 @@ const UserCreate = (props) => {
           <SelectInput optionText="full_name" />
         </ReferenceInput>
 
-        <TextInput source="property_address" validate={validatePropertyAdd} />
+        <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
         <DateInput
           source="property_year_built"
           label="property year built"
@@ -61,7 +61,7 @@ const UserCreate = (props) => {
           validate={validatePropertyYearBuilt}
         />
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           source="property_title"
           validate={validatePropertyTitle}
         />
@@ -80,14 +80,14 @@ const UserCreate = (props) => {
           ]}
           validate={validateType}
         />
-        <TextInput source="property_price" validate={validatePrice} />
+        <TextInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           source="property_area"
           validate={validateArea}
         />
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           source="property_square_feet"
           validate={validateSqft}
         />

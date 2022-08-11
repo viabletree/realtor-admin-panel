@@ -44,26 +44,26 @@ const UserEdit = (props) => {
       <SimpleForm>
         <TextInput disabled source="id" />
         <ReferenceInput source="property_id" reference="properties">
-          <SelectInput optionText="property_title" />
+          <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }}/>
         </ReferenceInput>
 
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           multiline={true}
           source="buyer_name"
         />
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           multiline={true}
           source="address"
         />
         <TextInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           multiline={true}
           source="title_company_closer"
         />
         <NumberInput
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ maxLength: 100 }}
           source="amount_of_contract"
         />
         <BooleanInput source="is_contract_to_lender" />

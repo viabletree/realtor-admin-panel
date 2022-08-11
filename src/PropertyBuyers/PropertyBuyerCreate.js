@@ -29,17 +29,17 @@ const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
       <ReferenceInput source="property_id" reference="properties">
-        <SelectInput optionText="property_title" />
+        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }}/>
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 255 }} source="buyer_name" />
+      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
       />

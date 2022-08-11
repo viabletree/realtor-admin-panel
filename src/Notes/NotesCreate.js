@@ -20,7 +20,7 @@ const NoteCreate = (props) => (
     <SimpleForm>
             <ReferenceInput source="property_id" reference="properties"><SelectInput optionText="property_title" validate={validatePropertyID}/></ReferenceInput>
         
-            <TextInput fullWidth source="description" validate={validateDes}/>
+            <TextInput fullWidth source="description" inputProps={{ maxLength: 255 }} validate={validateDes}/>
        
     </SimpleForm>
   </Create>
