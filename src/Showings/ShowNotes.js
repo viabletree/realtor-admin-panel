@@ -45,8 +45,10 @@ const ShowNotes = (props) => {
 
                  <SimpleShowLayout>
 
-             <TextField label="Notes Description" source="description" />
-             <ReferenceField source="property_id" label= "Property Name" reference="properties"><TextField source="property_title" /></ReferenceField>
+             <TextField label="Name" source="name" />
+             <TextField label="Address" source="address" />
+             <TextField label="Description" source="description" />
+             {/* <ReferenceField source="property_id" label= "Property Name" reference="properties"><TextField source="property_title" /></ReferenceField> */}
               </SimpleShowLayout>
 
                  

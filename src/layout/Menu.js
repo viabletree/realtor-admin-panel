@@ -11,6 +11,7 @@ import Properties from '../Properties';
 import PropertySeller from '../PropertySellers';
 import PropertyBuyer from '../PropertyBuyers';
 import Notes from '../Notes';
+import Showings from '../Showings';
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
@@ -137,13 +138,13 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         isOpen={state.menuShowings}
         sidebarIsOpen={open}
         name="Showings"
-        icon={<Notes.icon />}
+        icon={<Showings.icon />}
         dense={dense}
       >
         <MenuItemLink
           to={'/showings'}
           primaryText={'List'}
-          leftIcon={<Notes.icon />}
+          leftIcon={<Showings.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}

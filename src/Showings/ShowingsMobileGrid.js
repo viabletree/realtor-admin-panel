@@ -42,7 +42,7 @@ const NotesMobileGrid = (props) => {
                 <CardHeader
                   title={
                     <>
-                      Property #
+                      Showing #
                       <TextField
                         source="id"
                         variant="h6"
@@ -54,17 +54,19 @@ const NotesMobileGrid = (props) => {
                   action={
                     <EditButton
                       onClick={() =>
-                        redirect("edit", "notes", data[record].id)
+                        redirect("edit", "showings", data[record].id)
                       }
                     />
                   }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Property Name:&nbsp;</span>
-                    <ReferenceField source="property_id" reference="properties">
-                      <TextField source="property_title" />
-                    </ReferenceField>
+                    <span style={{ fontWeight: 800 }}> Name:&nbsp;</span>
+                    <TextField source="name" />
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}> Address:&nbsp;</span>
+                    <TextField source="address" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
