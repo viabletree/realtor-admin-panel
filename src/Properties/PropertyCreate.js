@@ -61,12 +61,12 @@ const UserCreate = (props) => {
           validate={validatePropertyYearBuilt}
         />
         <TextInput
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 255 }}
           source="property_title"
           validate={validatePropertyTitle}
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="property_description"
           validate={validatePropertyDes}
@@ -82,12 +82,12 @@ const UserCreate = (props) => {
         />
         <TextInput source="property_price" validate={validatePrice} />
         <TextInput
-          inputProps={{ maxLength: 10 }}
+          inputProps={{ maxLength: 255 }}
           source="property_area"
           validate={validateArea}
         />
         <TextInput
-          inputProps={{ maxLength: 8 }}
+          inputProps={{ maxLength: 255 }}
           source="property_square_feet"
           validate={validateSqft}
         />

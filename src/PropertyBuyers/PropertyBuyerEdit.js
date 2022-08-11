@@ -47,22 +47,22 @@ const UserEdit = (props) => {
         </ReferenceInput>
 
         <TextInput
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="buyer_name"
         />
         <TextInput
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="address"
         />
         <TextInput
-          inputProps={{ maxLength: 50 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="title_company_closer"
         />
         <NumberInput
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 255 }}
           source="amount_of_contract"
         />
         <BooleanInput source="is_contract_to_lender" />
@@ -104,7 +104,7 @@ const UserEdit = (props) => {
           { id: '1', name: 'yes' },
         ]} /> */}
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="new_survey_info"
         />
@@ -125,7 +125,7 @@ const UserEdit = (props) => {
           source="home_inspection_date"
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="home_inspection_info"
         />
@@ -145,7 +145,7 @@ const UserEdit = (props) => {
           source="appraisal_due_date"
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="appraisal_additional_info"
         />
@@ -157,7 +157,7 @@ const UserEdit = (props) => {
         <DateInput
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
           validate={validateDateInput}
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="closing_additional_info"
         />
@@ -173,12 +173,12 @@ const UserEdit = (props) => {
           source="option_period_end"
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="termite_inspection_info"
         />
         <TextInput
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 255 }}
           multiline={true}
           source="additional_info_entire"
         />
