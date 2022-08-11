@@ -18,10 +18,11 @@ const validateName = [required("Name is required")];
 const validateEmail = [required("Email is required"), email("Incorrect Email")];
 const validatePassword = [required("Password is required"), minLength(6)];
 const validateDateInput = [
-  regex(
-    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-    "Must be a valid date"
-  ),
+  // regex(
+  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+  //   "Must be a valid date"
+  // ),
+  required("Poperty year built is required"),
 ];
 
 const UserCreate = (props) => (

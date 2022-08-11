@@ -12,6 +12,7 @@ export const RESOURCES = {
   property_buyers: 'property_buyers',
   property_sellers: 'property_sellers',
   notes: 'notes',
+  showings: 'showings',
 };
 
 /**
