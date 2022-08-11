@@ -44,21 +44,21 @@ const UserEdit = (props) => (
         <SelectInput optionText="property_title" />
       </ReferenceInput>
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="seller_name"
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput inputProps={{ maxLength: 255 }} source="amount_of_contract" />
+      <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" />
       <BooleanInput source="is_earnest_money_received" />
       {/* <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },

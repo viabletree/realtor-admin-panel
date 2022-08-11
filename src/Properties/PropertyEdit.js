@@ -46,18 +46,18 @@ const UserEdit = (props) => (
   >
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
-      <TextInput source="property_address" validate={validatePropertyAdd} />
+      <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
       <ReferenceInput
         label="select user"
         source="user_id"
         reference={RESOURCES.users}
         //filter={{ is_artist: true }}
       >
-        <SelectInput optionText="full_name" validate={validateType} />
+        <SelectInput optionText="full_name" inputProps={{ maxLength: 100 }} validate={validateType} />
       </ReferenceInput>
 
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="property_title"
         validate={validatePropertyTitle}
@@ -68,7 +68,7 @@ const UserEdit = (props) => (
         source="property_description"
         validate={validatePropertyDes}
       />
-      <TextInput source="property_price" validate={validatePrice} />
+      <TextInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
       <SelectInput
         source="property_type_id"
         choices={[
@@ -78,13 +78,13 @@ const UserEdit = (props) => (
         ]}
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="property_area"
         validate={validateArea}
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         source="property_square_feet"
         multiline={true}
         validate={validateSqft}

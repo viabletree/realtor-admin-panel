@@ -32,21 +32,21 @@ const UserCreate = (props) => (
         <SelectInput optionText="property_title" />
       </ReferenceInput>
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="seller_name"
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 255 }}
+        inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput source="amount_of_contract" />
+      <NumberInput source="amount_of_contract" inputProps={{ maxLength: 100 }}/>
       <SelectInput
         source="is_earnest_money_received"
         choices={[
