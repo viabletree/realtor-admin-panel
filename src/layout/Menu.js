@@ -136,7 +136,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu> 
-      <SubMenu
+      {/* <SubMenu
         handleToggle={() => handleToggle('menuShowings')}
         isOpen={state.menuShowings}
         sidebarIsOpen={open}
@@ -186,7 +186,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           sidebarIsOpen={open}
           dense={dense}
         />
-</SubMenu>
+</SubMenu> */}
       {logout}
     </Box>
   );

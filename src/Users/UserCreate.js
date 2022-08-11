@@ -18,13 +18,13 @@ const validatePassword = [required('Password is required'), minLength(6)];
 const UserCreate = (props) => (
   <Create {...props} successMessage="User created successfully">
     <SimpleForm>
-    <TextInput source="name" inputProps={{ maxLength: 40 }} validate={[required()]}/>
-              <TextInput source="email" inputProps={{ maxLength: 18 }} validate={[required()]}/>
-              <TextInput label="Password" source="password" inputProps={{ maxLength: 18 }} validate={[required()]}/>
-              <TextInput label="Confirm Password" source="confirm_password" inputProps={{ maxLength: 18 }} validate={[required()]}/>
-              <NumberInput label="Phone Number" source="phone" inputProps={{ maxLength: 18 }} validate={[required()]}/>
-              <TextInput multiline={true} label="Agency Name" inputProps={{ maxLength: 30 }} source="agency_name" validate={[required()]}/>
-              <TextInput label="Location" source="location" inputProps={{ maxLength: 255 }} validate={[required()]}/>
+    <TextInput source="name" inputProps={{ maxLength:100 }} validate={[required()]}/>
+              <TextInput source="email" inputProps={{ maxLength: 100 }} validate={[required()]}/>
+              <TextInput label="Password" source="password" inputProps={{ maxLength: 100 }} validate={[required()]}/>
+              <TextInput label="Confirm Password" source="confirm_password" inputProps={{ maxLength: 100 }} validate={[required()]}/>
+              <NumberInput label="Phone Number" source="phone" inputProps={{ maxLength: 100 }} validate={[required()]}/>
+              <TextInput multiline={true} label="Agency Name" inputProps={{ maxLength: 100 }} source="agency_name" validate={[required()]}/>
+              <TextInput label="Location" source="location" inputProps={{ maxLength: 100 }} validate={[required()]}/>
               <TextInput label="Availability From" source="availability_from" validate={[required()]}/>
               <TextInput label="Availability To" source="availability_to" validate={[required()]}/>
               <TextInput multiline={true}label="Bio" source="bio" inputProps={{ maxLength: 255 }} validate={[required()]}/>
