@@ -83,16 +83,16 @@ const UsersList = (props) => {
           <TextField source="address" />
           <TextField source="description" className={classes.descriptionText}/>
           <DateField source="created_at" />
-          <EditButton />
-          {/* <DeleteButton
+          {/* <EditButton /> */}
+          <DeleteButton
             undoable={false}
             onSuccess={() => {
-              notify(`Property Note Deleted`);
+              notify(`Showing Deleted`);
             }}
             onError={() => {
               notify(`Unable to delete`);
             }}
-          /> */}
+          />
         </Datagrid>
       )}
     </List>
