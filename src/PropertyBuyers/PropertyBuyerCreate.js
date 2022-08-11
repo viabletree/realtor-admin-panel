@@ -32,14 +32,14 @@ const UserCreate = (props) => (
         <SelectInput optionText="property_title" />
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 50 }} source="buyer_name" />
+      <TextInput inputProps={{ maxLength: 255 }} source="buyer_name" />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="address"
       />
       <TextInput
-        inputProps={{ maxLength: 50 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="title_company_closer"
       />
@@ -117,7 +117,7 @@ const UserCreate = (props) => (
         ]}
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="new_survey_info"
       />
@@ -128,7 +128,7 @@ const UserCreate = (props) => (
         source="home_inspection_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="home_inspection_info"
       />
@@ -148,7 +148,7 @@ const UserCreate = (props) => (
         source="appraisal_due_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="appraisal_additional_info"
       />
@@ -158,7 +158,7 @@ const UserCreate = (props) => (
         source="closing_date"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="closing_additional_info"
       />
@@ -174,12 +174,12 @@ const UserCreate = (props) => (
         source="option_period_end"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="termite_inspection_info"
       />
       <TextInput
-        inputProps={{ maxLength: 200 }}
+        inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
       />
