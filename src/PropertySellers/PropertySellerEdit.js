@@ -22,6 +22,9 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
+const validateName = [required("Name is required")];
+const validateProperty = [required("Property is required")];
+const validateAOC = [required("Amount of contract is required")];
 
 const validateDateInput = [
   // regex(
@@ -41,12 +44,13 @@ const UserEdit = (props) => (
     <SimpleForm>
       <TextInput source="id" />
       <ReferenceInput source="property_id" reference="properties">
-        <SelectInput optionText="property_title" />
+        <SelectInput optionText="property_title" validate={validateProperty} />
       </ReferenceInput>
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="seller_name"
+        validate={validateName}
       />
       <TextInput
         inputProps={{ maxLength: 100 }}
@@ -58,7 +62,7 @@ const UserEdit = (props) => (
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" />
+      <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" validate={validateAOC} />
       <BooleanInput source="is_earnest_money_received" />
       {/* <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },
