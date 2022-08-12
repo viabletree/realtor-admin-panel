@@ -19,8 +19,6 @@ const validateProperty = [required("Property is required")];
 
 const validateAOC = [required("Amount of contract is required")];
 const validateISR = [required("'Is Survey Recieved' field is required")];
-const validateEmail = [required("Email is required"), email("Incorrect Email")];
-const validatePassword = [required("Password is required"), minLength(6)];
 const validateDateInput = [
   // regex(
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
