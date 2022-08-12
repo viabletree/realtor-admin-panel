@@ -31,6 +31,7 @@ const validateSqft = [required("SQFT is required")];
 const validateArea = [required("Area is required")];
 const validatePrice = [required("Price is required")];
 const validateType = [required("Property Type is required")];
+const validateUser = [required("User is required")];
 const validatePropertyDes = [required("Property Description is required")];
 const validatePropertyTitle = [required("Property Title is required")];
 
@@ -48,9 +49,10 @@ const UserCreate = (props) => {
           label="select user"
           source="user_id"
           reference={RESOURCES.users}
-          //filter={{ is_artist: true }}
+
+        //filter={{ is_artist: true }}
         >
-          <SelectInput optionText="full_name" />
+          <SelectInput optionText="full_name" validate={validateUser} />
         </ReferenceInput>
 
         <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
@@ -65,12 +67,16 @@ const UserCreate = (props) => {
           source="property_title"
           validate={validatePropertyTitle}
         />
+
         <TextInput
+          helperText='Max limit is 255 characters'
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="property_description"
           validate={validatePropertyDes}
         />
+
+
         <SelectInput
           source="property_type_id"
           choices={[
