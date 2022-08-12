@@ -86,7 +86,7 @@ const UserCreate = (props) => {
           ]}
           validate={validateType}
         />
-        <TextInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
+        <NumberInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
         <TextInput
           inputProps={{ maxLength: 100 }}
           source="property_area"

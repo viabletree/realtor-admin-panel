@@ -10,6 +10,7 @@ import {
   DateTimeInput,
   DateInput,
   regex,
+  NumberInput,
 } from "react-admin";
 import PropTypes from "prop-types";
 import { RESOURCES } from "../constants";
@@ -51,7 +52,7 @@ const UserEdit = (props) => (
         label="select user"
         source="user_id"
         reference={RESOURCES.users}
-        //filter={{ is_artist: true }}
+      //filter={{ is_artist: true }}
       >
         <SelectInput optionText="full_name" inputProps={{ maxLength: 100 }} validate={validateType} />
       </ReferenceInput>
@@ -68,7 +69,7 @@ const UserEdit = (props) => (
         source="property_description"
         validate={validatePropertyDes}
       />
-      <TextInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
+      <NumberInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
       <SelectInput
         source="property_type_id"
         choices={[
