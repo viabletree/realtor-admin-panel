@@ -10,7 +10,15 @@ import {
 } from 'react-admin';
 import PropTypes from 'prop-types';
 import DateFnsUtils from '@date-io/date-fns';
-//import { TimeInput } from "react-admin-date-inputs2";
+// import englishMessages from 'ra-language-english';
+// //import { TimeInput } from "react-admin-date-inputs2";
+// const englishCustomMessages = englishMessages;
+// englishCustomMessages.ra.message.invalid_form = 'Your Custom Message goes here';
+
+// const messages = {
+//     en: englishCustomMessages,
+// }
+// const i18nProvider = locale => messages[locale];
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -22,11 +30,17 @@ const UserTitle = ({ record }) => {
     <span>{record.name}</span>
   );
 };
-  
+  const duckyou = values => {
+    const errors = [];
+    errors.full_name = {
+      message: 'dash'
+    }
+    return errors;
+  }
   const UserEdit = (props) => (
     <Edit {...props} undoable={false}   actions={<UserShowActions/>} successMessage="User updated successfully">
 
-      <SimpleForm>
+      <SimpleForm validate={duckyou}>
               <TextInput disabled label="Id" source="id"/>
               <TextInput inputProps={{ maxLength: 40 }} multiline={true} source="full_name" validate={[required()]}/>
               <TextInput inputProps={{ maxLength: 30 }} multiline={true} source="agency_name" validate={[required()]}/>

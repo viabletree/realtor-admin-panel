@@ -14,20 +14,24 @@ import Faqs from './Faqs';
 import Showings from './Showings';
 
 
+import englishMessages from 'ra-language-english';
+import polyglotI18nProvider from 'ra-i18n-polyglot';
 
 import { Layout } from './layout';
 
 const history = createHashHistory();
 
-// const theme = {
-//   ...defaultTheme,
-//   palette: {
-//       type: 'dark', // Switching the dark mode on is a single property value change.
-//   },
-// };
+const englishCustomMessages = englishMessages;
+englishCustomMessages.ra.message.invalid_form = 'Kindly fill out the missing fields';
+
+const messages = {
+    'en': englishCustomMessages,
+};
+const i18nProvider = polyglotI18nProvider(locale => messages[locale]);
+
 const App = () => (
   <Admin
-  
+    i18nProvider={i18nProvider}
     dataProvider={customDataProvider}
     authProvider={authProvider}
     history={history}
