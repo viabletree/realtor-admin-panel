@@ -15,6 +15,10 @@ import {
 } from "react-admin";
 
 const validateName = [required("Name is required")];
+const validateProperty = [required("Property is required")];
+
+const validateAOC = [required("Amount of contract is required")];
+const validateISR = [required("'Is Survey Recieved' field is required")];
 const validateEmail = [required("Email is required"), email("Incorrect Email")];
 const validatePassword = [required("Password is required"), minLength(6)];
 const validateDateInput = [
@@ -29,10 +33,11 @@ const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
       <ReferenceInput source="property_id" reference="properties">
-        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }}/>
+
+        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }} validate={validateProperty} />
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" />
+      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" validate={validateName} />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
@@ -43,7 +48,7 @@ const UserCreate = (props) => (
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput source="amount_of_contract" />
+      <NumberInput source="amount_of_contract" validate={validateAOC} />
       <SelectInput
         source="is_contract_to_lender"
         choices={[
@@ -102,6 +107,7 @@ const UserCreate = (props) => (
         ]}
       />
       <SelectInput
+        validate={validateISR}
         source="is_survey_received"
         choices={[
           { id: "0", name: "no" },
