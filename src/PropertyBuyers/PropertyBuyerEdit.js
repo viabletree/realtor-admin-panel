@@ -14,6 +14,8 @@ import {
   regex,
 } from "react-admin";
 import PropTypes from "prop-types";
+
+
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -23,7 +25,11 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
+const validateName = [required("Name is required")];
+const validateProperty = [required("Property is required")];
 
+const validateAOC = [required("Amount of contract is required")];
+const validateISR = [required("'Is Survey Recieved' field is required")];
 const validateDateInput = [
   // regex(
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
@@ -44,13 +50,14 @@ const UserEdit = (props) => {
       <SimpleForm>
         <TextInput disabled source="id" />
         <ReferenceInput source="property_id" reference="properties">
-          <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }}/>
+          <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }} validate={validateProperty} />
         </ReferenceInput>
 
         <TextInput
           inputProps={{ maxLength: 100 }}
           multiline={true}
           source="buyer_name"
+          validate={validateName}
         />
         <TextInput
           inputProps={{ maxLength: 100 }}
@@ -65,6 +72,7 @@ const UserEdit = (props) => {
         <NumberInput
           inputProps={{ maxLength: 100 }}
           source="amount_of_contract"
+          validate={validateAOC}
         />
         <BooleanInput source="is_contract_to_lender" />
         <DateInput
@@ -94,7 +102,7 @@ const UserEdit = (props) => {
           validate={validateDateInput}
           source="home_warranty_date"
         />
-        <BooleanInput source="is_survey_received" />
+        <BooleanInput source="is_survey_received" validate={validateISR} />
         {/* <SelectInput source="is_survey_received" choices={[
           { id: '0', name: 'no' },
           { id: '1', name: 'yes' },
