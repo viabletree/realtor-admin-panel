@@ -12,6 +12,7 @@ import {
   DateInput,
   SelectInput,
   regex,
+  BooleanInput,
 } from "react-admin";
 
 const validateName = [required("Name is required")];
@@ -47,12 +48,9 @@ const UserCreate = (props) => (
         source="title_company_closer"
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
-      <SelectInput
+      <BooleanInput
         source="is_contract_to_lender"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -60,12 +58,9 @@ const UserCreate = (props) => (
         source="contract_to_lender_date"
       />
 
-      <SelectInput
+      <BooleanInput
         source="is_earnest_money_received"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
 
       <DateInput
@@ -82,13 +77,10 @@ const UserCreate = (props) => (
         ]}
       />
 
-      <SelectInput
+      <BooleanInput
         label="Is Home Warranty"
         source="is_home_warranty"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -96,29 +88,20 @@ const UserCreate = (props) => (
         source="home_warranty_date"
       />
 
-      <SelectInput
+      <BooleanInput
         label="is switch over utilities"
         source="is_switch_over_utilities"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
-      <SelectInput
+      <BooleanInput
         validate={validateISR}
         source="is_survey_received"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
 
-      <SelectInput
+      <BooleanInput
         source="is_new_survey"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
+
       />
       <TextInput
         inputProps={{ maxLength: 255 }}
