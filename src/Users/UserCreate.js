@@ -18,7 +18,7 @@ const validatePassword = [required('Password is required'), minLength(6)];
 const UserCreate = (props) => (
   <Create {...props} successMessage="User created successfully">
     <SimpleForm>
-    <TextInput source="name" inputProps={{ maxLength:100 }} validate={[required()]}/>
+    <TextInput source="full_name" inputProps={{ maxLength:100 }} validate={[required()]}/>
               <TextInput source="email" inputProps={{ maxLength: 100 }} validate={[required()]}/>
               <TextInput label="Password" source="password" inputProps={{ maxLength: 100 }} validate={[required()]}/>
               <TextInput label="Confirm Password" source="confirm_password" inputProps={{ maxLength: 100 }} validate={[required()]}/>
