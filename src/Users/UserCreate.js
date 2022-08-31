@@ -17,12 +17,24 @@ import {
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
 
+const confirmPswdMatchedValidation = (value, allValues) => {
+  if (value !== allValues.password) {
+    return "Password does not matched";
+  }
+  return undefined;
+};
+
 const validateFulName = [
-  required(),
+  required("Full name is required"),
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
 ];
 const validateEmail = [required("Email is required"), email("Incorrect Email")];
 const validatePassword = [required("Password is required"), minLength(6)];
+const validateConfrimPassword = [
+  required("Confirm Password is required"),
+  minLength(6),
+  confirmPswdMatchedValidation,
+];
 
 const UserCreate = (props) => (
   <Create {...props} successMessage="User created successfully">
@@ -35,38 +47,38 @@ const UserCreate = (props) => (
       <TextInput
         source="email"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={validateEmail}
       />
-      <TextInput
+      <PasswordInput
         label="Password"
         source="password"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={validatePassword}
       />
-      <TextInput
+      <PasswordInput
         label="Confirm Password"
         source="confirm_password"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={validateConfrimPassword}
       />
       <NumberInput
         label="Phone Number"
         source="phone"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={[required("Phone number is required")]}
       />
       <TextInput
         multiline={true}
         label="Agency Name"
         inputProps={{ maxLength: 100 }}
         source="agency_name"
-        validate={[required()]}
+        validate={[required("Agency name is required")]}
       />
       <TextInput
         label="Location"
         source="location"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={[required("Location is required")]}
       />
       {/* <TextInput label="Availability From" source="availability_from" validate={[required()]}/>
               <TextInput label="Availability To" source="availability_to" validate={[required()]}/> */}
@@ -76,7 +88,7 @@ const UserCreate = (props) => (
           source="availability_from"
           label="Availability From"
           options={{ format: "hh:mm:ss" }}
-          validate={[required()]}
+          validate={[required("Availability from time is required")]}
           inputProps={{ maxLength: 255 }}
         />
       </MuiPickersUtilsProvider>
@@ -85,7 +97,7 @@ const UserCreate = (props) => (
           source="availability_to"
           label="Availability To"
           options={{ format: "hh:mm:ss", variant: "filled" }}
-          validate={[required()]}
+          validate={[required("Availability to time is required")]}
           inputProps={{ maxLength: 255, variant: "filled" }}
         />
       </MuiPickersUtilsProvider>
@@ -94,7 +106,7 @@ const UserCreate = (props) => (
         label="Bio"
         source="bio"
         inputProps={{ maxLength: 255 }}
-        validate={[required()]}
+        validate={[required("Bio is required")]}
       />
 
       {/*   <TextInput source="agency_name" validate={[required()]}/>

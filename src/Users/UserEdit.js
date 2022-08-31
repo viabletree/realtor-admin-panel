@@ -10,16 +10,10 @@ import {
   regex,
 } from "react-admin";
 import PropTypes from "prop-types";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
-// import englishMessages from 'ra-language-english';
-// //import { TimeInput } from "react-admin-date-inputs2";
-// const englishCustomMessages = englishMessages;
-// englishCustomMessages.ra.message.invalid_form = 'Your Custom Message goes here';
 
-// const messages = {
-//     en: englishCustomMessages,
-// }
-// const i18nProvider = locale => messages[locale];
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -29,16 +23,9 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
-// const duckyou = values => {
-//   const errors = [];
-//   errors.full_name = {
-//     message: 'dash'
-//   }
-//   return errors;
-// }
 
 const validateFulName = [
-  required(),
+  required("Full name is required"),
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
 ];
 
@@ -61,21 +48,37 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 30 }}
         multiline={true}
         source="agency_name"
-        validate={[required()]}
+        validate={[required("Agency name is required")]}
       />
       <TextInput
         inputProps={{ maxLength: 50 }}
         multiline={true}
         source="location"
-        validate={[required()]}
+        validate={[required("Location is required")]}
       />
-      <TextInput source="availability_from" validate={[required()]} />
-      <TextInput source="availability_to" validate={[required()]} />
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <TimeInput
+          source="availability_from"
+          label="Availability From"
+          options={{ format: "hh:mm:ss" }}
+          validate={[required("Availability from time is required")]}
+          inputProps={{ maxLength: 255 }}
+        />
+      </MuiPickersUtilsProvider>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <TimeInput
+          source="availability_to"
+          label="Availability To"
+          options={{ format: "hh:mm:ss", variant: "filled" }}
+          validate={[required("Availability to time is required")]}
+          inputProps={{ maxLength: 255, variant: "filled" }}
+        />
+      </MuiPickersUtilsProvider>
       <TextInput
         multiline={true}
         source="bio"
         inputProps={{ maxLength: 255 }}
-        validate={[required()]}
+        validate={[required("Bio is required")]}
       />
 
       {/* <TextInput source="users" validate={[required()]} /> */}
