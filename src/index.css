@@ -49,3 +49,7 @@ input[type=number] {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.availableTimeField {
+  width: 256px;
+}

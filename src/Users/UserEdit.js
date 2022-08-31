@@ -62,7 +62,8 @@ const UserEdit = (props) => (
           label="Availability From"
           options={{ format: "hh:mm:ss" }}
           validate={[required("Availability from time is required")]}
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ variant: "filled" }}
+          className="availableTimeField"
         />
       </MuiPickersUtilsProvider>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -71,7 +72,8 @@ const UserEdit = (props) => (
           label="Availability To"
           options={{ format: "hh:mm:ss", variant: "filled" }}
           validate={[required("Availability to time is required")]}
-          inputProps={{ maxLength: 255, variant: "filled" }}
+          inputProps={{ variant: "filled" }}
+          className="availableTimeField"
         />
       </MuiPickersUtilsProvider>
       <TextInput

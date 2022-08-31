@@ -28,7 +28,10 @@ const validateFulName = [
   required("Full name is required"),
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
 ];
-const validateEmail = [required("Email is required"), email("Must be a valid email")];
+const validateEmail = [
+  required("Email is required"),
+  email("Must be a valid email"),
+];
 const validatePassword = [required("Password is required"), minLength(6)];
 const validateConfrimPassword = [
   required("Confirm Password is required"),
@@ -89,7 +92,8 @@ const UserCreate = (props) => (
           label="Availability From"
           options={{ format: "hh:mm:ss" }}
           validate={[required("Availability from time is required")]}
-          inputProps={{ maxLength: 255 }}
+          inputProps={{ variant: "filled" }}
+          className="availableTimeField"
         />
       </MuiPickersUtilsProvider>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -98,7 +102,8 @@ const UserCreate = (props) => (
           label="Availability To"
           options={{ format: "hh:mm:ss", variant: "filled" }}
           validate={[required("Availability to time is required")]}
-          inputProps={{ maxLength: 255, variant: "filled" }}
+          inputProps={{ variant: "filled" }}
+          className="availableTimeField"
         />
       </MuiPickersUtilsProvider>
       <TextInput
