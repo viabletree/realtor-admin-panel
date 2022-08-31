@@ -12,11 +12,15 @@ import {
   AutocompleteInput,
   TextField,
   DateTimeInput,
+  regex,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
 
-const validateName = [required("Name is required")];
+const validateFulName = [
+  required(),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateEmail = [required("Email is required"), email("Incorrect Email")];
 const validatePassword = [required("Password is required"), minLength(6)];
 
@@ -26,7 +30,7 @@ const UserCreate = (props) => (
       <TextInput
         source="full_name"
         inputProps={{ maxLength: 100 }}
-        validate={[required()]}
+        validate={validateFulName}
       />
       <TextInput
         source="email"

@@ -6,10 +6,11 @@ import {
   TopToolbar,
   ListButton,
   DateTimeInput,
-  DateInput
-} from 'react-admin';
-import PropTypes from 'prop-types';
-import DateFnsUtils from '@date-io/date-fns';
+  DateInput,
+  regex,
+} from "react-admin";
+import PropTypes from "prop-types";
+import DateFnsUtils from "@date-io/date-fns";
 // import englishMessages from 'ra-language-english';
 // //import { TimeInput } from "react-admin-date-inputs2";
 // const englishCustomMessages = englishMessages;
@@ -26,9 +27,7 @@ const UserShowActions = ({ basePath }) => (
 );
 
 const UserTitle = ({ record }) => {
-  return record && record.name && (
-    <span>{record.name}</span>
-  );
+  return record && record.name && <span>{record.name}</span>;
 };
 // const duckyou = values => {
 //   const errors = [];
@@ -37,25 +36,55 @@ const UserTitle = ({ record }) => {
 //   }
 //   return errors;
 // }
-const UserEdit = (props) => (
-  <Edit {...props} undoable={false} actions={<UserShowActions />} successMessage="User updated successfully">
 
-    <SimpleForm >
+const validateFulName = [
+  required(),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
+
+const UserEdit = (props) => (
+  <Edit
+    {...props}
+    undoable={false}
+    actions={<UserShowActions />}
+    successMessage="User updated successfully"
+  >
+    <SimpleForm>
       <TextInput disabled label="Id" source="id" />
-      <TextInput inputProps={{ maxLength: 40 }} multiline={true} source="full_name" validate={[required()]} />
-      <TextInput inputProps={{ maxLength: 30 }} multiline={true} source="agency_name" validate={[required()]} />
-      <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="location" validate={[required()]} />
+      <TextInput
+        inputProps={{ maxLength: 40 }}
+        multiline={true}
+        source="full_name"
+        validate={validateFulName}
+      />
+      <TextInput
+        inputProps={{ maxLength: 30 }}
+        multiline={true}
+        source="agency_name"
+        validate={[required()]}
+      />
+      <TextInput
+        inputProps={{ maxLength: 50 }}
+        multiline={true}
+        source="location"
+        validate={[required()]}
+      />
       <TextInput source="availability_from" validate={[required()]} />
       <TextInput source="availability_to" validate={[required()]} />
-      <TextInput multiline={true} source="bio" inputProps={{ maxLength: 255 }} validate={[required()]} />
+      <TextInput
+        multiline={true}
+        source="bio"
+        inputProps={{ maxLength: 255 }}
+        validate={[required()]}
+      />
 
       {/* <TextInput source="users" validate={[required()]} /> */}
     </SimpleForm>
-  </Edit >
+  </Edit>
 );
 
 UserShowActions.propTypes = {
-  basePath: PropTypes.string
+  basePath: PropTypes.string,
 };
 
 UserEdit.propTypes = {
