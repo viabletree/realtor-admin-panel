@@ -28,7 +28,7 @@ const validateFulName = [
   required("Full name is required"),
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
 ];
-const validateEmail = [required("Email is required"), email("Incorrect Email")];
+const validateEmail = [required("Email is required"), email("Must be a valid email")];
 const validatePassword = [required("Password is required"), minLength(6)];
 const validateConfrimPassword = [
   required("Confirm Password is required"),
