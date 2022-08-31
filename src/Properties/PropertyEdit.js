@@ -25,10 +25,10 @@ const UserTitle = ({ record }) => {
 };
 const validatePropertyAdd = [required("Property Address is required")];
 const validatePropertyYearBuilt = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
+  regex(
+    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+    "Must be a valid date"
+  ),
   required("property year built is required"),
 ];
 const validateSqft = [required("SQFT is required")];
