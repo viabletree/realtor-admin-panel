@@ -15,7 +15,10 @@ import {
   BooleanInput,
 } from "react-admin";
 
-const validateName = [required("Name is required")];
+const validateName = [
+  required("Name is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateProperty = [required("Property is required")];
 
 const validateAOC = [required("Amount of contract is required")];
@@ -32,11 +35,18 @@ const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
       <ReferenceInput source="property_id" reference="properties">
-
-        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }} validate={validateProperty} />
+        <SelectInput
+          optionText="property_title"
+          inputProps={{ maxLength: 100 }}
+          validate={validateProperty}
+        />
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" validate={validateName} />
+      <TextInput
+        inputProps={{ maxLength: 100 }}
+        source="buyer_name"
+        validate={validateName}
+      />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
@@ -48,20 +58,14 @@ const UserCreate = (props) => (
         source="title_company_closer"
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
-      <BooleanInput
-        source="is_contract_to_lender"
-
-      />
+      <BooleanInput source="is_contract_to_lender" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="contract_to_lender_date"
       />
 
-      <BooleanInput
-        source="is_earnest_money_received"
-
-      />
+      <BooleanInput source="is_earnest_money_received" />
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -77,11 +81,7 @@ const UserCreate = (props) => (
         ]}
       />
 
-      <BooleanInput
-        label="Is Home Warranty"
-        source="is_home_warranty"
-
-      />
+      <BooleanInput label="Is Home Warranty" source="is_home_warranty" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
@@ -91,18 +91,10 @@ const UserCreate = (props) => (
       <BooleanInput
         label="is switch over utilities"
         source="is_switch_over_utilities"
-
       />
-      <BooleanInput
-        validate={validateISR}
-        source="is_survey_received"
+      <BooleanInput validate={validateISR} source="is_survey_received" />
 
-      />
-
-      <BooleanInput
-        source="is_new_survey"
-
-      />
+      <BooleanInput source="is_new_survey" />
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}

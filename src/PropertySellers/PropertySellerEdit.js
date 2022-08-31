@@ -22,7 +22,10 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
-const validateName = [required("Name is required")];
+const validateName = [
+  required("Name is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateProperty = [required("Property is required")];
 const validateAOC = [required("Amount of contract is required")];
 
@@ -62,7 +65,11 @@ const UserEdit = (props) => (
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" validate={validateAOC} />
+      <NumberInput
+        inputProps={{ maxLength: 100 }}
+        source="amount_of_contract"
+        validate={validateAOC}
+      />
       <BooleanInput source="is_earnest_money_received" />
       {/* <SelectInput source="is_earnest_money_received" choices={[
             { id: '0', name: 'no' },

@@ -15,7 +15,10 @@ import {
   regex,
 } from "react-admin";
 
-const validateName = [required("Name is required")];
+const validateName = [
+  required("Name is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateProperty = [required("Property is required")];
 const validateAOC = [required("Amount of contract is required")];
 const validateDateInput = [
@@ -48,46 +51,35 @@ const UserCreate = (props) => (
         multiline={true}
         source="title_company_closer"
       />
-      <NumberInput source="amount_of_contract" inputProps={{ maxLength: 100 }} validate={validateAOC} />
-      <BooleanInput
-        source="is_earnest_money_received"
-
+      <NumberInput
+        source="amount_of_contract"
+        inputProps={{ maxLength: 100 }}
+        validate={validateAOC}
       />
+      <BooleanInput source="is_earnest_money_received" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="earnest_money_received_date"
       />
 
-      <BooleanInput
-        source="is_contract_to_lender"
-
-      />
+      <BooleanInput source="is_contract_to_lender" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="contract_to_lender_date"
       />
 
-      <BooleanInput
-        source="is_home_warranty"
-
-      />
+      <BooleanInput source="is_home_warranty" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="home_warranty_date"
       />
 
-      <BooleanInput
-        source="is_survey_received"
+      <BooleanInput source="is_survey_received" />
 
-      />
-
-      <BooleanInput
-        source="is_new_survey"
-
-      />
+      <BooleanInput source="is_new_survey" />
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -100,15 +92,9 @@ const UserCreate = (props) => (
         source="new_survey_info"
       />
 
-      <BooleanInput
-        source="is_cda_sent"
+      <BooleanInput source="is_cda_sent" />
 
-      />
-
-      <BooleanInput
-        source="is_switch_over_utilities"
-
-      />
+      <BooleanInput source="is_switch_over_utilities" />
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}

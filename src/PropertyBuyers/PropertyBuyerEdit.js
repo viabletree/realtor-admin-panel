@@ -15,7 +15,6 @@ import {
 } from "react-admin";
 import PropTypes from "prop-types";
 
-
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -25,7 +24,10 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
-const validateName = [required("Name is required")];
+const validateName = [
+  required("Name is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateProperty = [required("Property is required")];
 
 const validateAOC = [required("Amount of contract is required")];
@@ -50,7 +52,11 @@ const UserEdit = (props) => {
       <SimpleForm>
         <TextInput disabled source="id" />
         <ReferenceInput source="property_id" reference="properties">
-          <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }} validate={validateProperty} />
+          <SelectInput
+            optionText="property_title"
+            inputProps={{ maxLength: 100 }}
+            validate={validateProperty}
+          />
         </ReferenceInput>
 
         <TextInput
