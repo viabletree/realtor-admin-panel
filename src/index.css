@@ -29,3 +29,11 @@ code {
 .listWrap td {
   text-align: left;
 }
+
+.listWrap td span {
+  max-width: 120px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
