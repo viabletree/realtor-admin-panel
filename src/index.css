@@ -57,3 +57,10 @@ input[type=number] {
 body>iframe {
   display: none;
 }
+
+
+@media(max-width: 600px) {
+  .RaLoadingIndicator-loadedIcon-24 {
+    padding: 0 !important;
+  }
+}

@@ -60,7 +60,7 @@ const UserEdit = (props) => (
         <TimeInput
           source="availability_from"
           label="Availability From"
-          options={{ format: "hh:mm:ss" }}
+          options={{ format: "HH:mm:ss", variant: "filled" }}
           validate={[required("Availability from time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
@@ -70,7 +70,7 @@ const UserEdit = (props) => (
         <TimeInput
           source="availability_to"
           label="Availability To"
-          options={{ format: "hh:mm:ss", variant: "filled" }}
+          options={{ format: "HH:mm:ss", variant: "filled" }}
           validate={[required("Availability to time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"

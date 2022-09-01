@@ -83,14 +83,11 @@ const UserCreate = (props) => (
         inputProps={{ maxLength: 100 }}
         validate={[required("Location is required")]}
       />
-      {/* <TextInput label="Availability From" source="availability_from" validate={[required()]}/>
-              <TextInput label="Availability To" source="availability_to" validate={[required()]}/> */}
-
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <TimeInput
           source="availability_from"
           label="Availability From"
-          options={{ format: "hh:mm:ss" }}
+          options={{ format: "HH:mm:ss", variant: "filled" }}
           validate={[required("Availability from time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
@@ -100,7 +97,7 @@ const UserCreate = (props) => (
         <TimeInput
           source="availability_to"
           label="Availability To"
-          options={{ format: "hh:mm:ss", variant: "filled" }}
+          options={{ format: "HH:mm:ss", variant: "filled" }}
           validate={[required("Availability to time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
