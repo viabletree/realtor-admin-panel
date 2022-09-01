@@ -67,7 +67,7 @@ const UsersList = (props) => {
       {...props}
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
-      // sort={{ field: "created_at", order: "DESC" }}
+      sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"
     >
