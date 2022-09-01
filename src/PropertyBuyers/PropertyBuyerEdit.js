@@ -74,6 +74,7 @@ const UserEdit = (props) => {
           inputProps={{ maxLength: 100 }}
           multiline={true}
           source="title_company_closer"
+          validate={regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title")}
         />
         <NumberInput
           inputProps={{ maxLength: 100 }}
