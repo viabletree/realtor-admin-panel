@@ -14,33 +14,19 @@ import {
   regex,
   BooleanInput,
 } from "react-admin";
-
-const validateName = [
-  required("Name is required"),
-  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
-];
-const validateProperty = [required("Property is required")];
-const validateAddress = [
-  required("Address is required"),
-  regex(/^.*\S.*$/, "Must be a valid address"),
-];
-const validateAdditionalInfo = [
-  required("Additional info is required"),
-  regex(/^.*\S.*$/, "Must be valid info"),
-];
-const validateTitle = [
-  required("Title is required"),
-  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title"),
-];
-const validateAOC = [required("Amount of contract is required")];
-const validateISR = [required("'Is Survey Recieved' field is required")];
-const validateDateInput = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
-  required("Poperty year built is required"),
-];
+import {
+  ContractLenderDateInput,
+  EarnestMoneyRecievedDateInput,
+  HomeWarrantyDateInput,
+  SurveyRecievedCutomInput,
+  validateAdditionalInfo,
+  validateAddress,
+  validateAOC,
+  validateDateInput,
+  validateName,
+  validateProperty,
+  validateTitle,
+} from "../constants";
 
 const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
@@ -71,48 +57,24 @@ const UserCreate = (props) => (
         validate={validateTitle}
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
+
       <BooleanInput source="is_contract_to_lender" />
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="contract_to_lender_date"
-      />
+      <ContractLenderDateInput />
 
       <BooleanInput source="is_earnest_money_received" />
+      <EarnestMoneyRecievedDateInput />
 
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="earnest_money_received_date"
-      />
-      <SelectInput
-        label="Is CDA Sent"
-        source="is_cda_sent"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
-      />
+      <BooleanInput source="is_cda_sent" />
 
       <BooleanInput label="Is Home Warranty" source="is_home_warranty" />
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="home_warranty_date"
-      />
+      <HomeWarrantyDateInput />
 
       <BooleanInput
         label="is switch over utilities"
         source="is_switch_over_utilities"
       />
-      <BooleanInput validate={validateISR} source="is_survey_received" />
-
-      <BooleanInput source="is_new_survey" />
-      <TextInput
-        inputProps={{ maxLength: 255 }}
-        multiline={true}
-        source="new_survey_info"
-      />
+      <BooleanInput source="is_survey_received" />
+      <SurveyRecievedCutomInput />
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}

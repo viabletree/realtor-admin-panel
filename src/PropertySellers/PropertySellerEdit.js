@@ -13,6 +13,20 @@ import {
   regex,
 } from "react-admin";
 import PropTypes from "prop-types";
+import {
+  ContractLenderDateInput,
+  EarnestMoneyRecievedDateInput,
+  HomeWarrantyDateInput,
+  SurveyRecievedCutomInput,
+  validateAdditionalInfo,
+  validateAddress,
+  validateAOC,
+  validateDateInput,
+  validateName,
+  validateProperty,
+  validateTitle,
+} from "../constants";
+
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -22,23 +36,6 @@ const UserShowActions = ({ basePath }) => (
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
-const validateName = [
-  required("Name is required"),
-  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
-];
-const validateProperty = [required("Property is required")];
-const validateAOC = [required("Amount of contract is required")];
-const validateAdditionalInfo = [
-  required("Additional info is required"),
-  regex(/^.*\S.*$/, "Must be valid info"),
-];
-const validateDateInput = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
-  required("Poperty year built is required"),
-];
 
 const UserEdit = (props) => (
   <Edit
@@ -62,12 +59,13 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
+        validate={validateAddress}
       />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
-        validate={regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title")}
+        validate={validateTitle}
       />
       <NumberInput
         inputProps={{ maxLength: 100 }}
@@ -75,48 +73,17 @@ const UserEdit = (props) => (
         validate={validateAOC}
       />
       <BooleanInput source="is_earnest_money_received" />
-      {/* <SelectInput source="is_earnest_money_received" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} /> */}
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="earnest_money_received_date"
-      />
+      <EarnestMoneyRecievedDateInput />
+
       <BooleanInput source="is_contract_to_lender" />
-      {/* <SelectInput source="is_contract_to_lender" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} /> */}
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="contract_to_lender_date"
-      />
+      <ContractLenderDateInput />
 
       <BooleanInput source="is_home_warranty" />
-      {/* <BooleanInput source="is_home_warranty" label="Is Home Warranty" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} /> */}
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="home_warranty_date"
-        label="Home Warranty Date"
-      />
-      <BooleanInput source="is_survey_received" />
+      <HomeWarrantyDateInput />
 
-      {/* <SelectInput source="is_survey_received" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} /> */}
-      <BooleanInput source="is_new_survey" />
-      {/* <SelectInput source="is_new_survey" choices={[
-            { id: '0', name: 'no' },
-            { id: '1', name: 'yes' },
-            ]} /> */}
+      <BooleanInput source="is_survey_received" />
+      <SurveyRecievedCutomInput />
+
       <BooleanInput source="is_cda_sent" />
 
       {/* <SelectInput source="is_cda_sent" choices={[
