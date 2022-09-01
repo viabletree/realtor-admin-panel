@@ -13,6 +13,7 @@ import {
   EditButton,
   BooleanField,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const PropertyList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
+  const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List {...props}>
@@ -66,8 +68,11 @@ const PropertyList = (props) => {
               source="title_company_closer"
               className={classes.descriptionText}
             />
-            <NumberField label="AmountOfContract" source="amount_of_contract" 
-            options={{ style: "currency", currency: "USD" }}/>
+            <NumberField
+              label="AmountOfContract"
+              source="amount_of_contract"
+              options={{ style: "currency", currency: "USD" }}
+            />
             <BooleanField
               label="IsEarnestMoneyReceived"
               source="is_earnest_money_received"
@@ -81,7 +86,6 @@ const PropertyList = (props) => {
               source="is_contract_to_lender"
             />
             <DateField
-              
               label="ContractToLenderDate"
               source="contract_to_lender_date"
             />
@@ -149,6 +153,7 @@ const PropertyList = (props) => {
             <DeleteButton
               undoable={false}
               onSuccess={() => {
+                refresh();
                 notify(`Seller Deleted`);
               }}
               onError={() => {

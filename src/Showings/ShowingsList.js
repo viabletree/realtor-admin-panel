@@ -11,6 +11,7 @@ import {
   ReferenceField,
   EditButton,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -59,6 +60,7 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   const notify = useNotify();
+  const refresh = useRefresh();
   const classes = useStyles();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -67,7 +69,7 @@ const UsersList = (props) => {
       {...props}
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
-      // sort={{ field: "created_at", order: "DESC" }}
+      sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"
     >
@@ -81,12 +83,13 @@ const UsersList = (props) => {
           </ReferenceField> */}
           <TextField source="name" />
           <TextField source="address" />
-          <TextField source="description" className={classes.descriptionText}/>
+          <TextField source="description" className={classes.descriptionText} />
           <DateField source="created_at" />
           {/* <EditButton /> */}
           <DeleteButton
             undoable={false}
             onSuccess={() => {
+              refresh();
               notify(`Showing Deleted`);
             }}
             onError={() => {

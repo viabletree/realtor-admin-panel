@@ -25,18 +25,24 @@ const UserTitle = ({ record }) => {
 };
 const validatePropertyAdd = [required("Property Address is required")];
 const validatePropertyYearBuilt = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
+  regex(
+    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+    "Must be a valid date"
+  ),
   required("property year built is required"),
 ];
-const validateSqft = [required("SQFT is required")];
+const validateSqft = [
+  required("SQFT is required"),
+  regex(/^.*\S.*$/, "Only spaces are not allowed"),
+];
 const validateArea = [required("Area is required")];
 const validatePrice = [required("Price is required")];
 const validateType = [required("Property Type is required")];
 const validatePropertyDes = [required("Property Description is required")];
-const validatePropertyTitle = [required("Property Title is required")];
+const validatePropertyTitle = [
+  required("Property Title is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title"),
+];
 
 const UserEdit = (props) => (
   <Edit
@@ -47,14 +53,22 @@ const UserEdit = (props) => (
   >
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
-      <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
+      <TextInput
+        source="property_address"
+        inputProps={{ maxLength: 100 }}
+        validate={validatePropertyAdd}
+      />
       <ReferenceInput
         label="select user"
         source="user_id"
         reference={RESOURCES.users}
-      //filter={{ is_artist: true }}
+        //filter={{ is_artist: true }}
       >
-        <SelectInput optionText="full_name" inputProps={{ maxLength: 100 }} validate={validateType} />
+        <SelectInput
+          optionText="full_name"
+          inputProps={{ maxLength: 100 }}
+          validate={validateType}
+        />
       </ReferenceInput>
 
       <TextInput
@@ -69,7 +83,11 @@ const UserEdit = (props) => (
         source="property_description"
         validate={validatePropertyDes}
       />
-      <NumberInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
+      <NumberInput
+        source="property_price"
+        inputProps={{ maxLength: 100 }}
+        validate={validatePrice}
+      />
       <SelectInput
         source="property_type_id"
         choices={[

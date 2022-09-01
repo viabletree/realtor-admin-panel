@@ -21,19 +21,25 @@ import { RESOURCES } from "../constants";
 
 const validatePropertyAdd = [required("Property Address is required")];
 const validatePropertyYearBuilt = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
+  regex(
+    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+    "Must be a valid date"
+  ),
   required("Poperty year built is required"),
 ];
-const validateSqft = [required("SQFT is required")];
+const validateSqft = [
+  required("SQFT is required"),
+  regex(/^.*\S.*$/, "Only spaces are not allowed"),
+];
 const validateArea = [required("Area is required")];
 const validatePrice = [required("Price is required")];
 const validateType = [required("Property Type is required")];
 const validateUser = [required("User is required")];
 const validatePropertyDes = [required("Property Description is required")];
-const validatePropertyTitle = [required("Property Title is required")];
+const validatePropertyTitle = [
+  required("Property Title is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title"),
+];
 
 const UserCreate = (props) => {
   const notify = useNotify();
@@ -50,12 +56,16 @@ const UserCreate = (props) => {
           source="user_id"
           reference={RESOURCES.users}
 
-        //filter={{ is_artist: true }}
+          //filter={{ is_artist: true }}
         >
           <SelectInput optionText="full_name" validate={validateUser} />
         </ReferenceInput>
 
-        <TextInput source="property_address" inputProps={{ maxLength: 100 }} validate={validatePropertyAdd} />
+        <TextInput
+          source="property_address"
+          inputProps={{ maxLength: 100 }}
+          validate={validatePropertyAdd}
+        />
         <DateInput
           source="property_year_built"
           label="property year built"
@@ -69,13 +79,11 @@ const UserCreate = (props) => {
         />
 
         <TextInput
-          helperText='Max limit is 255 characters'
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="property_description"
           validate={validatePropertyDes}
         />
-
 
         <SelectInput
           source="property_type_id"
@@ -86,7 +94,11 @@ const UserCreate = (props) => {
           ]}
           validate={validateType}
         />
-        <NumberInput source="property_price" inputProps={{ maxLength: 100 }} validate={validatePrice} />
+        <NumberInput
+          source="property_price"
+          inputProps={{ maxLength: 100 }}
+          validate={validatePrice}
+        />
         <TextInput
           inputProps={{ maxLength: 100 }}
           source="property_area"

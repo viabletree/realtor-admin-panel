@@ -14,100 +14,67 @@ import {
   regex,
   BooleanInput,
 } from "react-admin";
-
-const validateName = [required("Name is required")];
-const validateProperty = [required("Property is required")];
-
-const validateAOC = [required("Amount of contract is required")];
-const validateISR = [required("'Is Survey Recieved' field is required")];
-const validateDateInput = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
-  required("Poperty year built is required"),
-];
+import {
+  ContractLenderDateInput,
+  EarnestMoneyRecievedDateInput,
+  HomeWarrantyDateInput,
+  SurveyRecievedCutomInput,
+  validateAdditionalInfo,
+  validateAddress,
+  validateAOC,
+  validateDateInput,
+  validateName,
+  validateProperty,
+  validateTitle,
+} from "../constants";
 
 const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
       <ReferenceInput source="property_id" reference="properties">
-
-        <SelectInput optionText="property_title" inputProps={{ maxLength: 100 }} validate={validateProperty} />
+        <SelectInput
+          optionText="property_title"
+          inputProps={{ maxLength: 100 }}
+          validate={validateProperty}
+        />
       </ReferenceInput>
 
-      <TextInput inputProps={{ maxLength: 100 }} source="buyer_name" validate={validateName} />
+      <TextInput
+        inputProps={{ maxLength: 100 }}
+        source="buyer_name"
+        validate={validateName}
+      />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
+        validate={validateAddress}
       />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
+        validate={validateTitle}
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
-      <BooleanInput
-        source="is_contract_to_lender"
 
-      />
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="contract_to_lender_date"
-      />
+      <BooleanInput source="is_contract_to_lender" />
+      <ContractLenderDateInput />
 
-      <BooleanInput
-        source="is_earnest_money_received"
+      <BooleanInput source="is_earnest_money_received" />
+      <EarnestMoneyRecievedDateInput />
 
-      />
+      <BooleanInput source="is_cda_sent" />
 
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="earnest_money_received_date"
-      />
-      <SelectInput
-        label="Is CDA Sent"
-        source="is_cda_sent"
-        choices={[
-          { id: "0", name: "no" },
-          { id: "1", name: "yes" },
-        ]}
-      />
-
-      <BooleanInput
-        label="Is Home Warranty"
-        source="is_home_warranty"
-
-      />
-      <DateInput
-        options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-        validate={validateDateInput}
-        source="home_warranty_date"
-      />
+      <BooleanInput label="Is Home Warranty" source="is_home_warranty" />
+      <HomeWarrantyDateInput />
 
       <BooleanInput
         label="is switch over utilities"
         source="is_switch_over_utilities"
-
       />
-      <BooleanInput
-        validate={validateISR}
-        source="is_survey_received"
-
-      />
-
-      <BooleanInput
-        source="is_new_survey"
-
-      />
-      <TextInput
-        inputProps={{ maxLength: 255 }}
-        multiline={true}
-        source="new_survey_info"
-      />
+      <BooleanInput source="is_survey_received" />
+      <SurveyRecievedCutomInput />
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -169,6 +136,7 @@ const UserCreate = (props) => (
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
+        validate={validateAdditionalInfo}
       />
     </SimpleForm>
   </Create>
