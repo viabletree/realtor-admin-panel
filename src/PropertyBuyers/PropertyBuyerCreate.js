@@ -16,7 +16,9 @@ import {
 } from "react-admin";
 
 const validateName = [required("Name is required")];
+const v_title_company_closer = [required("title company closer is required")];
 const validateProperty = [required("Property is required")];
+const v_additional_info = [required("Additional Info is required")];
 
 const validateAOC = [required("Amount of contract is required")];
 const validateISR = [required("'Is Survey Recieved' field is required")];
@@ -25,7 +27,7 @@ const validateDateInput = [
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
   //   "Must be a valid date"
   // ),
-  required("Poperty year built is required"),
+  required("Please Insert date"),
 ];
 
 const UserCreate = (props) => (
@@ -45,6 +47,7 @@ const UserCreate = (props) => (
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
+        validate={v_title_company_closer}
         source="title_company_closer"
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
@@ -68,13 +71,18 @@ const UserCreate = (props) => (
         validate={validateDateInput}
         source="earnest_money_received_date"
       />
-      <SelectInput
+      {/* <SelectInput
         label="Is CDA Sent"
         source="is_cda_sent"
         choices={[
           { id: "0", name: "no" },
           { id: "1", name: "yes" },
         ]}
+      /> */}
+       <BooleanInput
+        source="is_cda_sent"
+        label="Is CDA Sent"
+
       />
 
       <BooleanInput
@@ -94,13 +102,14 @@ const UserCreate = (props) => (
 
       />
       <BooleanInput
-        validate={validateISR}
+        //validate={validateISR}
         source="is_survey_received"
 
       />
 
       <BooleanInput
         source="is_new_survey"
+        validate={v_additional_info}
 
       />
       <TextInput
@@ -137,6 +146,7 @@ const UserCreate = (props) => (
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
+        validate={v_additional_info}
         source="appraisal_additional_info"
       />
       <DateInput
@@ -147,6 +157,7 @@ const UserCreate = (props) => (
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
+        validate={v_additional_info}
         source="closing_additional_info"
       />
       <DateInput
@@ -168,6 +179,7 @@ const UserCreate = (props) => (
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
+        validate={v_additional_info}
         source="additional_info_entire"
       />
     </SimpleForm>

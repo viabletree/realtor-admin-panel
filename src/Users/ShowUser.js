@@ -46,6 +46,7 @@ const ShowUser = (props) => {
 
               <TextField source="id" label="User Id" />
               <TextField source="full_name" />
+              <TextField label="Phone" source="phone" />
               <TextField label="Agency Name" source="agency_name" />
               <TextField label="Location" source="location" />
               <TextField label="Availability From" source="availability_from" />

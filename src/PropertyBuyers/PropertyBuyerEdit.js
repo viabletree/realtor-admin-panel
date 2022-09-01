@@ -26,7 +26,9 @@ const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
 const validateName = [required("Name is required")];
+const v_title_company_closer = [required("title company closer is required")];
 const validateProperty = [required("Property is required")];
+const v_additional_info = [required("Additional Info is required")];
 
 const validateAOC = [required("Amount of contract is required")];
 const validateISR = [required("'Is Survey Recieved' field is required")];
@@ -35,8 +37,9 @@ const validateDateInput = [
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
   //   "Must be a valid date"
   // ),
-  required("Poperty year built is required"),
+  required("Please Insert date"),
 ];
+
 
 const UserEdit = (props) => {
   console.log({ props });
@@ -67,6 +70,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 100 }}
           multiline={true}
+          validate={v_title_company_closer}
           source="title_company_closer"
         />
         <NumberInput
@@ -115,6 +119,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
+          validate={v_additional_info}
           source="new_survey_info"
         />
         <BooleanInput source="is_cda_sent" />
@@ -156,6 +161,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
+          validate={v_additional_info}
           source="appraisal_additional_info"
         />
         <DateInput
@@ -165,7 +171,7 @@ const UserEdit = (props) => {
         />
         <DateInput
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
-          validate={validateDateInput}
+          validate={v_additional_info}
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="closing_additional_info"
@@ -189,6 +195,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
+          validate={v_additional_info}
           source="additional_info_entire"
         />
       </SimpleForm>

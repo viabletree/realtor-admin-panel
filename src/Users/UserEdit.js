@@ -45,6 +45,8 @@ const UserEdit = (props) => (
       <TextInput inputProps={{ maxLength: 40 }} multiline={true} source="full_name" validate={[required()]} />
       <TextInput inputProps={{ maxLength: 30 }} multiline={true} source="agency_name" validate={[required()]} />
       <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="location" validate={[required()]} />
+      <TextInput inputProps={{ maxLength: 50 }} multiline={true} source="phone" validate={[required()]} />
+      
       <TextInput source="availability_from" validate={[required()]} />
       <TextInput source="availability_to" validate={[required()]} />
       <TextInput multiline={true} source="bio" inputProps={{ maxLength: 255 }} validate={[required()]} />
