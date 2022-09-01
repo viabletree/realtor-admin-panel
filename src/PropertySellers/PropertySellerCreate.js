@@ -21,6 +21,10 @@ const validateName = [
 ];
 const validateProperty = [required("Property is required")];
 const validateAOC = [required("Amount of contract is required")];
+const validateAdditionalInfo = [
+  required("Additional info is required"),
+  regex(/^.*\S.*$/, "Must be valid info"),
+];
 const validateDateInput = [
   // regex(
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
@@ -147,6 +151,7 @@ const UserCreate = (props) => (
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
+        validate={validateAdditionalInfo}
       />
     </SimpleForm>
   </Create>

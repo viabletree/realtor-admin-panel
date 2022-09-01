@@ -31,7 +31,11 @@ const validateName = [
 const validateProperty = [required("Property is required")];
 const validateAddress = [
   required("Address is required"),
-  regex(/^.*\S.*$/, "Must e a valid address"),
+  regex(/^.*\S.*$/, "Must be a valid address"),
+];
+const validateAdditionalInfo = [
+  required("Additional info is required"),
+  regex(/^.*\S.*$/, "Must be valid info"),
 ];
 const validateTitle = [
   required("Title is required"),
@@ -206,6 +210,7 @@ const UserEdit = (props) => {
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="additional_info_entire"
+          validate={validateAdditionalInfo}
         />
       </SimpleForm>
     </Edit>
