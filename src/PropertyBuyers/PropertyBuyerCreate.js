@@ -20,7 +20,14 @@ const validateName = [
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
 ];
 const validateProperty = [required("Property is required")];
-
+const validateAddress = [
+  required("Address is required"),
+  regex(/^.*\S.*$/, "Must e a valid address"),
+];
+const validateTitle = [
+  required("Title is required"),
+  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title"),
+];
 const validateAOC = [required("Amount of contract is required")];
 const validateISR = [required("'Is Survey Recieved' field is required")];
 const validateDateInput = [
@@ -51,12 +58,13 @@ const UserCreate = (props) => (
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="address"
+        validate={validateAddress}
       />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
         source="title_company_closer"
-        validate={regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title")}
+        validate={validateTitle}
       />
       <NumberInput source="amount_of_contract" validate={validateAOC} />
       <BooleanInput source="is_contract_to_lender" />
