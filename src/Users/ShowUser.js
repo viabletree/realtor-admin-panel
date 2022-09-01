@@ -33,13 +33,7 @@ const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
 
-interface CustomTextFieldProps {
-  label?: string,
-  record?: Record,
-  source: string
-}
-
-const CustomTextField = (props: CustomTextFieldProps) => (
+const CustomTextField = (props) => (
     <Labeled label={props.label ? props.label : startCase(props.source)}>
         <span>{get(props.record, props.source)}</span>
     </Labeled>
