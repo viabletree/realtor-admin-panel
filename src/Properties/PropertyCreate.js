@@ -79,7 +79,6 @@ const UserCreate = (props) => {
         />
 
         <TextInput
-          helperText="Max limit is 255 characters"
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="property_description"
