@@ -27,7 +27,10 @@ const validatePropertyYearBuilt = [
   ),
   required("Poperty year built is required"),
 ];
-const validateSqft = [required("SQFT is required")];
+const validateSqft = [
+  required("SQFT is required"),
+  regex(/^.*\S.*$/, "Only spaces are not allowed"),
+];
 const validateArea = [required("Area is required")];
 const validatePrice = [required("Price is required")];
 const validateType = [required("Property Type is required")];
