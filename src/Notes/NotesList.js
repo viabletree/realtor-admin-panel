@@ -11,6 +11,7 @@ import {
   ReferenceField,
   EditButton,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -48,6 +49,7 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   const notify = useNotify();
+  const refresh = useRefresh();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
@@ -74,6 +76,7 @@ const UsersList = (props) => {
           <DeleteButton
             undoable={false}
             onSuccess={() => {
+              refresh();
               notify(`Property Note Deleted`);
             }}
             onError={() => {

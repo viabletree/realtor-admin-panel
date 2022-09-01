@@ -11,6 +11,7 @@ import {
   ReferenceField,
   EditButton,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -59,6 +60,7 @@ const CreatedDate = (props) => {
 
 const UsersList = (props) => {
   const notify = useNotify();
+  const refresh = useRefresh();
   const classes = useStyles();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -80,13 +82,14 @@ const UsersList = (props) => {
             <TextField source="property_title" />
           </ReferenceField> */}
 
-          <TextField source="question" className={classes.descriptionText}/>
-          <TextField source="answer" className={classes.descriptionText}/>
+          <TextField source="question" className={classes.descriptionText} />
+          <TextField source="answer" className={classes.descriptionText} />
           <DateField source="created_at" />
           <EditButton />
           <DeleteButton
             undoable={false}
             onSuccess={() => {
+              refresh();
               notify(`Property faq Deleted`);
             }}
             onError={() => {

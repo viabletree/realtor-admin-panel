@@ -13,6 +13,7 @@ import {
   EditButton,
   BooleanField,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -38,14 +39,17 @@ const useStyles = makeStyles((theme) => ({
 const CustomDateField = (props) => {
   console.log({ props });
   const earnestMoneyReceivedDate = props.record.earnest_money_received_date;
-  return (
-    moment(earnestMoneyReceivedDate).isValid() === true ? <span>{earnestMoneyReceivedDate}</span> : <span>-</span>
-  )
-}
+  return moment(earnestMoneyReceivedDate).isValid() === true ? (
+    <span>{earnestMoneyReceivedDate}</span>
+  ) : (
+    <span>-</span>
+  );
+};
 
 const PropertyList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
+  const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List {...props} className="listWrap">
@@ -96,7 +100,7 @@ const PropertyList = (props) => {
               source="earnest_money_received_date"
             />
 
-          {/*  <CustomDateField /> */} 
+            {/*  <CustomDateField /> */}
             <BooleanField label="IsHomeWarranty" source="is_home_warranty" />
             <DateField label="HomeWarrantyDate" source="home_warranty_date" />
             <BooleanField
@@ -152,6 +156,7 @@ const PropertyList = (props) => {
             <DeleteButton
               undoable={false}
               onSuccess={() => {
+                refresh();
                 notify(`Property Buyer Deleted`);
               }}
               onError={() => {

@@ -12,6 +12,7 @@ import {
   SimpleList,
   EditButton,
   useNotify,
+  useRefresh,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const PropertyList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
+  const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -94,6 +96,7 @@ const PropertyList = (props) => {
             <DeleteButton
               undoable={false}
               onSuccess={() => {
+                refresh();
                 notify(`Property Deleted`);
               }}
               onError={() => {
