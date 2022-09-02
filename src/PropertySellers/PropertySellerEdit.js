@@ -23,15 +23,19 @@ const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
 const validateName = [required("Name is required")];
+const v_title_company_closer = [required("title company closer is required")];
 const validateProperty = [required("Property is required")];
+const v_additional_info = [required("Additional Info is required")];
+const v_address = [required("Address is required")];
 const validateAOC = [required("Amount of contract is required")];
-
+const val_qw = [required("field is required")];
+//const validateISR = [required("'Is Survey Recieved' field is required")];
 const validateDateInput = [
   // regex(
   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
   //   "Must be a valid date"
   // ),
-  required("Poperty year built is required"),
+  required("Please Insert date"),
 ];
 
 const UserEdit = (props) => (
@@ -55,11 +59,13 @@ const UserEdit = (props) => (
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
+        validate={v_address}
         source="address"
       />
       <TextInput
         inputProps={{ maxLength: 100 }}
         multiline={true}
+        validate={v_title_company_closer}
         source="title_company_closer"
       />
       <NumberInput inputProps={{ maxLength: 100 }} source="amount_of_contract" validate={validateAOC} />
@@ -127,6 +133,7 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="new_survey_info"
+        validate={v_additional_info}
       />
 
       <DateInput
@@ -163,6 +170,7 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="appraisal_additional_info"
+        validate={v_additional_info}
       />
 
       <DateInput
@@ -179,6 +187,7 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="additional_info_entire"
+        validate={v_additional_info}
       />
     </SimpleForm>
   </Edit>

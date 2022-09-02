@@ -30,6 +30,7 @@ const validateDateInput = [
   required("Please Insert date"),
 ];
 
+const v_is_req = [required("required")]
 const UserCreate = (props) => (
   <Create {...props} successMessage="Buyer created successfully">
     <SimpleForm>
@@ -53,6 +54,7 @@ const UserCreate = (props) => (
       <NumberInput source="amount_of_contract" validate={validateAOC} />
       <BooleanInput
         source="is_contract_to_lender"
+        validate={v_is_req}
 
       />
       <DateInput
@@ -63,6 +65,7 @@ const UserCreate = (props) => (
 
       <BooleanInput
         source="is_earnest_money_received"
+        validate={v_is_req}
 
       />
 
@@ -82,28 +85,33 @@ const UserCreate = (props) => (
        <BooleanInput
         source="is_cda_sent"
         label="Is CDA Sent"
+        validate={v_is_req}
 
       />
 
       <BooleanInput
         label="Is Home Warranty"
         source="is_home_warranty"
+        validate={v_is_req}
 
       />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="home_warranty_date"
+        
       />
 
       <BooleanInput
         label="is switch over utilities"
         source="is_switch_over_utilities"
+        validate={v_is_req}
 
       />
       <BooleanInput
         //validate={validateISR}
         source="is_survey_received"
+        validate={v_is_req}
 
       />
 
