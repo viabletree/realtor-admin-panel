@@ -28,21 +28,21 @@ import {
   validateTitle,
 } from "../constants";
 
-const validateName = [required("Name is required")];
-const v_title_company_closer = [required("title company closer is required")];
-const validateProperty = [required("Property is required")];
-const v_additional_info = [required("Additional Info is required")];
-const v_address = [required("Address is required")];
-const validateAOC = [required("Amount of contract is required")];
-const val_qw = [required("field is required")];
-//const validateISR = [required("'Is Survey Recieved' field is required")];
-const validateDateInput = [
-  // regex(
-  //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-  //   "Must be a valid date"
-  // ),
-  required("Please Insert date"),
-];
+// const validateName = [required("Name is required")];
+// const v_title_company_closer = [required("title company closer is required")];
+// const validateProperty = [required("Property is required")];
+ const v_additional_info = [required("Additional Info is required")];
+// const v_address = [required("Address is required")];
+// const validateAOC = [required("Amount of contract is required")];
+ const val_qw = [required("field is required")];
+// //const validateISR = [required("'Is Survey Recieved' field is required")];
+// const validateDateInput = [
+//   // regex(
+//   //   /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+//   //   "Must be a valid date"
+//   // ),
+//   required("Please Insert date"),
+// ];
 
 const UserCreate = (props) => (
   <Create {...props} successMessage="Seller created successfully">
