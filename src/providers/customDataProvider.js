@@ -50,6 +50,73 @@ const sentImageToS3 = async (files) => {
   }
 };
 
+const multiMediaUploadToServer = async (file) => {
+  let fileExt = "";
+  let typeOfUris = _.cloneDeep(file);
+
+  typeOfUris.forEach((item, i) => {
+    if (item.rawFile) {
+      if (i > 0) {
+        fileExt += ",";
+      }
+      fileExt += item.rawFile.name.split(".")[1];
+    }
+  });
+
+  let comingSignedUri = [];
+
+  try {
+    await fetch(
+      `https://prod.myrlty.com/api/v1/aws/sign-url?folder=&ext=${fileExt}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        comingSignedUri = result.data;
+      });
+  } catch (error) {
+    console.log("PIC Error", error);
+  }
+
+  if (!_.isEmpty(comingSignedUri)) {
+    const uploadMedia = [];
+    comingSignedUri.forEach((res, index) => {
+      uploadMedia.push(uploadToS3BySigned(file, res, index));
+    });
+
+    let mediaUpload = file;
+
+    await Promise.all(uploadMedia).then((uploadedImgs) => {
+      uploadMedia.map((_, index) => {
+        mediaUpload[index]["path"] = uploadedImgs[index];
+      });
+    });
+    console.log({ mediaUpload });
+    const ulrArrays = mediaUpload.map((obj) => obj.path);
+    return ulrArrays.length === 1 ? ulrArrays[0] : ulrArrays;
+  }
+  return "mediaUpload";
+};
+
+async function uploadToS3BySigned(file, item, index) {
+  let imageUrl = null;
+  await fetch(item, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: file[index],
+  })
+    .then((result) => {
+      imageUrl = result.url.split("?")[0];
+    })
+    .catch((err) => console.error("err", err));
+
+  return imageUrl;
+}
+
 export default {
   getList: (resource, params) => {
     const mResource = getResourcePath(resource);
@@ -191,10 +258,14 @@ export default {
     const mResource = getResourcePath(resource);
     if (
       _.has(params, "data") &&
-      _.has(params.data, "mediaUrls") &&
-      params.data.mediaUrls.length
+      _.has(params.data, "profile_image") &&
+      (params.data.profile_image.length || params.data.profile_image.src)
     ) {
-      params.data.mediaUrls = await sentImageToS3(params.data.mediaUrls);
+      params.data.profile_image = await multiMediaUploadToServer(
+        params.data.profile_image.src
+          ? [params.data.profile_image]
+          : params.data.profile_image
+      );
     }
 
     if (resource === "users") {
