@@ -270,7 +270,6 @@ export default {
 
     if (resource === "users") {
       // availability from time conversion
-      debugger;
       var availability_from_time = params?.data?.availability_from;
       var momentConversionFrom = moment(availability_from_time).format(
         "HH:mm:ss"
