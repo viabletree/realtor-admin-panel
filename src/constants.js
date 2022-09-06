@@ -9,7 +9,7 @@ import { useFormState } from "react-final-form";
 
 const PROD_URL = "https://dev.myrlty.com/";
 const DEV_URL = "https://dev.myrlty.com/";
-const LOCALHOST_URL = "http://localhost:8001/";
+const LOCALHOST_URL = "https://dev.myrlty.com/";
 export const BASE_URL =
   (process.env.REACT_APP_ENVIRONMENT === "production"
     ? PROD_URL

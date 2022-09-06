@@ -40,7 +40,7 @@ const CustomTextField = (props) => (
   </Labeled>
 );
 const CustomTimeField = (props) => {
-let value = moment(props.record[props.source]).format("HH:mm:ss");
+let value = moment(props.record[props.source]).format("hh:mm:ss A");
 
 const recordWithTimestampAsInteger = {
   [props.source]: value,    

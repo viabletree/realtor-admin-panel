@@ -87,7 +87,7 @@ const UserCreate = (props) => (
         <TimeInput
           source="availability_from"
           label="Availability From"
-          options={{ format: "HH:mm:ss", variant: "filled" }}
+          options={{ format: "hh:mm:ss a", variant: "filled" }}
           validate={[required("Availability from time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
@@ -97,7 +97,7 @@ const UserCreate = (props) => (
         <TimeInput
           source="availability_to"
           label="Availability To"
-          options={{ format: "HH:mm:ss", variant: "filled" }}
+          options={{ format: "hh:mm:ss a", variant: "filled" }}
           validate={[required("Availability to time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"

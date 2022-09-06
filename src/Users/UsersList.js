@@ -12,6 +12,7 @@ import {
   EditButton,
   useNotify,
   useRefresh,
+  useRecordContext,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -20,6 +21,7 @@ import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UsersMobileGrid from "./UsersMobileGrid";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -57,6 +59,33 @@ const CreatedDate = (props) => {
   );
 };
 
+const AvailabilityFromField = (props) => {
+  const record = useRecordContext(props);
+  const conversionTo12Hr = moment(
+    record.availability_from,
+    "hh:mm:ss A"
+  ).format("hh:mm:ss A");
+  return <span>{conversionTo12Hr}</span>;
+};
+
+AvailabilityFromField.defaultProps = {
+  label: "",
+  addLabel: true,
+};
+
+const AvailabilityToField = (props) => {
+  const record = useRecordContext(props);
+  const conversionTo12Hr = moment(record.availability_to, "hh:mm:ss A").format(
+    "hh:mm:ss A"
+  );
+  return <span>{conversionTo12Hr}</span>;
+};
+
+AvailabilityToField.defaultProps = {
+  label: "",
+  addLabel: true,
+};
+
 const UsersList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
@@ -83,9 +112,11 @@ const UsersList = (props) => {
             </ReferenceField>
             <TextField label="AgencyName" source="agency_name" />
             <TextField source="bio" className={classes.descriptionText} />
-            <TextField source="location" />
-            <TextField label="AvailabilityFrom" source="availability_from" />
-            <TextField label="AvailabilityTo" source="availability_to" />
+            <TextField source="location" aria-sort="none" />
+            {/* <TextField label="AvailabilityFrom" source="availability_from" /> */}
+            <AvailabilityFromField label="AvailabilityFrom" />
+            {/* <TextField label="AvailabilityTo" source="availability_to" /> */}
+            <AvailabilityToField label="AvailabilityTo" />
 
             <EditButton />
             <DeleteButton
