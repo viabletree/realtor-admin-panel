@@ -13,6 +13,8 @@ import {
   TextField,
   DateTimeInput,
   regex,
+  ImageField,
+  ImageInput,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
@@ -64,6 +66,15 @@ const UserCreate = (props) => (
         inputProps={{ maxLength: 100 }}
         validate={validateConfrimPassword}
       />
+      <ImageInput
+        source="profile_image"
+        label="Upload image"
+        accept="image/*"
+        placeholder={<p>Drop your picture here</p>}
+        validate={[required()]}
+      >
+        <ImageField source="src" title="title" />
+      </ImageInput>
       <NumberInput
         label="Phone Number"
         source="phone"
@@ -87,7 +98,7 @@ const UserCreate = (props) => (
         <TimeInput
           source="availability_from"
           label="Availability From"
-          options={{ format: "HH:mm:ss", variant: "filled" }}
+          options={{ format: "hh:mm:ss a", variant: "filled" }}
           validate={[required("Availability from time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
@@ -97,7 +108,7 @@ const UserCreate = (props) => (
         <TimeInput
           source="availability_to"
           label="Availability To"
-          options={{ format: "HH:mm:ss", variant: "filled" }}
+          options={{ format: "hh:mm:ss a", variant: "filled" }}
           validate={[required("Availability to time is required")]}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"

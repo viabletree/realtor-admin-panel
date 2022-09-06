@@ -1,7 +1,7 @@
 import { fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 import _ from "lodash";
-import { BASE_URL, getResourcePath } from "../constants";
+import { BASE_URL, getResourcePath, LOCALHOST_URL } from "../constants";
 import moment from "moment";
 
 const httpClient = (url, options = {}) => {
@@ -53,7 +53,6 @@ const sentImageToS3 = async (files) => {
 const multiMediaUploadToServer = async (file) => {
   let fileExt = "";
   let typeOfUris = _.cloneDeep(file);
-
   typeOfUris.forEach((item, i) => {
     if (item.rawFile) {
       if (i > 0) {
@@ -66,12 +65,9 @@ const multiMediaUploadToServer = async (file) => {
   let comingSignedUri = [];
 
   try {
-    await fetch(
-      `https://prod.myrlty.com/api/v1/aws/sign-url?folder=&ext=${fileExt}`,
-      {
-        method: "GET",
-      }
-    )
+    await fetch(`${LOCALHOST_URL}api/v1/aws/sign-url?folder=&ext=${fileExt}`, {
+      method: "GET",
+    })
       .then((response) => response.json())
       .then((result) => {
         comingSignedUri = result.data;
@@ -235,6 +231,20 @@ export default {
           moment(availability_to_time).format("HH:mm:ss");
         params.data.availability_to = momentConversionTo;
       }
+
+      if (
+        _.has(params, "data") &&
+        _.has(params.data, "profile_image") &&
+        _.isObject(params.data.profile_image)(
+          params.data.profile_image.length || params.data.profile_image.src
+        )
+      ) {
+        params.data.profile_image = await multiMediaUploadToServer(
+          params.data.profile_image.src
+            ? [params.data.profile_image]
+            : params.data.profile_image
+        );
+      }
     }
 
     return httpClient(`${BASE_URL}/${mResource}/${params.id}`, {
@@ -256,15 +266,16 @@ export default {
 
   create: async (resource, params) => {
     const mResource = getResourcePath(resource);
+
     if (
       _.has(params, "data") &&
-      _.has(params.data, "profile_image") &&
-      (params.data.profile_image.length || params.data.profile_image.src)
+      _.has(params.data, "property_images") &&
+      (params.data.property_images.length || params.data.property_images.src)
     ) {
-      params.data.profile_image = await multiMediaUploadToServer(
-        params.data.profile_image.src
-          ? [params.data.profile_image]
-          : params.data.profile_image
+      params.data.property_images = await multiMediaUploadToServer(
+        params.data.property_images.src
+          ? [params.data.property_images]
+          : params.data.property_images
       );
     }
 
@@ -280,6 +291,17 @@ export default {
       var availability_to_time = params?.data?.availability_to;
       var momentConversionTo = moment(availability_to_time).format("HH:mm:ss");
       params.data.availability_to = momentConversionTo;
+      if (
+        _.has(params, "data") &&
+        _.has(params.data, "profile_image") &&
+        (params.data.profile_image.length || params.data.profile_image.src)
+      ) {
+        params.data.profile_image = await multiMediaUploadToServer(
+          params.data.profile_image.src
+            ? [params.data.profile_image]
+            : params.data.profile_image
+        );
+      }
     }
 
     return httpClient(`${BASE_URL}/${mResource}`, {
