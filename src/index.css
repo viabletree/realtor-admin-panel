@@ -63,4 +63,8 @@ body>iframe {
   .RaLoadingIndicator-loadedIcon-24 {
     padding: 0 !important;
   }
+
+  .simple-form>.MuiCardContent-root {
+    padding: 16px 10px 0;
+  }
 }
