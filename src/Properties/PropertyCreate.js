@@ -15,6 +15,8 @@ import {
   SelectField,
   useNotify,
   regex,
+  ImageInput,
+  ImageField,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import { RESOURCES } from "../constants";
@@ -72,6 +74,16 @@ const UserCreate = (props) => {
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
           validate={validatePropertyYearBuilt}
         />
+        <ImageInput
+          source="property_images"
+          label="Upload image"
+          accept="image/*"
+          placeholder={<p>Drop your picture here</p>}
+          validate={[required()]}
+          multiple
+        >
+          <ImageField source="src" title="title" />
+        </ImageInput>
         <TextInput
           inputProps={{ maxLength: 100 }}
           source="property_title"

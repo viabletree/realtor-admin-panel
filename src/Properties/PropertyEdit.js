@@ -11,6 +11,8 @@ import {
   DateInput,
   regex,
   NumberInput,
+  ImageInput,
+  ImageField,
 } from "react-admin";
 import PropTypes from "prop-types";
 import { RESOURCES } from "../constants";
@@ -70,6 +72,17 @@ const UserEdit = (props) => (
           validate={validateType}
         />
       </ReferenceInput>
+
+      <ImageInput
+        source="images"
+        label="Upload image"
+        accept="image/*"
+        placeholder={<p>Drop your picture here</p>}
+        validate={[required()]}
+        multiple
+      >
+        <ImageField source="src" title="title" />
+      </ImageInput>
 
       <TextInput
         inputProps={{ maxLength: 100 }}
