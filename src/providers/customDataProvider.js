@@ -59,7 +59,7 @@ const multiMediaUploadToServer = async (file) => {
   let fileExt = "";
   let typeOfUris = _.cloneDeep(file);
   const fileTrim = [];
-  debugger;
+
   typeOfUris.forEach((item, i) => {
     fileTrim.push(item.rawFile);
     if (item.rawFile) {
@@ -230,9 +230,9 @@ export default {
       for (let image_obj of params.data.property_images) {
         if (!_.isUndefined(image_obj.rawFile)) {
           image_obj.src = image_obj.path;
-          debugger;
+
           property_images.push(
-            await multiMediaUploadToServer(             
+            await multiMediaUploadToServer(
               image_obj.src ? [image_obj] : image_obj
             )
           );
@@ -240,7 +240,7 @@ export default {
           property_images.push(image_obj.path);
         }
       }
-      debugger;
+
       params.data.property_images = property_images;
     }
 
@@ -262,7 +262,7 @@ export default {
           moment(availability_to_time).format("hh:mm:ss a");
         params.data.availability_to = momentConversionTo;
       }
-      debugger;
+
       if (params.data.profile_image.undefined) {
         params.data.profile_image.src = params.data.profile_image.undefined;
       }
