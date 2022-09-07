@@ -30,46 +30,43 @@ moment.tz.setDefault("UTC/Etc");
 let offset = new Date().getTimezoneOffset();
 
 const UserTitle = ({ record }) => {
-  return record && record.name && (
-    <span>{record.name}</span>
-  );
+  return record && record.name && <span>{record.name}</span>;
 };
 const CustomTextField = (props) => (
   <Labeled label={props.label ? props.label : startCase(props.source)}>
-      <span>{get(props.record, props.source)}</span>
+    <span>{get(props.record, props.source)}</span>
   </Labeled>
 );
 const CustomTimeField = (props) => {
-let value = moment(props.record[props.source]).format("hh:mm:ss A");
+  let value = moment(props.record[props.source]).format("hh:mm:ss A");
 
-const recordWithTimestampAsInteger = {
-  [props.source]: value,    
-};
+  const recordWithTimestampAsInteger = {
+    [props.source]: value,
+  };
 
-return <CustomTextField source={props.source} record={recordWithTimestampAsInteger} />
-
+  return (
+    <CustomTextField
+      source={props.source}
+      record={recordWithTimestampAsInteger}
+    />
+  );
 };
 const ShowUser = (props) => {
   return (
     <Show {...props}>
-     
-                 <SimpleShowLayout className={"textWrapperStyle"}>
+      <SimpleShowLayout className={"textWrapperStyle"}>
+        <TextField source="id" label="User Id" />
+        <TextField source="full_name" />
+        <TextField label="Phone" source="phone" />
 
-              <TextField source="id" label="User Id" />
-              <TextField source="full_name" />
-              <TextField label="Phone" source="phone" />
-
-              <TextField label="Agency Name" source="agency_name" />
-              <TextField label="Location" source="location" />
-              <CustomTimeField label="Availability From" source="availability_from" />
-              <CustomTimeField label="Availability To" source="availability_to" />
-              <TextField label="Bio" source="bio" />
-              </SimpleShowLayout>
-
-                 
-        </Show>
-     
-    
+        <TextField label="Agency Name" source="agency_name" />
+        <TextField label="Location" source="location" />
+        <CustomTimeField label="Availability From" source="availability_from" />
+        <CustomTimeField label="Availability To" source="availability_to" />
+        <TextField label="Bio" source="bio" />
+        <ImageField label="Profile Image" source="profile_image" />
+      </SimpleShowLayout>
+    </Show>
   );
 };
 

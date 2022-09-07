@@ -14,6 +14,8 @@ import {
   TextField,
   DateTimeInput,
   regex,
+  ImageInput,
+  ImageField,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
@@ -39,6 +41,16 @@ const validateConfrimPassword = [
   minLength(6),
   confirmPswdMatchedValidation,
 ];
+
+const PreviewImage = ({ record, source }) => {
+  if (typeof record == "string") {
+    record = {
+      [source]: record,
+    };
+  }
+  console.log({ record: record, source: source });
+  return <ImageField record={record} source={source} />;
+};
 
 const UserEdit = (props) => (
   <Edit {...props} successMessage="User updated successfully">
@@ -78,8 +90,21 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 100 }}
         validate={[required("Location is required")]}
       />
+      {/* <ImageInput
+        source="profile_image"
+        label="Upload image"
+        accept="image/*"
+        placeholder={<p>Drop your picture here</p>}
+        validate={[required()]}
+      >
+        <ImageField source="profile_image" title="title" />
+      </ImageInput> */}
+      <ImageInput source="profile_image" label="Upload Image" accept="image/*">
+        <PreviewImage />
+      </ImageInput>
+
       <TextInput
-        label="Phone"
+        label="Phone Number"
         source="phone"
         inputProps={{ maxLength: 100 }}
         validate={[required("Phone Number is required")]}
@@ -111,7 +136,6 @@ const UserEdit = (props) => (
         inputProps={{ maxLength: 255 }}
         validate={[required("Bio is required")]}
       />
-
       {/*   <TextInput source="agency_name" validate={[required()]}/>
               <TextInput source="location" validate={[required()]}/>
               <TextInput source="availability_from" validate={[required()]}/>

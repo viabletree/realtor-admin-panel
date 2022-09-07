@@ -1,7 +1,12 @@
 import { fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 import _ from "lodash";
-import { BASE_URL, getResourcePath, LOCALHOST_URL } from "../constants";
+import {
+  BASE_URL,
+  getResourcePath,
+  isValidUrl,
+  LOCALHOST_URL,
+} from "../constants";
 import moment from "moment";
 
 const httpClient = (url, options = {}) => {
@@ -53,7 +58,10 @@ const sentImageToS3 = async (files) => {
 const multiMediaUploadToServer = async (file) => {
   let fileExt = "";
   let typeOfUris = _.cloneDeep(file);
+  const fileTrim = [];
+  debugger;
   typeOfUris.forEach((item, i) => {
+    fileTrim.push(item.rawFile);
     if (item.rawFile) {
       if (i > 0) {
         fileExt += ",";
@@ -79,9 +87,9 @@ const multiMediaUploadToServer = async (file) => {
   if (!_.isEmpty(comingSignedUri)) {
     const uploadMedia = [];
     comingSignedUri.forEach((res, index) => {
-      uploadMedia.push(uploadToS3BySigned(file, res, index));
+      // const _temp = [file[index].rawFile];
+      uploadMedia.push(uploadToS3BySigned(fileTrim, res, index));
     });
-
     let mediaUpload = file;
 
     await Promise.all(uploadMedia).then((uploadedImgs) => {
@@ -213,13 +221,36 @@ export default {
       }
     }
 
+    if (
+      !_.isUndefined(params.data.property_images) &&
+      !isValidUrl(params.data.property_images)
+      // (params.data.property_images.length || params.data.property_images.src)
+    ) {
+      let property_images = [];
+      for (let image_obj of params.data.property_images) {
+        if (!_.isUndefined(image_obj.rawFile)) {
+          image_obj.src = image_obj.path;
+          debugger;
+          property_images.push(
+            await multiMediaUploadToServer(             
+              image_obj.src ? [image_obj] : image_obj
+            )
+          );
+        } else {
+          property_images.push(image_obj.path);
+        }
+      }
+      debugger;
+      params.data.property_images = property_images;
+    }
+
     if (resource === "users") {
       // availability from time conversion
       var availability_from_time = params?.data?.availability_from;
 
       if (!_.isString(availability_from_time)) {
         var momentConversionFrom = moment(availability_from_time).format(
-          "HH:mm:ss"
+          "hh:mm:ss a"
         );
         params.data.availability_from = momentConversionFrom;
       }
@@ -228,16 +259,17 @@ export default {
       var availability_to_time = params?.data?.availability_to;
       if (!_.isString(availability_to_time)) {
         var momentConversionTo =
-          moment(availability_to_time).format("HH:mm:ss");
+          moment(availability_to_time).format("hh:mm:ss a");
         params.data.availability_to = momentConversionTo;
       }
-
+      debugger;
+      if (params.data.profile_image.undefined) {
+        params.data.profile_image.src = params.data.profile_image.undefined;
+      }
       if (
-        _.has(params, "data") &&
-        _.has(params.data, "profile_image") &&
-        _.isObject(params.data.profile_image)(
-          params.data.profile_image.length || params.data.profile_image.src
-        )
+        !_.isUndefined(params.data.profile_image) &&
+        !isValidUrl(params.data.profile_image)
+        // (params.data.profile_image.length || params.data.profile_image.src)
       ) {
         params.data.profile_image = await multiMediaUploadToServer(
           params.data.profile_image.src
@@ -283,14 +315,16 @@ export default {
       // availability from time conversion
       var availability_from_time = params?.data?.availability_from;
       var momentConversionFrom = moment(availability_from_time).format(
-        "HH:mm:ss"
+        "hh:mm:ss a"
       );
       params.data.availability_from = momentConversionFrom;
 
       // availability to time conversion
       var availability_to_time = params?.data?.availability_to;
-      var momentConversionTo = moment(availability_to_time).format("HH:mm:ss");
+      var momentConversionTo =
+        moment(availability_to_time).format("hh:mm:ss a");
       params.data.availability_to = momentConversionTo;
+
       if (
         _.has(params, "data") &&
         _.has(params.data, "profile_image") &&
