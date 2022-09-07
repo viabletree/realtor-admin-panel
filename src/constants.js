@@ -10,7 +10,7 @@ import { useFormState } from "react-final-form";
 const PROD_URL = "https://dev.myrlty.com/";
 const DEV_URL = "https://dev.myrlty.com/";
 export const LOCALHOST_URL = "https://dev.myrlty.com/";
-// export const LOCALHOST_URL = "https://4889-182-188-42-224.ngrok.io/";
+// export const LOCALHOST_URL = "https://51d7-182-188-42-224.ngrok.io/";
 export const BASE_URL =
   (process.env.REACT_APP_ENVIRONMENT === "production"
     ? PROD_URL
@@ -39,6 +39,19 @@ export const RESOURCES = {
 export function getResourcePath(resourceName) {
   return RESOURCES[resourceName.toLowerCase()];
 }
+
+export const isValidUrl = (url) => {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(url);
+};
 
 export const validateName = [
   required("Name is required"),

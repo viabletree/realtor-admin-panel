@@ -26,13 +26,7 @@ const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
 const validatePropertyAdd = [required("Property Address is required")];
-const validatePropertyYearBuilt = [
-  regex(
-    /^[+-]?\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
-    "Must be a valid date"
-  ),
-  required("property year built is required"),
-];
+const validatePropertyYearBuilt = [required("property year built is required")];
 const validateSqft = [
   required("SQFT is required"),
   regex(/^.*\S.*$/, "Only spaces are not allowed"),
@@ -74,14 +68,14 @@ const UserEdit = (props) => (
       </ReferenceInput>
 
       <ImageInput
-        source="images"
+        source="property_images"
         label="Upload image"
         accept="image/*"
         placeholder={<p>Drop your picture here</p>}
         validate={[required()]}
         multiple
       >
-        <ImageField source="src" title="title" />
+        <ImageField source="path" title="title" />
       </ImageInput>
 
       <TextInput
