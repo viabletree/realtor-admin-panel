@@ -14,6 +14,7 @@ import Notes from '../Notes';
 import Setting from '../Setting';
 import Faqs from '../Faqs';
 import Showings from '../Showings';
+import Subscriptions from '../Subscriptions';
 
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
@@ -180,6 +181,23 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
       >
         <MenuItemLink
           to={'/setting'}
+          primaryText={'List'}
+          leftIcon={<Notes.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+</SubMenu>
+<SubMenu
+        handleToggle={() => handleToggle('menuSubscriptions')}
+        isOpen={state.menuSubscriptions}
+        sidebarIsOpen={open}
+        name="Subscriptions"
+        icon={<Notes.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/subscriptions'}
           primaryText={'List'}
           leftIcon={<Notes.icon />}
           onClick={onMenuClick}

@@ -9,7 +9,7 @@ import { useFormState } from "react-final-form";
 
 const PROD_URL = "https://dev.myrlty.com/";
 const DEV_URL = "https://dev.myrlty.com/";
-export const LOCALHOST_URL = "https://dev.myrlty.com/";
+export const LOCALHOST_URL = "http://localhost:8001/";
 // export const LOCALHOST_URL = "https://51d7-182-188-42-224.ngrok.io/";
 export const BASE_URL =
   (process.env.REACT_APP_ENVIRONMENT === "production"
@@ -29,6 +29,7 @@ export const RESOURCES = {
   setting: "setting",
 
   showings: "showings",
+  subscriptions: "subscriptions",
 };
 
 /**
