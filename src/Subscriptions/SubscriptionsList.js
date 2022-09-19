@@ -85,7 +85,7 @@ const SubscriptionsList = (props) => {
     <List
       {...props}
       /*  filters={<UserFilter />} */
-      bulkActionButtons={<BulkDeleteButton resourceName="users" />}
+      bulkActionButtons={false}
       // sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"

@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 // };
 
 const UserEmailUsername = (props) => {
-  
   return props.record && props.record.parentId ? (
     <TextField source="username" label={props.label} />
   ) : (
@@ -66,7 +65,7 @@ const UsersList = (props) => {
     <List
       {...props}
       /*  filters={<UserFilter />} */
-      bulkActionButtons={<BulkDeleteButton resourceName="users" />}
+      bulkActionButtons={false}
       // sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"
@@ -80,12 +79,17 @@ const UsersList = (props) => {
             <TextField source="property_title" />
           </ReferenceField> */}
 
-          <TextField source="term_and_condition" className={classes.descriptionText}/>
-          <TextField source="privacy_policy" className={classes.descriptionText}/>
-          <TextField source="about_us" className={classes.descriptionText}/>
+          <TextField
+            source="term_and_condition"
+            className={classes.descriptionText}
+          />
+          <TextField
+            source="privacy_policy"
+            className={classes.descriptionText}
+          />
+          <TextField source="about_us" className={classes.descriptionText} />
           <DateField source="created_at" />
           <EditButton />
-          
         </Datagrid>
       )}
     </List>

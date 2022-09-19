@@ -42,6 +42,7 @@ const PropertyList = (props) => {
       {...props}
       className="listWrap"
       sort={{ field: "created_at", order: "DESC" }}
+      bulkActionButtons={false}
     >
       {isSmall ? (
         <PropertiesMobileGrid />
