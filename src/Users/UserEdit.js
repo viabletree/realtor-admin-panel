@@ -103,7 +103,7 @@ const UserEdit = (props) => (
         <PreviewImage />
       </ImageInput>
 
-      <TextInput
+      <NumberInput
         label="Phone Number"
         source="phone"
         inputProps={{ maxLength: 100 }}

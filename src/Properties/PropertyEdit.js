@@ -13,6 +13,7 @@ import {
   NumberInput,
   ImageInput,
   ImageField,
+  useRedirect,
 } from "react-admin";
 import PropTypes from "prop-types";
 import { RESOURCES } from "../constants";
@@ -40,12 +41,20 @@ const validatePropertyTitle = [
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid title"),
 ];
 
-const UserEdit = (props) => (
+const UserEdit = (props) => 
+{
+  const redirect = useRedirect();
+ 
+ const onSuccess = () => {
+   redirect("list", "properties");
+ };
+  return (
   <Edit
     {...props}
     undoable={false}
     actions={<UserShowActions />}
     successMessage="Property updated successfully"
+    success={onSuccess}
   >
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
@@ -128,6 +137,7 @@ const UserEdit = (props) => (
     </SimpleForm>
   </Edit>
 );
+          }
 
 UserShowActions.propTypes = {
   basePath: PropTypes.string,

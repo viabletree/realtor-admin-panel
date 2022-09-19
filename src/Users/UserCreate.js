@@ -34,10 +34,13 @@ const validateEmail = [
   required("Email is required"),
   email("Must be a valid email"),
 ];
-const validatePassword = [required("Password is required"), minLength(6)];
+const validatePassword = [
+  required("Password is required"), minLength(8),
+  regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Must be a valid password")
+];
 const validateConfrimPassword = [
   required("Confirm Password is required"),
-  minLength(6),
+  minLength(8),
   confirmPswdMatchedValidation,
 ];
 

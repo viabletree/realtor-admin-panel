@@ -10,19 +10,40 @@ import {
   ReferenceInput,
   AutocompleteInput,
   TextField,
-  SelectInput
-} from 'react-admin';
-const validateQes = [required('Please enter question')]
-const validateAns = [required('Please enter answer')]
+  SelectInput,
+  userRedirect,
+  useNotify,
+  useRedirect,
+} from "react-admin";
+const validateQes = [required("Please enter question")];
+const validateAns = [required("Please enter answer")];
 
-const FaqCreate = (props) => (
-  <Create {...props} successMessage="Property faq created successfully">
-    <SimpleForm>        
-            <TextInput fullWidth source="question" inputProps={{ maxLength: 100 }} validate={validateQes}/>
-            <TextInput fullWidth source="answer" inputProps={{ maxLength: 255 }} validate={validateAns}/>
-       
-    </SimpleForm>
-  </Create>
-);
+const FaqCreate = (props) => {
+  const redirect = useRedirect();
+  const notify = useNotify();
+
+  const onSuccess = () => {
+    notify("Property faq created successfully");
+    redirect("list", "faqs");
+  };
+  return (
+    <Create {...props} onSuccess={onSuccess}>
+      <SimpleForm>
+        <TextInput
+          fullWidth
+          source="question"
+          inputProps={{ maxLength: 100 }}
+          validate={validateQes}
+        />
+        <TextInput
+          fullWidth
+          source="answer"
+          inputProps={{ maxLength: 255 }}
+          validate={validateAns}
+        />
+      </SimpleForm>
+    </Create>
+  );
+};
 
 export default FaqCreate;

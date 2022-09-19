@@ -12,6 +12,7 @@ import {
   EditButton,
   useNotify,
   useRefresh,
+  useRedirect,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -62,6 +63,7 @@ const UsersList = (props) => {
   const notify = useNotify();
   const refresh = useRefresh();
   const classes = useStyles();
+  const redirect = useRedirect();
   // const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
