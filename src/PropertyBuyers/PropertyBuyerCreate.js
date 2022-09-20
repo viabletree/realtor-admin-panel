@@ -86,14 +86,14 @@ const UserCreate = (props) => (
 
       <BooleanInput source="is_cda_sent" />
 
-      <SelectInput
+      {/* <SelectInput
         label="Is CDA Sent"
         source="is_cda_sent"
         choices={[
           { id: "0", name: "no" },
           { id: "1", name: "yes" },
         ]}
-      />
+      /> */}
 
 <BooleanInput label="Is Home Warranty" source="is_home_warranty" />
       <HomeWarrantyDateInput />
