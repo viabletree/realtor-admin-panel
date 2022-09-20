@@ -121,7 +121,7 @@ const PropertyList = (props) => {
               className={classes.descriptionText}
             />
             <DateField label="AppraisalDate" source="appraisal_date" />
-            <DateField label="AppraisalDueDate" source="appraisal_due_date" />
+            {/* <DateField label="AppraisalDueDate" source="appraisal_due_date" /> */}
             <TextField
               label="AppraisalAdditionalInfo"
               source="appraisal_additional_info"

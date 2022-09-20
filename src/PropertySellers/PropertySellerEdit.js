@@ -94,7 +94,7 @@ const UserEdit = (props) => (
 
       <BooleanInput source="is_survey_received" />
       <SurveyRecievedCutomInput />
-
+      
       <BooleanInput source="is_cda_sent" />
 
       {/* <SelectInput source="is_cda_sent" choices={[
@@ -107,18 +107,12 @@ const UserEdit = (props) => (
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
             ]} /> */}
-      <DateInput
+      {/* <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="survey_due_date"
-      />
-      <TextInput
-        inputProps={{ maxLength: 255 }}
-        multiline={true}
-        source="new_survey_info"
-        validate={v_additional_info}
-      />
-
+      /> */}
+      
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
@@ -144,11 +138,11 @@ const UserEdit = (props) => (
         validate={validateDateInput}
         source="appraisal_date"
       />
-      <DateInput
+      {/* <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="appraisal_due_date"
-      />
+      /> */}
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}

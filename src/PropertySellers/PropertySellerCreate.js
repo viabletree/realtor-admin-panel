@@ -75,29 +75,25 @@ const UserCreate = (props) => (
       />
       <BooleanInput source="is_earnest_money_received" />
       <EarnestMoneyRecievedDateInput />
-      <BooleanInput source="is_contract_to_lender" validate={val_qw} />
+      <BooleanInput source="is_contract_to_lender"  />
       <ContractLenderDateInput />
-      <BooleanInput source="is_home_warranty" validate={val_qw} />
-      <DateInput
+      <BooleanInput source="is_home_warranty" />
+      <HomeWarrantyDateInput />
+      {/* <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="home_warranty_date"
-      />
+      /> */}
       <BooleanInput source="is_survey_received" />
       <SurveyRecievedCutomInput />
-      <DateInput
+      {/* <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="survey_due_date"
-      />
-      <TextInput
-        inputProps={{ maxLength: 255 }}
-        multiline={true}
-        validate={v_additional_info}
-        source="new_survey_info"
-      />
-      <BooleanInput source="is_cda_sent" validate={val_qw} />
-      <BooleanInput source="is_switch_over_utilities" validate={val_qw} />
+      /> */}
+     
+      <BooleanInput source="is_cda_sent"  />
+      <BooleanInput source="is_switch_over_utilities" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
@@ -123,11 +119,11 @@ const UserCreate = (props) => (
         validate={validateDateInput}
         source="appraisal_date"
       />
-      <DateInput
+      {/* <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}
         source="appraisal_due_date"
-      />
+      /> */}
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
