@@ -91,6 +91,7 @@ const UserEdit = (props) => {
 
         <BooleanInput source="is_survey_received" />
         <SurveyRecievedCutomInput />
+     
 
         <BooleanInput source="is_cda_sent" />
 
