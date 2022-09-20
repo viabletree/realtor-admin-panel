@@ -17,6 +17,7 @@ import {
   regex,
   ImageInput,
   ImageField,
+  useRedirect,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import { RESOURCES } from "../constants";
@@ -45,11 +46,13 @@ const validatePropertyTitle = [
 
 const UserCreate = (props) => {
   const notify = useNotify();
+  const redirect = useRedirect();
   return (
     <Create
       {...props}
       onSuccess={() => {
         notify(`Property created successfully`);
+        redirect("list", "/properties");
       }}
     >
       <SimpleForm>
