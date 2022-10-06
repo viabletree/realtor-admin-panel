@@ -30,6 +30,7 @@ export const RESOURCES = {
 
   showings: "showings",
   subscriptions: "subscriptions",
+  reports: "reports",
 };
 
 /**
@@ -83,8 +84,17 @@ export const validateDateInput = [
   required("date should be valid"),
 ];
 
+export const termite_inspection_info = [
+  required("termite inspection info is requried"),
+];
 export const validateReq = [
   required("survey info is requried"),
+];
+export const appraisal_additional_info= [
+  required("appraisal additional info is requried"),
+];
+export const validateAAI = [
+  required("appraisal additional info is required"),
 ];
 
 export const SurveyRecievedCutomInput = () => {

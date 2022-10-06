@@ -15,6 +15,7 @@ import Setting from '../Setting';
 import Faqs from '../Faqs';
 import Showings from '../Showings';
 import Subscriptions from '../Subscriptions';
+import Reports from '../Reports';
 
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
@@ -176,7 +177,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         isOpen={state.menuSetting}
         sidebarIsOpen={open}
         name="Setting"
-        icon={<Notes.icon />}
+        icon={<Setting.icon />}
         dense={dense}
       >
         <MenuItemLink
@@ -188,12 +189,12 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
 </SubMenu>
-{/* <SubMenu
+<SubMenu
         handleToggle={() => handleToggle('menuSubscriptions')}
         isOpen={state.menuSubscriptions}
         sidebarIsOpen={open}
         name="Subscriptions"
-        icon={<Notes.icon />}
+        icon={<Subscriptions.icon />}
         dense={dense}
       >
         <MenuItemLink
@@ -204,7 +205,25 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           sidebarIsOpen={open}
           dense={dense}
         />
-</SubMenu> */}
+</SubMenu>
+<SubMenu
+        handleToggle={() => handleToggle('menuReports')}
+        isOpen={state.menuReports}
+        sidebarIsOpen={open}
+        name="Reports"
+        icon={<Reports.icon />}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={'/Reports'}
+          primaryText={'List'}
+          leftIcon={<Reports.icon />}
+          onClick={onMenuClick}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+</SubMenu>
+
       {logout}
     </Box>
   );

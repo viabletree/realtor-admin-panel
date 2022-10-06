@@ -84,8 +84,7 @@ const UserCreate = (props) => (
       />
       <EarnestMoneyRecievedDateInput />
 
-      <BooleanInput source="is_cda_sent" />
-
+    
       {/* <SelectInput
         label="Is CDA Sent"
         source="is_cda_sent"
@@ -105,11 +104,11 @@ const UserCreate = (props) => (
       />
       <BooleanInput source="is_survey_received" />
       <SurveyRecievedCutomInput />
-      <TextInput
+      {/* <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
         source="new_survey_info"
-      />
+      /> */}
 
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
@@ -147,12 +146,12 @@ const UserCreate = (props) => (
         validate={validateDateInput}
         source="closing_date"
       />
-      <TextInput
+      {/* <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
         validate={v_additional_info}
         source="closing_additional_info"
-      />
+      /> */}
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
         validate={validateDateInput}

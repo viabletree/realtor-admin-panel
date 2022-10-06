@@ -21,6 +21,7 @@ import {
   validateAdditionalInfo,
   validateAddress,
   validateAOC,
+  validateAAI,
   validateDateInput,
   validateName,
   validateProperty,
@@ -95,8 +96,7 @@ const UserEdit = (props) => (
       <BooleanInput source="is_survey_received" />
       <SurveyRecievedCutomInput />
       
-      <BooleanInput source="is_cda_sent" />
-
+    
       {/* <SelectInput source="is_cda_sent" choices={[
             { id: '0', name: 'no' },
             { id: '1', name: 'yes' },
@@ -163,6 +163,7 @@ const UserEdit = (props) => (
       <TextInput
         inputProps={{ maxLength: 255 }}
         multiline={true}
+        validate={validateAAI}
         source="additional_info_entire"
       />
     </SimpleForm>

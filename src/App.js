@@ -13,6 +13,7 @@ import Setting from './Setting';
 import Faqs from './Faqs';
 import Showings from './Showings';
 import Subscriptions from './Subscriptions';
+import Reports from './Reports';
 
 
 import englishMessages from 'ra-language-english';
@@ -48,6 +49,7 @@ const App = () => (
     <Resource name="faqs" {...Faqs} />
     <Resource name="showings" {...Showings} />
     <Resource name="subscriptions" {...Subscriptions} /> 
+    <Resource name="reports" {...Reports} /> 
 
   </Admin>
 );

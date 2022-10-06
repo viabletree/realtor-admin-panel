@@ -26,6 +26,7 @@ import {
   validateName,
   validateProperty,
   validateTitle,
+  termite_inspection_info,
 } from "../constants";
 
 const UserShowActions = ({ basePath }) => (
@@ -93,8 +94,7 @@ const UserEdit = (props) => {
         <SurveyRecievedCutomInput />
      
 
-        <BooleanInput source="is_cda_sent" />
-
+      
         <BooleanInput source="is_switch_over_utilities" />
         {/* <SelectInput source="is_switch_over_utilities" choices={[
           { id: '0', name: 'no' },
@@ -129,6 +129,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
+          
           source="appraisal_additional_info"
         />
         <DateInput
@@ -136,13 +137,13 @@ const UserEdit = (props) => {
           validate={validateDateInput}
           source="closing_date"
         />
-        <DateInput
+        {/* <DateInput
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
           validate={validateDateInput}
           inputProps={{ maxLength: 255 }}
           multiline={true}
           source="closing_additional_info"
-        />
+        /> */}
         <DateInput
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
           validate={validateDateInput}
@@ -157,6 +158,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
+          validate={termite_inspection_info}
           source="termite_inspection_info"
         />
         <TextInput

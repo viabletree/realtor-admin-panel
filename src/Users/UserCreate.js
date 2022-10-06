@@ -54,12 +54,14 @@ const UserCreate = (props) => (
       />
       <TextInput
         source="email"
+        autoComplete="off"
         inputProps={{ maxLength: 100 }}
         validate={validateEmail}
       />
       <PasswordInput
         label="Password"
         source="password"
+        autoComplete="off"
         inputProps={{ maxLength: 100 }}
         validate={validatePassword}
       />

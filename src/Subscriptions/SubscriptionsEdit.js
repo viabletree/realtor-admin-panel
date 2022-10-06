@@ -2,6 +2,7 @@ import {
   Edit,
   SimpleForm,
   TextInput,
+  NumberInput,
   required,
   TopToolbar,
   ListButton,
@@ -21,20 +22,20 @@ const UserShowActions = ({ basePath }) => (
     <ListButton basePath={basePath} label="Go Back to List" />
   </TopToolbar>
 );
-const validatePrivacy = [required("Please enter question")];
-const validateTerm = [required("Please enter answer")];
-const validateAbout = [required("Please enter question")];
+const duration = [required('Please insert duration')]
+const price = [required('Please insert price')]
+  
 const UserTitle = ({ record }) => {
   return record && record.name && <span>{record.name}</span>;
 };
 
 export const PriceCustomInput = () => {
   const { values } = useFormState();
-
+  
   const durationType = values.duration_type;
 
   return durationType === "D" ? null : (
-    <TextInput source="price" inputProps={{ maxLength: 255 }} />
+    <NumberInput source="price" validate={price} inputProps={{ maxLength: 255 }} />
   );
 };
 
@@ -53,7 +54,7 @@ const UserEdit = (props) => (
   >
     <SimpleForm toolbar={<CustomEditToolbar />}>
       <TextInput disabled source="id" />
-      <TextInput source="duration" inputProps={{ maxLength: 255 }} />
+      <NumberInput disabled source="duration" inputProps={{ maxLength: 255 }} />
 
       {/* <TextInput source="price" inputProps={{ maxLength: 255 }} /> */}
       <PriceCustomInput />

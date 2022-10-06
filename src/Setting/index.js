@@ -5,13 +5,12 @@ import { ListGuesser,ShowGuesser } from 'react-admin';
 
 import SettingEdit from './SettingEdit';
 import ShowSetting from './ShowSetting';
-import SettingIcon from '@mui/icons-material/Quiz';
-
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const resource = {
   list: SettingList,
   show: ShowSetting,
-  icon: SettingIcon,
+  icon: SettingsIcon,
  // create: SettingCreate,
   edit: SettingEdit
 };

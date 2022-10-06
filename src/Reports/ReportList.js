@@ -13,6 +13,9 @@ import {
   useNotify,
   useRefresh,
   useRecordContext,
+  SelectInput,
+  TextInput,
+  NumberField,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -20,7 +23,7 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import UsersMobileGrid from "./UsersMobileGrid";
+import UsersMobileGrid from "./ReportMobileGrid";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +42,30 @@ const useStyles = makeStyles((theme) => ({
 //     </Filter>
 //   );
 // };
-
+const FanFilter = [
+  <TextInput label="Search" source="agent_name" alwaysOn defaultValue="" />,
+  <SelectInput
+    label="By Month"
+    source="month_name"
+    defaultValue="all"
+    allowEmpty={false}
+    choices={[
+      { id: "all", name: "All" },
+      { id: 1, name: "Jan" },
+      { id: 2, name: "Feb" },
+      { id: 3, name: "March" },
+      { id: 4, name: "April" },
+      { id: 5, name: "May" },
+      { id: 6, name: "June" },
+      { id: 7, name: "July" },
+      { id: 8, name: "August" },
+      { id: 9, name: "September" },
+      { id: 10, name: "October" },
+      { id: 11, name: "November" },
+      { id: 12, name: "December" },
+    ]}
+  />,
+];
 const UserEmailUsername = (props) => {
   return props.record && props.record.parentId ? (
     <TextField source="username" label={props.label} />
@@ -73,23 +99,8 @@ AvailabilityFromField.defaultProps = {
   addLabel: true,
 };
 
-const AvailabilityToField = (props) => {
-  const record = useRecordContext(props);
-  const conversionTo12Hr = moment(record.availability_to, "hh:mm:ss A").format(
-    "hh:mm:ss A"
-  );
-  return <span>{conversionTo12Hr}</span>;
-};
-
-AvailabilityToField.defaultProps = {
-  label: "",
-  addLabel: true,
-};
-
-const UsersList = (props) => {
+const ReportList = (props) => {
   const classes = useStyles();
-  const notify = useNotify();
-  const refresh = useRefresh();
 
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
@@ -100,38 +111,23 @@ const UsersList = (props) => {
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"
+      filters={FanFilter}
     >
       {isSmall ? (
         <UsersMobileGrid />
       ) : (
         <>
-          <Datagrid rowClick="show">
-            <TextField source="id" />
-            <ReferenceField source="id" label="User" reference="users">
-              <TextField source="full_name" />
-            </ReferenceField>
-              
-              <TextField source="subscription_id.type" />
-            
-            <TextField label="AgencyName" source="agency_name" />
-            <TextField source="bio" className={classes.descriptionText} />
-            <TextField source="location" aria-sort="none" />
+          <Datagrid>
+            <TextField label="Property ID" source="id" />
+            <TextField label="Property Title" source="property_title" />
+            {/* <TextField source="bio" className={classes.descriptionText} /> */}
+            {/* <TextField source="Buyer" aria-sort="none" /> */}
             {/* <TextField label="AvailabilityFrom" source="availability_from" /> */}
-            <AvailabilityFromField label="AvailabilityFrom" />
-            {/* <TextField label="AvailabilityTo" source="availability_to" /> */}
-            <AvailabilityToField label="AvailabilityTo" />
-
-            <EditButton />
-            <DeleteButton
-              undoable={false}
-              onSuccess={() => {
-                refresh();
-                notify(`User Deleted`);
-              }}
-              onError={() => {
-                notify(`Unable to delete`);
-              }}
-            />
+            <TextField label="Agent Name" source="full_name" />
+            <TextField label="Property buyer" source="buyer_name" />
+            <TextField label="Property seller" source="seller_name" />
+            <NumberField label="Amount of contract" source="amount_of_contract" options={{ style: 'currency', currency: 'USD' }}/>
+            <DateField label="Sold At" source="sold_at" />
           </Datagrid>
           <Datagrid optimized rowClick="edit">
             content
@@ -142,19 +138,19 @@ const UsersList = (props) => {
   );
 };
 
-UsersList.propTypes = {
+ReportList.propTypes = {
   record: PropTypes.object,
   label: PropTypes.string,
 };
 
-UserEmailUsername.propTypes = {
-  record: PropTypes.object,
-  label: PropTypes.string,
-};
+// UserEmailUsername.propTypes = {
+//   record: PropTypes.object,
+//   label: PropTypes.string,
+// };
 
-CreatedDate.propTypes = {
-  record: PropTypes.object,
-  label: PropTypes.string,
-};
+// CreatedDate.propTypes = {
+//   record: PropTypes.object,
+//   label: PropTypes.string,
+// };
 
-export default UsersList;
+export default ReportList;

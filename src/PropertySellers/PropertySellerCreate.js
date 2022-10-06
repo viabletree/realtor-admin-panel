@@ -92,7 +92,6 @@ const UserCreate = (props) => (
         source="survey_due_date"
       /> */}
      
-      <BooleanInput source="is_cda_sent"  />
       <BooleanInput source="is_switch_over_utilities" />
       <DateInput
         options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
