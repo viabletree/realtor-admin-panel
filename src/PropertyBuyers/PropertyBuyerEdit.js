@@ -129,7 +129,7 @@ const UserEdit = (props) => {
         <TextInput
           inputProps={{ maxLength: 255 }}
           multiline={true}
-          
+          validate={validateAdditionalInfo}
           source="appraisal_additional_info"
         />
         <DateInput
