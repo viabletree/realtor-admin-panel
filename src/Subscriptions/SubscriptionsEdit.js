@@ -37,7 +37,21 @@ export const PriceCustomInput = () => {
   return durationType === "D" ? null : (
     <NumberInput source="price" validate={price} inputProps={{ maxLength: 255 }} />
   );
+  
 };
+export const DurationP = () => {
+  const { values } = useFormState();
+  
+  const duration = values.duration_type;
+
+  return duration === "D" 
+  ? <NumberInput  source="duration" inputProps={{ maxLength: 255 }} />
+  : (
+    <NumberInput disabled source="duration" inputProps={{ maxLength: 255 }} />
+
+  );
+};
+
 
 const CustomEditToolbar = (props) => (
   <Toolbar {...props}>
@@ -54,9 +68,9 @@ const UserEdit = (props) => (
   >
     <SimpleForm toolbar={<CustomEditToolbar />}>
       <TextInput disabled source="id" />
-      <NumberInput disabled source="duration" inputProps={{ maxLength: 255 }} />
-
+      
       {/* <TextInput source="price" inputProps={{ maxLength: 255 }} /> */}
+      <DurationP />
       <PriceCustomInput />
 
       {/* <TextInput fullWidth source="privacy_policy" inputProps={{ maxLength: 255 }} />

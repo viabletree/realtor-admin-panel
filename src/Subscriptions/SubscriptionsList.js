@@ -11,6 +11,7 @@ import {
   ReferenceField,
   EditButton,
   useNotify,
+  NumberField,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -100,7 +101,7 @@ const SubscriptionsList = (props) => {
           </ReferenceField> */}
 
           <TextField source="type" className={classes.descriptionText} />
-          <TextField source="price" className={classes.descriptionText} />
+          <NumberField source="price" options={{ style: "currency", currency: "USD" }} className={classes.descriptionText} />
           <DurationCustomField label="Duration" />
           <DateField source="created_at" />
           <EditButton />
