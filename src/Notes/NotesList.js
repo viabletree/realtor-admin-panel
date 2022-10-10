@@ -19,6 +19,7 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import NotesMobileGrid from "./NotesMobileGrid";
+import { LISTING } from "../constants";
 
 // const UserFilter = (props) => {
 //   return (
@@ -55,6 +56,8 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
+      title={isSmall ? " " : LISTING.notes}
+    
       /*  filters={<UserFilter />} */
       bulkActionButtons={false}
       // sort={{ field: "created_at", order: "DESC" }}

@@ -51,13 +51,13 @@ const NotesMobileGrid = (props) => {
                     </>
                   }
                   titleTypographyProps={{ variant: "h6", fontWeight: 800 }}
-                  action={
-                    <EditButton
-                      onClick={() =>
-                        redirect("edit", "showings", data[record].id)
-                      }
-                    />
-                  }
+                  // action={
+                  //   <EditButton
+                  //     onClick={() =>
+                  //       redirect("edit", "showings", data[record].id)
+                  //     }
+                  //   />
+                  // }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>

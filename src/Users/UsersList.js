@@ -22,6 +22,7 @@ import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UsersMobileGrid from "./UsersMobileGrid";
 import moment from "moment";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -95,6 +96,8 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
+      title={isSmall ? " " : LISTING.settings}
+    
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
@@ -111,7 +114,7 @@ const UsersList = (props) => {
               <TextField source="full_name" />
             </ReferenceField>
               
-              <TextField source="subscription_id.type" />
+              <TextField label="SubscriptionType" source="subscription_id.type" />
             
             <TextField label="AgencyName" source="agency_name" />
             <TextField source="bio" className={classes.descriptionText} />

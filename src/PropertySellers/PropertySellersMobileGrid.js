@@ -214,12 +214,12 @@ const PropertySellersMobileGrid = (props) => {
                     <DateField source="appraisal_date" />
                   </Typography>
 
-                  <Typography variant="body2" gutterBottom>
+                  {/* <Typography variant="body2" gutterBottom>
                     <span style={{ fontWeight: 800 }}>
                       Appraisal Due Date:&nbsp;
                     </span>
                     <DateField source="appraisal_due_date" />
-                  </Typography>
+                  </Typography> */}
 
                   <Typography variant="body2" gutterBottom>
                     <span style={{ fontWeight: 800 }}>

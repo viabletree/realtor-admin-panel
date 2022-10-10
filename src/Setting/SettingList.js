@@ -17,8 +17,9 @@ import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
-import FaqsMobileGrid from "./FaqsMobileGrid";
 import { makeStyles } from "@material-ui/core/styles";
+import SettingMobileGrid from "./SettingMobileGrid";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -64,6 +65,7 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
+      title={isSmall ? " " : LISTING.settings}
       /*  filters={<UserFilter />} */
       bulkActionButtons={false}
       // sort={{ field: "created_at", order: "DESC" }}
@@ -71,14 +73,9 @@ const UsersList = (props) => {
       className="listWrap"
     >
       {isSmall ? (
-        <FaqsMobileGrid />
+        <SettingMobileGrid />
       ) : (
         <Datagrid rowClick="show">
-          {/* <TextField source="id" /> */}
-          {/* <ReferenceField source="property_id" reference="properties">
-            <TextField source="property_title" />
-          </ReferenceField> */}
-
           <TextField
             source="term_and_condition"
             className={classes.descriptionText}

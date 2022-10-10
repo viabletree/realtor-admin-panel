@@ -183,7 +183,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         <MenuItemLink
           to={'/setting'}
           primaryText={'List'}
-          leftIcon={<Notes.icon />}
+          leftIcon={<Setting.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}
@@ -200,7 +200,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
         <MenuItemLink
           to={'/subscriptions'}
           primaryText={'List'}
-          leftIcon={<Notes.icon />}
+          leftIcon={<Subscriptions.icon />}
           onClick={onMenuClick}
           sidebarIsOpen={open}
           dense={dense}

@@ -33,7 +33,7 @@ const UserEdit = (props) => {
 
   const onSuccess = () => {
     notify("Property faq updated successfully");
-    redirect("list", "faqs");
+    redirect("list", "/faqs");
   };
   return (
     <Edit

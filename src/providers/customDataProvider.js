@@ -127,6 +127,7 @@ export default {
 
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
+    console.log(params.sort)
     const query = {
       sort: JSON.stringify([field, order]),
       range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
@@ -142,6 +143,7 @@ export default {
 
   getOne: (resource, params) => {
     const mResource = getResourcePath(resource);
+   
     return httpClient(`${BASE_URL}/${mResource}/${params.id}`).then(
       ({ json }) => {
         var newDateObj = new Date();
@@ -153,6 +155,7 @@ export default {
 
         json.data.availability_from = wholeDateFrom;
         json.data.availability_to = wholeDateTo;
+      
         return {
           data: json.data,
           id: params.id,
@@ -278,7 +281,6 @@ export default {
         );
       }
     }
-
     return httpClient(`${BASE_URL}/${mResource}/${params.id}`, {
       method: "PUT",
       body: JSON.stringify(params.data),
@@ -310,7 +312,7 @@ export default {
           : params.data.property_images
       );
     }
-
+    
     if (resource === "users") {
       // availability from time conversion
       var availability_from_time = params?.data?.availability_from;
@@ -336,6 +338,8 @@ export default {
             : params.data.profile_image
         );
       }
+      
+      let phone_num = params.data.phone;
     }
 
     return httpClient(`${BASE_URL}/${mResource}`, {

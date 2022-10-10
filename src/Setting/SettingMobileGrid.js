@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NotesMobileGrid = (props) => {
+const SettingMobileGrid = (props) => {
   const classes = useStyles();
   const redirect = useRedirect();
 
@@ -43,7 +43,7 @@ const NotesMobileGrid = (props) => {
                 <CardHeader
                   title={
                     <>
-                      Property #
+                      Settings:
                       <TextField
                         source="id"
                         variant="h6"
@@ -55,22 +55,24 @@ const NotesMobileGrid = (props) => {
                   action={
                     <EditButton
                       onClick={() =>
-                        redirect("edit", "notes", data[record].id)
+                        redirect("edit", "setting", data[record].id)
                       }
                     />
                   }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Property Name:&nbsp;</span>
-                    <ReferenceField source="property_id" reference="properties">
-                      <TextField source="property_title" />
-                    </ReferenceField>
+                    <span style={{ fontWeight: 800 }}> Terms and Condition:&nbsp;</span>
+                      <TextField source="term_and_condition" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Description:&nbsp;</span>
-                    <TextField source="description" />
+                    <span style={{ fontWeight: 800 }}> Privacy Policy:&nbsp;</span>
+                    <TextField source="privacy_policy" />
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}> About Us:&nbsp;</span>
+                    <TextField source="about_us" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
@@ -87,9 +89,9 @@ const NotesMobileGrid = (props) => {
   );
 };
 
-NotesMobileGrid.defaultProps = {
+SettingMobileGrid.defaultProps = {
   data: {},
   ids: [],
 };
 
-export default NotesMobileGrid;
+export default SettingMobileGrid;

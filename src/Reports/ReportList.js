@@ -25,6 +25,8 @@ import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UsersMobileGrid from "./ReportMobileGrid";
 import moment from "moment";
+import ReportMobileGrid from "./ReportMobileGrid";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -106,6 +108,8 @@ const ReportList = (props) => {
   return (
     <List
       {...props}
+      title={isSmall ? " " : LISTING.reports}
+    
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
@@ -114,7 +118,7 @@ const ReportList = (props) => {
       filters={FanFilter}
     >
       {isSmall ? (
-        <UsersMobileGrid />
+        <ReportMobileGrid />
       ) : (
         <>
           <Datagrid>

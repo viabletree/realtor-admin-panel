@@ -22,6 +22,7 @@ import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropertySellersMobileGrid from "./PropertySellersMobileGrid";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -39,7 +40,9 @@ const PropertyList = (props) => {
   const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-    <List {...props}>
+    <List {...props}   title={isSmall ? " " : LISTING.sellers}
+    >
+      
       {isSmall ? (
         <PropertySellersMobileGrid />
       ) : (

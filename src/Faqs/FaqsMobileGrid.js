@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NotesMobileGrid = (props) => {
+const FaqsMobileGrid = (props) => {
   const classes = useStyles();
   const redirect = useRedirect();
 
@@ -43,7 +43,7 @@ const NotesMobileGrid = (props) => {
                 <CardHeader
                   title={
                     <>
-                      Property #
+                      Faq #
                       <TextField
                         source="id"
                         variant="h6"
@@ -55,22 +55,20 @@ const NotesMobileGrid = (props) => {
                   action={
                     <EditButton
                       onClick={() =>
-                        redirect("edit", "notes", data[record].id)
+                        redirect("edit", "faqs", data[record].id)
                       }
                     />
                   }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Property Name:&nbsp;</span>
-                    <ReferenceField source="property_id" reference="properties">
-                      <TextField source="property_title" />
-                    </ReferenceField>
+                    <span style={{ fontWeight: 800 }}> Question:&nbsp;</span>
+                      <TextField source="question" className={classes.descriptionText}/>
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Description:&nbsp;</span>
-                    <TextField source="description" />
+                    <span style={{ fontWeight: 800 }}> Answer:&nbsp;</span>
+                    <TextField source="answer" className={classes.descriptionText}/>
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
@@ -87,9 +85,9 @@ const NotesMobileGrid = (props) => {
   );
 };
 
-NotesMobileGrid.defaultProps = {
+FaqsMobileGrid.defaultProps = {
   data: {},
   ids: [],
 };
 
-export default NotesMobileGrid;
+export default FaqsMobileGrid;

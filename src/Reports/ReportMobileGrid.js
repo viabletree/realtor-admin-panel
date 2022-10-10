@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UsersMobileGrid = (props) => {
+const ReportMobileGrid = (props) => {
   const classes = useStyles();
   const redirect = useRedirect();
 
@@ -42,7 +42,7 @@ const UsersMobileGrid = (props) => {
                 <CardHeader
                   title={
                     <>
-                      User #
+                      Report #
                       <TextField
                         source="id"
                         variant="h6"
@@ -51,50 +51,54 @@ const UsersMobileGrid = (props) => {
                     </>
                   }
                   titleTypographyProps={{ variant: "h6", fontWeight: 800 }}
-                  action={
-                    <EditButton
-                      onClick={() => redirect("edit", "users", data[record].id)}
-                    />
-                  }
+                  // action={
+                  //   <EditButton
+                  //     onClick={() => redirect("edit", "reports", data[record].id)}
+                  //   />
+                  // }
                 />
                 <CardContent sx={{ pt: 0 }}>
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Full Name:&nbsp;</span>
-                    <ReferenceField source="id" reference="users">
-                      <TextField source="full_name" />
-                    </ReferenceField>
+                    <span style={{ fontWeight: 800 }}> Property ID:&nbsp;</span>
+                      <TextField source="id" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}>Agency Name:&nbsp;</span>
-                    <TextField source="agency_name" />
+                    <span style={{ fontWeight: 800 }}>Property Title:&nbsp;</span>
+                    <TextField source="property_title" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Bio:&nbsp; </span>
+                    <span style={{ fontWeight: 800 }}> Agent Name:&nbsp; </span>
                     <TextField
-                      source="bio"
+                      source="full_name"
                       className={classes.descriptionText}
                     />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
-                    <span style={{ fontWeight: 800 }}> Location:&nbsp; </span>
-                    <TextField source="location" />
+                    <span style={{ fontWeight: 800 }}> Property Buyer:&nbsp; </span>
+                    <TextField source="buyer_name" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
                     <span style={{ fontWeight: 800 }}>
-                      Availability From:&nbsp;
+                      Property Seller:&nbsp;
                     </span>
-                    <TextField source="availability_from" />
+                    <TextField source="seller_name" />
                   </Typography>
 
                   <Typography variant="body2" gutterBottom>
                     <span style={{ fontWeight: 800 }}>
-                      Availability To:&nbsp;
+                      Amount of Contract:&nbsp;
                     </span>
-                    <TextField source="availability_to" />
+                    <TextField source="amount_of_contract" />
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    <span style={{ fontWeight: 800 }}>
+                      Sold At:&nbsp;
+                    </span>
+                    <DateField source="sold_at" />
                   </Typography>
                 </CardContent>
               </Card>
@@ -105,9 +109,9 @@ const UsersMobileGrid = (props) => {
   );
 };
 
-UsersMobileGrid.defaultProps = {
+ReportMobileGrid.defaultProps = {
   data: {},
   ids: [],
 };
 
-export default UsersMobileGrid;
+export default ReportMobileGrid;

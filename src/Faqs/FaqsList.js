@@ -21,6 +21,7 @@ import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import FaqsMobileGrid from "./FaqsMobileGrid";
 import { makeStyles } from "@material-ui/core/styles";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -69,6 +70,8 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
+        title={isSmall ? " " : LISTING.faqs}
+    
       /*  filters={<UserFilter />} */
       bulkActionButtons={false}
       // sort={{ field: "created_at", order: "DESC" }}

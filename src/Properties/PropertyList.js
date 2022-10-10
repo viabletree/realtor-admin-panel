@@ -21,6 +21,7 @@ import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropertiesMobileGrid from "./PropertiesMobileGrid";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -40,6 +41,9 @@ const PropertyList = (props) => {
   return (
     <List
       {...props}
+      title={isSmall ? " " : LISTING.properties}
+
+    
       className="listWrap"
       sort={{ field: "created_at", order: "DESC" }}
       bulkActionButtons={false}

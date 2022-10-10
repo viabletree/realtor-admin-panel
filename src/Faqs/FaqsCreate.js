@@ -24,7 +24,7 @@ const FaqCreate = (props) => {
 
   const onSuccess = () => {
     notify("Property faq created successfully");
-    redirect("list", "faqs");
+    redirect("list", "/faqs");
   };
   return (
     <Create {...props} onSuccess={onSuccess}>

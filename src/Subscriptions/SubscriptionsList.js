@@ -18,8 +18,9 @@ import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
-import FaqsMobileGrid from "./FaqsMobileGrid";
+import SubscriptionsMobileGrid from "./SubscriptionsMobileGrid";
 import { makeStyles } from "@material-ui/core/styles";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -84,6 +85,8 @@ const SubscriptionsList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+    title={isSmall ? " " : LISTING.subscriptions}
+    
       {...props}
       /*  filters={<UserFilter />} */
       bulkActionButtons={false}
@@ -92,7 +95,7 @@ const SubscriptionsList = (props) => {
       className="listWrap"
     >
       {isSmall ? (
-        <FaqsMobileGrid />
+        <SubscriptionsMobileGrid />
       ) : (
         <Datagrid rowClick="show">
           {/* <TextField source="id" /> */}

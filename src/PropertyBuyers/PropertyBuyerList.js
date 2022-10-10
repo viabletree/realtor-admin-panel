@@ -25,6 +25,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import PropertyBuyersMobileGrid from "./PropertyBuyersMobileGrid";
 import CustomDatePicker from "../components/CustomDatePicker";
 import moment from "moment";
+import { LISTING } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -52,7 +53,10 @@ const PropertyList = (props) => {
   const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-    <List {...props} className="listWrap">
+    <List {...props} 
+    title={isSmall ? " " : LISTING.buyers}
+    
+    className="listWrap">
       {isSmall ? (
         <PropertyBuyersMobileGrid />
       ) : (

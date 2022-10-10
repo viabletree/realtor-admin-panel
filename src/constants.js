@@ -9,7 +9,7 @@ import { useFormState } from "react-final-form";
 
 const PROD_URL = "https://dev.myrlty.com/";
 const DEV_URL = "https://dev.myrlty.com/";
-export const LOCALHOST_URL = "http://localhost:8001/";
+export const LOCALHOST_URL = "https://dev.myrlty.com/";
 // export const LOCALHOST_URL = "https://51d7-182-188-42-224.ngrok.io/";
 export const BASE_URL =
   (process.env.REACT_APP_ENVIRONMENT === "production"
@@ -31,6 +31,19 @@ export const RESOURCES = {
   showings: "showings",
   subscriptions: "subscriptions",
   reports: "reports",
+};
+
+export const LISTING = {
+  properties: "Properties",
+  sellers: "Property Sellers",
+  buyers: "Property Buyers",
+  settings: "Settings",
+  faqs: "Faqs",
+  notes: "Notes",
+  users:"Users",
+  showings:"Showings",
+  subscriptions:"Subscriptions",
+  reports:"Reports"
 };
 
 /**
@@ -87,15 +100,11 @@ export const validateDateInput = [
 export const termite_inspection_info = [
   required("termite inspection info is requried"),
 ];
-export const validateReq = [
-  required("survey info is requried"),
-];
-export const appraisal_additional_info= [
+export const validateReq = [required("survey info is requried")];
+export const appraisal_additional_info = [
   required("appraisal additional info is requried"),
 ];
-export const validateAAI = [
-  required("appraisal additional info is required"),
-];
+export const validateAAI = [required("appraisal additional info is required")];
 
 export const SurveyRecievedCutomInput = () => {
   const { values } = useFormState();
