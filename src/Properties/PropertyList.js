@@ -13,7 +13,13 @@ import {
   EditButton,
   useNotify,
   useRefresh,
+  useListContext,
+  useUpdateMany,
+  useDelete,
+  Button,
+  Confirm,
 } from "react-admin";
+import DeleteWithCustomConfirmButton from "ra-delete-with-custom-confirm-button";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
 import PropTypes from "prop-types";
@@ -21,7 +27,9 @@ import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropertiesMobileGrid from "./PropertiesMobileGrid";
-import { LISTING } from "../constants";
+import { DeleteConfirmContent, LISTING } from "../constants";
+import { useState } from "react";
+import { Close, Delete, ErrorOutline } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -41,9 +49,8 @@ const PropertyList = (props) => {
   return (
     <List
       {...props}
+      exporter={false}
       title={isSmall ? " " : LISTING.properties}
-
-    
       className="listWrap"
       sort={{ field: "created_at", order: "DESC" }}
       bulkActionButtons={false}
@@ -97,7 +104,7 @@ const PropertyList = (props) => {
               className={classes.descriptionText}
             />
 
-            <EditButton />
+            <EditButton className="editIcon" />
             <DeleteButton
               undoable={false}
               onSuccess={() => {
@@ -107,6 +114,16 @@ const PropertyList = (props) => {
               onError={() => {
                 notify(`Unable to delete`);
               }}
+            />
+            <DeleteWithCustomConfirmButton
+              title={`Delete this Property?`}
+              content={DeleteConfirmContent}
+              label="Delete"
+              confirmColor="warning"
+              ConfirmIcon={Delete}
+              cancel="Cancel"
+              CancelIcon={Close}
+              undoable={true}
             />
           </Datagrid>
         </>

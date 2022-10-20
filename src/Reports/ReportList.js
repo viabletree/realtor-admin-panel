@@ -16,6 +16,7 @@ import {
   SelectInput,
   TextInput,
   NumberField,
+  downloadCSV,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -27,6 +28,7 @@ import UsersMobileGrid from "./ReportMobileGrid";
 import moment from "moment";
 import ReportMobileGrid from "./ReportMobileGrid";
 import { LISTING } from "../constants";
+import jsonExport from "jsonexport/dist";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 //   );
 // };
 const FanFilter = [
-  <TextInput label="Search" source="agent_name" alwaysOn defaultValue="" />,
+  <TextInput label="Search" source="agent_name" alwaysOn />,
   <SelectInput
     label="By Month"
     source="month_name"
@@ -100,6 +102,24 @@ AvailabilityFromField.defaultProps = {
   label: "",
   addLabel: true,
 };
+const exporter = (reports) => {
+  console.log({ reports });
+  const reportsForExport = reports.map((report) => {
+    const { id,property_title,buyer_name,seller_name,amount_of_contract,sold_at } = report;
+    const soldAt =  moment(sold_at).format('MM/DD/YYYY');// omit backlinks and author
+    return { id,property_title,buyer_name,seller_name,amount_of_contract,soldAt }; // add a field
+    // return userForExport;
+  });
+  jsonExport(
+    reportsForExport,
+    {
+      headers: ["id","property_title","buyer_name","seller_name","amount_of_contract","sold_at"], // order fields in the export
+    },
+    (err, csv) => {
+      downloadCSV(csv, "reports"); // download as 'posts.csv` file
+    }
+  );
+};
 
 const ReportList = (props) => {
   const classes = useStyles();
@@ -108,12 +128,12 @@ const ReportList = (props) => {
   return (
     <List
       {...props}
+      exporter={exporter}
       title={isSmall ? " " : LISTING.reports}
-    
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
-      hasShow={true}
+      // hasShow={true}
       className="listWrap"
       filters={FanFilter}
     >
@@ -130,7 +150,11 @@ const ReportList = (props) => {
             <TextField label="Agent Name" source="full_name" />
             <TextField label="Property buyer" source="buyer_name" />
             <TextField label="Property seller" source="seller_name" />
-            <NumberField label="Amount of contract" source="amount_of_contract" options={{ style: 'currency', currency: 'USD' }}/>
+            <NumberField
+              label="Amount of contract"
+              source="amount_of_contract"
+              options={{ style: "currency", currency: "USD" }}
+            />
             <DateField label="Sold At" source="sold_at" />
           </Datagrid>
           <Datagrid optimized rowClick="edit">

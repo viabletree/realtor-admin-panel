@@ -19,14 +19,29 @@ import {
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
+import moment from "moment";
 
 const confirmPswdMatchedValidation = (value, allValues) => {
   if (value !== allValues.password) {
-    return "Password does not matched";
+    return "Password and confirm password must be match";
   }
   return undefined;
 };
 
+const validateEndTime = (value, allValues) => {
+  let startTime = moment(allValues.availability_from).format("hh:mm:ss a");
+  let endTime = moment(value).format("hh:mm:ss a");
+
+  if (startTime >= endTime) {
+    return "End time should be greater than start time";
+  }
+  return undefined;
+};
+const validateTime = [
+  required("Availability to time is required"),
+  validateEndTime,
+  //  regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
+];
 const validateFulName = [
   required("Full name is required"),
   regex(/^(?![\s.]+$)[a-zA-Z\s.]*$/, "Must be a valid name"),
@@ -124,7 +139,7 @@ const UserEdit = (props) => (
           source="availability_to"
           label="Availability To"
           options={{ format: "hh:mm:ss a", variant: "filled" }}
-          validate={[required("Availability to time is required")]}
+          validate={validateTime}
           inputProps={{ variant: "filled" }}
           className="availableTimeField"
         />

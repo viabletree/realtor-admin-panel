@@ -43,7 +43,7 @@ const ShowNotes = (props) => {
                       
         >
 
-                 <SimpleShowLayout>
+                 <SimpleShowLayout className={"textWrapperStyle"}>
 
              <TextField label="Name" source="name" />
              <TextField label="Address" source="address" />

@@ -54,6 +54,8 @@ const PropertyList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List {...props} 
+    exporter={false}
+      
     title={isSmall ? " " : LISTING.buyers}
     
     className="listWrap">
@@ -156,7 +158,7 @@ const PropertyList = (props) => {
               source="additional_info_entire"
               className={classes.descriptionText}
             />
-            <EditButton />
+            <EditButton className="editIcon"/>
             <DeleteButton
               undoable={false}
               onSuccess={() => {

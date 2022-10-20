@@ -40,7 +40,10 @@ const PropertyList = (props) => {
   const refresh = useRefresh();
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-    <List {...props}   title={isSmall ? " " : LISTING.sellers}
+    <List {...props}  
+    exporter={false}
+      
+     title={isSmall ? " " : LISTING.sellers}
     >
       
       {isSmall ? (
@@ -146,6 +149,7 @@ const PropertyList = (props) => {
               className={classes.descriptionText}
             />
             <EditButton
+            className="editIcon"
               onSuccess={() => {
                 notify(`Property Seller Updated`);
               }}

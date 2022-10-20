@@ -13,6 +13,7 @@ import {
   useNotify,
   useRefresh,
   useRecordContext,
+  downloadCSV,
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -23,6 +24,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import UsersMobileGrid from "./UsersMobileGrid";
 import moment from "moment";
 import { LISTING } from "../constants";
+import jsonExport from "jsonexport/dist";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -95,9 +97,9 @@ const UsersList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+      exporter={false}
       {...props}
       title={isSmall ? " " : LISTING.settings}
-    
       /*  filters={<UserFilter />} */
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
@@ -113,9 +115,9 @@ const UsersList = (props) => {
             <ReferenceField source="id" label="User" reference="users">
               <TextField source="full_name" />
             </ReferenceField>
-              
-              <TextField label="SubscriptionType" source="subscription_id.type" />
-            
+
+            <TextField label="SubscriptionType" source="subscription_id.type" />
+
             <TextField label="AgencyName" source="agency_name" />
             <TextField source="bio" className={classes.descriptionText} />
             <TextField source="location" aria-sort="none" />
@@ -124,7 +126,7 @@ const UsersList = (props) => {
             {/* <TextField label="AvailabilityTo" source="availability_to" /> */}
             <AvailabilityToField label="AvailabilityTo" />
 
-            <EditButton />
+            <EditButton className="editIcon"/>
             <DeleteButton
               undoable={false}
               onSuccess={() => {

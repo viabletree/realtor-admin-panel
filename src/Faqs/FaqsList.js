@@ -69,6 +69,8 @@ const UsersList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+    exporter={false}
+      
       {...props}
         title={isSmall ? " " : LISTING.faqs}
     
@@ -90,7 +92,7 @@ const UsersList = (props) => {
           <TextField source="question" className={classes.descriptionText} />
           <TextField source="answer" className={classes.descriptionText} />
           <DateField source="created_at" />
-          <EditButton />
+          <EditButton className="editIcon"/>
           <DeleteButton
             undoable={false}
             onSuccess={() => {

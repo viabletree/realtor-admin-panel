@@ -57,7 +57,7 @@ const UserCreate = (props) => {
     >
       <SimpleForm>
         <ReferenceInput
-          label="select user"
+          label="Select user"
           source="user_id"
           reference={RESOURCES.users}
 
@@ -73,7 +73,7 @@ const UserCreate = (props) => {
         />
         <DateInput
           source="property_year_built"
-          label="property year built"
+          label="Property year built"
           options={{ format: "YYYY-MM-DD", ampm: false, clearable: true }}
           validate={validatePropertyYearBuilt}
         />
@@ -111,16 +111,16 @@ const UserCreate = (props) => {
         />
         <NumberInput
           source="property_price"
-          inputProps={{ maxLength: 100 }}
+          inputProps={{ maxLength: 10 }}
           validate={validatePrice}
         />
-        <TextInput
-          inputProps={{ maxLength: 100 }}
+        <NumberInput
+          inputProps={{ maxLength: 10 }}
           source="property_area"
           validate={validateArea}
         />
-        <TextInput
-          inputProps={{ maxLength: 100 }}
+        <NumberInput
+          inputProps={{ maxLength: 10 }}
           source="property_square_feet"
           validate={validateSqft}
         />

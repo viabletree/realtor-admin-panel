@@ -64,6 +64,8 @@ const UsersList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+    exporter={false}
+      
       {...props}
       title={isSmall ? " " : LISTING.settings}
       /*  filters={<UserFilter />} */
@@ -86,7 +88,7 @@ const UsersList = (props) => {
           />
           <TextField source="about_us" className={classes.descriptionText} />
           <DateField source="created_at" />
-          <EditButton />
+          <EditButton className="editIcon"/>
         </Datagrid>
       )}
     </List>

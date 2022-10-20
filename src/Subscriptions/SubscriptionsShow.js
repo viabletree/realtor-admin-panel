@@ -43,7 +43,7 @@ const ShowFaqs = (props) => {
                       
         >
 
-                 <SimpleShowLayout>
+                 <SimpleShowLayout className={"textWrapperStyle"}>
 
              <TextField label="Price" source="price" />
              <TextField label="type" source="type" />

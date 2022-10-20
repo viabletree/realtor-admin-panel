@@ -67,6 +67,8 @@ const UsersList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+    exporter={false}
+      
       {...props}
       title={isSmall ? " " : LISTING.showings}
     

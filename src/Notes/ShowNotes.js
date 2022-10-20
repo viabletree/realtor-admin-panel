@@ -43,7 +43,7 @@ const ShowNotes = (props) => {
                       
         >
 
-                 <SimpleShowLayout>
+                 <SimpleShowLayout className={"textWrapperStyle"}>
 
              <TextField label="Notes Description" source="description" />
              <ReferenceField source="property_id" label= "Property Name" reference="properties"><TextField source="property_title" /></ReferenceField>

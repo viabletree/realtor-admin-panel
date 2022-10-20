@@ -56,6 +56,8 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
+      exporter={false}
+      
       title={isSmall ? " " : LISTING.notes}
     
       /*  filters={<UserFilter />} */
@@ -75,7 +77,7 @@ const UsersList = (props) => {
 
           <TextField source="description" />
           <DateField source="created_at" />
-          <EditButton />
+          <EditButton className="editIcon"/>
           <DeleteButton
             undoable={false}
             onSuccess={() => {

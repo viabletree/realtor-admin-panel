@@ -43,7 +43,7 @@ const ShowFaqs = (props) => {
                       
         >
 
-                 <SimpleShowLayout>
+                 <SimpleShowLayout className={"textWrapperStyle"}>
 
              <TextField label="Question" source="question" />
              <TextField label="Answwer" source="answer" />

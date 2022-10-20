@@ -85,6 +85,8 @@ const SubscriptionsList = (props) => {
   let isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
+    exporter={false}
+      
     title={isSmall ? " " : LISTING.subscriptions}
     
       {...props}
@@ -107,7 +109,7 @@ const SubscriptionsList = (props) => {
           <NumberField source="price" options={{ style: "currency", currency: "USD" }} className={classes.descriptionText} />
           <DurationCustomField label="Duration" />
           <DateField source="created_at" />
-          <EditButton />
+          <EditButton className="editIcon"/>
         </Datagrid>
       )}
     </List>
