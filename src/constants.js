@@ -31,6 +31,7 @@ export const RESOURCES = {
   showings: "showings",
   subscriptions: "subscriptions",
   reports: "reports",
+  forgotPassword: "/forgot-password",
 };
 
 export const LISTING = {
@@ -40,10 +41,10 @@ export const LISTING = {
   settings: "Settings",
   faqs: "Faqs",
   notes: "Notes",
-  users:"Users",
-  showings:"Showings",
-  subscriptions:"Subscriptions",
-  reports:"Reports"
+  users: "Users",
+  showings: "Showings",
+  subscriptions: "Subscriptions",
+  reports: "Reports",
 };
 
 /**
@@ -169,7 +170,6 @@ export const HomeWarrantyDateInput = () => {
     />
   ) : null;
 };
-
 
 export const DeleteConfirmContent = (props) => {
   return <span>Do you want to delete this listing?</span>;

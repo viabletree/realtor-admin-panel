@@ -1,4 +1,5 @@
 import { Admin, Resource, defaultTheme, Login } from "react-admin";
+import { Route } from "@mui/icons-material";
 
 import { createHashHistory } from "history";
 import customDataProvider from "./providers/customDataProvider";
@@ -19,6 +20,8 @@ import englishMessages from "ra-language-english";
 import polyglotI18nProvider from "ra-i18n-polyglot";
 
 import { Layout } from "./layout";
+import MyLoginPage from "./Login";
+import ForgotPassword from "./ForgotPassword";
 
 const history = createHashHistory();
 
@@ -30,13 +33,24 @@ const messages = {
   en: englishCustomMessages,
 };
 const i18nProvider = polyglotI18nProvider((locale) => messages[locale]);
+
 const App = () => (
   <Admin
+    loginPage={MyLoginPage}
     i18nProvider={i18nProvider}
     dataProvider={customDataProvider}
     authProvider={authProvider}
     history={history}
     layout={Layout}
+    customRoutes={[
+      <Route
+        exact
+        path="/forgotPassword"
+        component={ForgotPassword}
+        noLayout
+      />,
+      // <Route exact path="/resetPassword" component={ResetPassword} noLayout/>,
+    ]}
   >
     <Resource name="users" {...Users} />
     <Resource name="properties" {...Properties} />
