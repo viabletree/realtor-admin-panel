@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import _ from "lodash";
 import { fetchUtils, Link, PasswordInput, useRedirect } from "react-admin";
 
 import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
@@ -41,7 +42,18 @@ export default function MyLoginPage(props) {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const localEmail = localStorage.getItem("email");
+  const localPass = localStorage.getItem("password");
 
+  useEffect(() => {
+    !_.isEmpty(localEmail) && setEmailAdd(localEmail);
+    !_.isEmpty(localPass) && setValues({ ...values, password: localPass });
+    !_.isEmpty(localPass && localEmail) && setIsRememberMe(true);
+  }, [isRememberMe]);
+  // debugger
+  // if(!_.isEmpty(localEmail) && !_.isEmpty(localPass)){
+  //   setIsRememberMe(true)
+  // }
   const handleSubmit = (event) => {
     event.preventDefault();
     let body = JSON.parse(
@@ -55,12 +67,15 @@ export default function MyLoginPage(props) {
     options.body = JSON.stringify(body);
     fetchUtils
       .fetchJson(url, options)
-
       .then((data) => {
+        debugger;
         if (data.json.data.isAdmin == 1) {
-          debugger;
           localStorage.removeItem("not_authenticated");
           localStorage.setItem("auth", data.json.data.access_token);
+          if (isRememberMe === true) {
+            localStorage.setItem("email", emailAdd);
+            localStorage.setItem("password", values.password);
+          }
           redirect("/users");
         } else {
           alert("invalid credentials");
@@ -99,6 +114,7 @@ export default function MyLoginPage(props) {
               fullWidth
               type={values.showPassword ? "text" : "password"}
               value={values.password}
+              //  value={values.password}
               onChange={handleChange("password")}
               InputProps={{
                 endAdornment: (
@@ -145,7 +161,7 @@ export default function MyLoginPage(props) {
                 </FormGroup>
               </Grid>
               <Grid item>
-                <Link>Forgot Password</Link>
+                <Link to="/forgot-password">Forgot Password</Link>
               </Grid>
             </Grid>
           </form>

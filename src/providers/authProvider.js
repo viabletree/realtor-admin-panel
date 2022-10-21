@@ -58,7 +58,8 @@ export default {
         .then((response) => {
           if (response.data) {
             localStorage.setItem('not_authenticated', true);
-            localStorage.clear();
+            localStorage.removeItem('auth');
+           // localStorage.clear();
             return Promise.resolve();
           }
           localStorage.removeItem('not_authenticated');
@@ -66,7 +67,8 @@ export default {
         });
     } else {
       localStorage.setItem('not_authenticated', true);
-      localStorage.clear();
+      localStorage.removeItem('auth');
+    //  localStorage.clear();
       return Promise.resolve();
     }
   },

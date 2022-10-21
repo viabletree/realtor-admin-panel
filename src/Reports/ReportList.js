@@ -106,14 +106,14 @@ const exporter = (reports) => {
   console.log({ reports });
   const reportsForExport = reports.map((report) => {
     const { id,property_title,buyer_name,seller_name,amount_of_contract,sold_at } = report;
-    const soldAt =  moment(sold_at).format('MM/DD/YYYY');// omit backlinks and author
-    return { id,property_title,buyer_name,seller_name,amount_of_contract,soldAt }; // add a field
+    const sold_date =  moment(sold_at).format('MM/DD/YYYY');// omit backlinks and author
+    return { id,property_title,buyer_name,seller_name,amount_of_contract,sold_date }; // add a field
     // return userForExport;
   });
   jsonExport(
     reportsForExport,
     {
-      headers: ["id","property_title","buyer_name","seller_name","amount_of_contract","sold_at"], // order fields in the export
+      headers: ["id","property_title","buyer_name","seller_name","amount_of_contract","sold_date"], // order fields in the export
     },
     (err, csv) => {
       downloadCSV(csv, "reports"); // download as 'posts.csv` file

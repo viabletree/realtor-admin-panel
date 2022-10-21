@@ -37,6 +37,8 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
   const handleLogout = () => {
     setIsOpen(false);
     logoutHook();
+    //localStorage.removeItem("email")
+      //localStorage.removeItem("password")
   };
   // const MyLogoutButton = forwardRef((props, ref) => {
   //   const logout = useLogout();

@@ -18,6 +18,8 @@ import Reports from "./Reports";
 
 import englishMessages from "ra-language-english";
 import polyglotI18nProvider from "ra-i18n-polyglot";
+import customRoutes from "./customRoutes";
+
 
 import { Layout } from "./layout";
 import MyLoginPage from "./Login";
@@ -42,15 +44,8 @@ const App = () => (
     authProvider={authProvider}
     history={history}
     layout={Layout}
-    customRoutes={[
-      <Route
-        exact
-        path="/forgotPassword"
-        component={ForgotPassword}
-        noLayout
-      />,
-      // <Route exact path="/resetPassword" component={ResetPassword} noLayout/>,
-    ]}
+    customRoutes={customRoutes}
+
   >
     <Resource name="users" {...Users} />
     <Resource name="properties" {...Properties} />
