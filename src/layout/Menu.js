@@ -18,6 +18,7 @@ import Subscriptions from "../Subscriptions";
 import Reports from "../Reports";
 import { Button, Grid, MenuItem, Modal, Typography } from "@mui/material";
 import { Logout } from "@mui/icons-material";
+import { Check, CheckCircle, Close, ErrorOutline } from "@material-ui/icons";
 
 const Menu = ({ onMenuClick, logout, dense = false }) => {
   const [state, setState] = useState({
@@ -38,7 +39,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
     setIsOpen(false);
     logoutHook();
     //localStorage.removeItem("email")
-      //localStorage.removeItem("password")
+    //localStorage.removeItem("password")
   };
   // const MyLogoutButton = forwardRef((props, ref) => {
   //   const logout = useLogout();
@@ -71,20 +72,25 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
       >
         <Box className="modalWrap">
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Do yo want to logout?
           </Typography>
-          <Grid container>
+          <Grid container justifyContent={"flex-end"} style={{ padding: 8 }}>
             <Grid item>
-              <Button onClick={handleLogout} color="primary">
-                Yes
+              <Button
+                onClick={handleClose}
+                style={{ color: "#000" }}
+                startIcon={<ErrorOutline />}
+              >
+                Cancel
               </Button>
             </Grid>
             <Grid item>
-              <Button onClick={handleClose} color="error">
-                No
+              <Button
+                onClick={handleLogout}
+                color="primary"
+                startIcon={<CheckCircle />}
+              >
+                Confirm
               </Button>
             </Grid>
           </Grid>
@@ -92,40 +98,22 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
       </Modal>
       <Box mt={1}>
         {/* {* users menu *} */}
-        <SubMenu
-          handleToggle={() => handleToggle("menuUsers")}
-          isOpen={state.menuUsers}
-          sidebarIsOpen={open}
-          name="Users"
-          icon={<Users.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/users"}
-            primaryText={"List"}
+            primaryText={"Users"}
             leftIcon={<Users.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuProperties")}
-          isOpen={state.menuProperties}
-          sidebarIsOpen={open}
-          name="Properties"
-          icon={<Properties.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/properties"}
-            primaryText={"List"}
+            primaryText={"Properties"}
             leftIcon={<Properties.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
         {/* <SubMenu
         handleToggle={() => handleToggle('menuPropertyTypes')}
         isOpen={state.menuPropertyTypes}
@@ -143,144 +131,75 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
           dense={dense}
         />
       </SubMenu> */}
-        <SubMenu
-          handleToggle={() => handleToggle("menuPropertyBuyers")}
-          isOpen={state.menuPropertyBuyers}
-          sidebarIsOpen={open}
-          name="PropertyBuyers"
-          icon={<PropertyBuyer.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/property_buyers"}
-            primaryText={"List"}
+            primaryText={"Property Buyer"}
             leftIcon={<PropertyBuyer.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuPropertySellers")}
-          isOpen={state.menuPropertySellers}
-          sidebarIsOpen={open}
-          name="PropertySellers"
-          icon={<PropertySeller.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/property_sellers"}
-            primaryText={"List"}
+            primaryText={"Property Seller"}
             leftIcon={<PropertySeller.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuNotes")}
-          isOpen={state.menuNotes}
-          sidebarIsOpen={open}
-          name="Notes"
-          icon={<Notes.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/notes"}
-            primaryText={"List"}
+            primaryText={"Notes"}
             leftIcon={<Notes.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuShowings")}
-          isOpen={state.menuShowings}
-          sidebarIsOpen={open}
-          name="Showings"
-          icon={<Showings.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/showings"}
-            primaryText={"List"}
+            primaryText={"Showings"}
             leftIcon={<Showings.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuFaqs")}
-          isOpen={state.menuFaqs}
-          sidebarIsOpen={open}
-          name="Faqs"
-          icon={<Faqs.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/faqs"}
-            primaryText={"List"}
+            primaryText={"Faqs"}
             leftIcon={<Faqs.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuSetting")}
-          isOpen={state.menuSetting}
-          sidebarIsOpen={open}
-          name="Settings"
-          icon={<Setting.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/setting"}
-            primaryText={"List"}
+            primaryText={"Settings"}
             leftIcon={<Setting.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuSubscriptions")}
-          isOpen={state.menuSubscriptions}
-          sidebarIsOpen={open}
-          name="Subscriptions"
-          icon={<Subscriptions.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/subscriptions"}
-            primaryText={"List"}
+            primaryText={"Subscriptions"}
             leftIcon={<Subscriptions.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <SubMenu
-          handleToggle={() => handleToggle("menuReports")}
-          isOpen={state.menuReports}
-          sidebarIsOpen={open}
-          name="Reports"
-          icon={<Reports.icon />}
-          dense={dense}
-        >
           <MenuItemLink
             to={"/Reports"}
-            primaryText={"List"}
+            primaryText={"Reports"}
             leftIcon={<Reports.icon />}
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
           />
-        </SubMenu>
-        <MenuItem onClick={handleOpen}>
-          <Logout /> Logout
+        <MenuItem onClick={handleOpen} className="logoutMenuWrap">
+          <div>
+            <Logout />
+          </div>
+          <span> Logout</span>
         </MenuItem>
       </Box>
     </>

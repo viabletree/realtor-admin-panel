@@ -95,7 +95,7 @@ export default function MyLoginPage(props) {
       ? setValues({ ...values, password: localPass })
       : setValues({ ...values, password: "" });
     !_.isEmpty(localPass && localEmail) && setIsRememberMe(true);
-  }, [isRememberMe]);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -112,7 +112,6 @@ export default function MyLoginPage(props) {
       fetchUtils
         .fetchJson(url, options)
         .then((data) => {
-          debugger;
           if (data.json.data.isAdmin == 1) {
             localStorage.removeItem("not_authenticated");
             localStorage.setItem("auth", data.json.data.access_token);
@@ -122,8 +121,9 @@ export default function MyLoginPage(props) {
             }
             redirect("/users");
           } else {
-            setOpenSnackBar(true);
-            setServerError("Invalid credentials");
+            alert("Invalid credentials");
+            // setOpenSnackBar(true);
+            // setServerError("Invalid credentials");
             this.props.history.push("/login");
           }
         })
@@ -133,7 +133,7 @@ export default function MyLoginPage(props) {
 
   return (
     <>
-      <Snackbar
+      {/* <Snackbar
         open={openSnackBar}
         autoHideDuration={6000}
         onClick={handleSnackbarClose}
@@ -141,7 +141,7 @@ export default function MyLoginPage(props) {
         <AlertComp severity="error" sx={{ width: "100%" }}>
           {serverError}
         </AlertComp>
-      </Snackbar>
+      </Snackbar> */}
       <div style={gridStyle}>
         <Grid style={{ marginTop: "6em" }}>
           <Paper elevation={10} style={paperStyle}>

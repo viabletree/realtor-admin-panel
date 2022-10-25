@@ -57,7 +57,6 @@ export default function MyLoginPage(props) {
       .fetchJson(url, options)
 
       .then((data) => {
-        debugger
         if (data.status == 200 && data.json.status == true) {
           localStorage.setItem("email", emailAdd);
           alert("Otp send");

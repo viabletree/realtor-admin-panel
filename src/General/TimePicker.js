@@ -5,7 +5,6 @@ import { TimeInput } from "react-admin-date-inputs2";
 import PropTypes from 'prop-types';
 
 const TimePicker = ({ record, source }) => {
-    debugger
   if (typeof record === 'string') {
     record = {
       [source]: record,
