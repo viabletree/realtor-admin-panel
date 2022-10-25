@@ -79,7 +79,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
               <Button
                 onClick={handleClose}
                 style={{ color: "#000" }}
-                startIcon={<ErrorOutline />}
+                startIcon={<Close />}
               >
                 Cancel
               </Button>

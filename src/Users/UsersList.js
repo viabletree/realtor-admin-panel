@@ -23,8 +23,10 @@ import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UsersMobileGrid from "./UsersMobileGrid";
 import moment from "moment";
-import { LISTING } from "../constants";
+import { DeleteConfirmContent,LISTING } from "../constants";
 import jsonExport from "jsonexport/dist";
+import DeleteWithCustomConfirmButton from "ra-delete-with-custom-confirm-button/lib/DeleteWithCustomConfirmButton";
+import { Close, Delete } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -64,10 +66,10 @@ const CreatedDate = (props) => {
 
 const AvailabilityFromField = (props) => {
   const record = useRecordContext(props);
-  const conversionTo12Hr = moment(
-    record.availability_from,
+  const date = `2022-10-25 ${record.availability_from}`
+  const conversionTo12Hr = moment.utc(`2022-10-25 ${record.availability_from}`).local().format(
     "hh:mm:ss A"
-  ).format("hh:mm:ss A");
+  );
   return <span>{conversionTo12Hr}</span>;
 };
 
@@ -78,7 +80,7 @@ AvailabilityFromField.defaultProps = {
 
 const AvailabilityToField = (props) => {
   const record = useRecordContext(props);
-  const conversionTo12Hr = moment(record.availability_to, "hh:mm:ss A").format(
+  const conversionTo12Hr = moment.utc(`2022-10-25 ${record.availability_to}`).local().format(
     "hh:mm:ss A"
   );
   return <span>{conversionTo12Hr}</span>;
@@ -136,6 +138,16 @@ const UsersList = (props) => {
               onError={() => {
                 notify(`Unable to delete`);
               }}
+            />
+            <DeleteWithCustomConfirmButton
+              title={`Delete this Property?`}
+              content={DeleteConfirmContent}
+              label="Delete"
+              confirmColor="warning"
+              ConfirmIcon={Delete}
+              cancel="Cancel"
+              CancelIcon={Close}
+              undoable={true}
             />
           </Datagrid>
           <Datagrid optimized rowClick="edit">

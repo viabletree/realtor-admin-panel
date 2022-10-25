@@ -17,6 +17,31 @@ import {
 } from "react-admin";
 import PropTypes from "prop-types";
 import { RESOURCES } from "../constants";
+const validatePropertyEdit = (values) => {
+  const errors = {};
+  //price validation
+  if (_.isUndefined(values.property_price)) {
+    errors.property_price = "Price is required";
+  } else if (_.size(values.property_price) > 10) {
+    errors.property_price = "Price should not be more than 10 characters";
+  } 
+  var re = /^(\d+)?(?:\.\d{1,3})?$/;
+
+  if (_.isUndefined(values.property_area)) {
+    errors.property_area = "Property area is required";
+  } else if (re.test(values.property_area) === false) {
+    errors.property_area = "Property area value is not valid";
+  }
+
+  if (_.isUndefined(values.property_square_feet)) {
+    errors.property_square_feet = "Property squrare feet is required";
+  } else if (re.test(values.property_square_feet) === false) {
+    errors.property_square_feet = "Property square feet value is not valid";
+  }
+
+
+  return errors;
+};
 const UserShowActions = ({ basePath }) => (
   <TopToolbar>
     <ListButton basePath={basePath} label="Go Back to List" />
@@ -56,7 +81,7 @@ const UserEdit = (props) =>
     successMessage="Property updated successfully"
     success={onSuccess}
   >
-    <SimpleForm>
+    <SimpleForm validate={validatePropertyEdit}>
       <TextInput disabled label="Id" source="id" />
       <TextInput
         source="property_address"
@@ -101,8 +126,8 @@ const UserEdit = (props) =>
       />
       <NumberInput
         source="property_price"
-        inputProps={{ maxLength: 100 }}
-        validate={validatePrice}
+       // inputProps={{ maxLength: 10 }}
+       // validate={validatePrice}
       />
       <SelectInput
         source="property_type_id"
@@ -112,17 +137,11 @@ const UserEdit = (props) =>
           { id: "3", name: "land" },
         ]}
       />
-      <TextInput
-        inputProps={{ maxLength: 100 }}
-        multiline={true}
+      <NumberInput
         source="property_area"
-        validate={validateArea}
-      />
-      <TextInput
-        inputProps={{ maxLength: 100 }}
+        />
+      <NumberInput
         source="property_square_feet"
-        multiline={true}
-        validate={validateSqft}
       />
       <DateInput
         source="property_year_built"

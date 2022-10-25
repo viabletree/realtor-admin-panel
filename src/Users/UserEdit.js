@@ -23,7 +23,7 @@ import moment from "moment";
 
 const confirmPswdMatchedValidation = (value, allValues) => {
   if (value !== allValues.password) {
-    return "Password and confirm password must be match";
+    return "New password and confirm password must be match";
   }
   return undefined;
 };

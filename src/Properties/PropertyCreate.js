@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   Create,
   SimpleForm,
@@ -21,6 +22,31 @@ import {
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import { RESOURCES } from "../constants";
+
+const validatePropertyCreation = (values) => {
+  const errors = {};
+  //price validation
+  if (_.isUndefined(values.property_price)) {
+    errors.property_price = "Price is required";
+  } else if (_.size(values.property_price) > 10) {
+    errors.property_price = "Price should not be more than 10 characters";
+  } 
+  var re = /^(\d+)?(?:\.\d{1,3})?$/;
+
+  if (_.isUndefined(values.property_area)) {
+    errors.property_area = "Property area is required";
+  } else if (re.test(values.property_area) === false) {
+    errors.property_area = "Property area value is not valid";
+  }
+
+  if (_.isUndefined(values.property_square_feet)) {
+    errors.property_square_feet = "Property squrare feet is required";
+  } else if (re.test(values.property_square_feet) === false) {
+    errors.property_square_feet = "Property square feet value is not valid";
+  }
+
+  return errors;
+};
 
 const validatePropertyAdd = [required("Property Address is required")];
 const validatePropertyYearBuilt = [
@@ -55,7 +81,7 @@ const UserCreate = (props) => {
         redirect("list", "/properties");
       }}
     >
-      <SimpleForm>
+      <SimpleForm validate={validatePropertyCreation}>
         <ReferenceInput
           label="Select user"
           source="user_id"
@@ -111,18 +137,18 @@ const UserCreate = (props) => {
         />
         <NumberInput
           source="property_price"
-          inputProps={{ maxLength: 10 }}
-          validate={validatePrice}
+         // inputProps={{ maxLength: 10 }}
+         // validate={validatePrice}
         />
         <NumberInput
-          inputProps={{ maxLength: 10 }}
+          //inputProps={{ maxLength: 10 }}
           source="property_area"
-          validate={validateArea}
+         // validate={validateArea}
         />
         <NumberInput
-          inputProps={{ maxLength: 10 }}
+         // inputProps={{ maxLength: 10 }}
           source="property_square_feet"
-          validate={validateSqft}
+          //validate={validateSqft}
         />
         {/*  <TextInput source="latitude" validate={[required()]} />
             <TextInput source="longitude" validate={[required()]} />
