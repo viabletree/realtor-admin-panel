@@ -26,6 +26,7 @@ import PropertyBuyersMobileGrid from "./PropertyBuyersMobileGrid";
 import CustomDatePicker from "../components/CustomDatePicker";
 import moment from "moment";
 import { LISTING } from "../constants";
+import CustomDateField from "../components/CustomDateField";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -36,16 +37,6 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
 }));
-
-const CustomDateField = (props) => {
-  console.log({ props });
-  const earnestMoneyReceivedDate = props.record.earnest_money_received_date;
-  return moment(earnestMoneyReceivedDate).isValid() === true ? (
-    <span>{earnestMoneyReceivedDate}</span>
-  ) : (
-    <span>-</span>
-  );
-};
 
 const PropertyList = (props) => {
   const classes = useStyles();
@@ -93,7 +84,7 @@ const PropertyList = (props) => {
               label="IsContractToLender"
             />
 
-            <DateField
+            <CustomDateField
               label="ContractToLenderDate"
               source="contract_to_lender_date"
             />
@@ -101,14 +92,14 @@ const PropertyList = (props) => {
               label="IsEarnestMoneyReceived"
               source="is_earnest_money_received"
             />
-            <DateField
+            <CustomDateField
               label="EarnestMoneyReceiveDate"
               source="earnest_money_received_date"
             />
 
             {/*  <CustomDateField /> */}
             <BooleanField label="IsHomeWarranty" source="is_home_warranty" />
-            <DateField label="HomeWarrantyDate" source="home_warranty_date" />
+            <CustomDateField label="HomeWarrantyDate" source="home_warranty_date" />
             <BooleanField
               label="IsSurveyReceived"
               source="is_survey_received"
@@ -120,7 +111,7 @@ const PropertyList = (props) => {
               className={classes.descriptionText}
             />
 
-            <DateField
+            <CustomDateField
               label="HomeInspectionDate"
               source="home_inspection_date"
             />
@@ -129,25 +120,25 @@ const PropertyList = (props) => {
               source="home_inspection_info"
               className={classes.descriptionText}
             />
-            <DateField
+            <CustomDateField
               label="TermiteInspectionDate"
               source="termite_inspection_date"
             />
-            <DateField label="AppraisalDate" source="appraisal_date" />
-            <DateField label="AppraisalDueDate" source="appraisal_due_date" />
+            <CustomDateField label="AppraisalDate" source="appraisal_date" />
+            <CustomDateField label="AppraisalDueDate" source="appraisal_due_date" />
             <TextField
               label="AppraisalAdditionalInfo"
               source="appraisal_additional_info"
               className={classes.descriptionText}
             />
-            <DateField label="ClosingDate" source="closing_date" />
-            <DateField label="TitleCommitment" source="title_commitment" />
+            <CustomDateField label="ClosingDate" source="closing_date" />
+            <CustomDateField label="TitleCommitment" source="title_commitment" />
             <BooleanField label="IsCdaSent" source="is_cda_sent" />
             <BooleanField
               label="IsSwitchOverUtilities"
               source="is_switch_over_utilities"
             />
-            <DateField label="OptionPeriodEnd" source="option_period_end" />
+            <CustomDateField label="OptionPeriodEnd" source="option_period_end" />
             <TextField
               label="TermiteInspectionInfo"
               source="termite_inspection_info"

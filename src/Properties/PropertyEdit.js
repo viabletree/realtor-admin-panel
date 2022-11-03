@@ -17,26 +17,35 @@ import {
 } from "react-admin";
 import PropTypes from "prop-types";
 import { RESOURCES } from "../constants";
+import _ from 'lodash';
+
 const validatePropertyEdit = (values) => {
   const errors = {};
   //price validation
-  if (_.isUndefined(values.property_price)) {
+  if (_.isNil(values.property_price)) {
     errors.property_price = "Price is required";
-  } else if (_.size(values.property_price) > 10) {
+  } else if (values.property_price > 999999999) {
     errors.property_price = "Price should not be more than 10 characters";
   } 
   var re = /^(\d+)?(?:\.\d{1,3})?$/;
 
+  // if (_.isUndefined(values.property_area)) {
+  //   errors.property_area = "Property area is required";
+  // } else if (re.test(values.property_area) === false) {
+  //   errors.property_area = "Property area value is not valid";
+  // }
+
+  
   if (_.isUndefined(values.property_area)) {
     errors.property_area = "Property area is required";
-  } else if (re.test(values.property_area) === false) {
-    errors.property_area = "Property area value is not valid";
+  } else if (_.size(values.property_area) > 100) {
+    errors.property_area = "Characters must not be more than 100";
   }
 
-  if (_.isUndefined(values.property_square_feet)) {
-    errors.property_square_feet = "Property squrare feet is required";
-  } else if (re.test(values.property_square_feet) === false) {
-    errors.property_square_feet = "Property square feet value is not valid";
+  if (_.isNil(values.property_square_feet)) {
+    errors.property_square_feet = "SQFT is required";
+  } else if (values.property_square_feet > 999999999) {
+    errors.property_square_feet = "SQFT should not be more than 10 characters";
   }
 
 
@@ -137,7 +146,7 @@ const UserEdit = (props) =>
           { id: "3", name: "land" },
         ]}
       />
-      <NumberInput
+      <TextInput
         source="property_area"
         />
       <NumberInput

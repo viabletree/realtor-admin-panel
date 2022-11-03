@@ -20,6 +20,7 @@ import {
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
+import _ from "lodash";
 
 const confirmPswdMatchedValidation = (value, allValues) => {
   if (value !== allValues.password) {
@@ -27,12 +28,25 @@ const confirmPswdMatchedValidation = (value, allValues) => {
   }
   return undefined;
 };
+const validatePhoneNu = (values) => {
+  const errors = {};
+  //price validation
+  
+  if (_.isNil(values.phone)) {
+    errors.property_price = "Price is required";
+  } else if (values.phone > 99999999999999999999) {
+    errors.phone = "Phone should not be more than 20 digits";
+  } else if (values.phone < 9999999) {
+    errors.phone = "Phone should not be less than 08 digits";
 
+  } 
+
+  return errors;
+};
 const validateEndTime = (value, allValues) => {
   let startTime = moment(allValues.availability_from).format("hh:mm:ss a");
   let endTime = moment(value).format("hh:mm:ss a");
-
-  if (startTime >= endTime) {
+  if (startTime > endTime) {
     return "End time should be greater than start time";
   }
   return undefined;
@@ -69,7 +83,7 @@ const PreviewImage = ({ record, source }) => {
 
 const UserEdit = (props) => (
   <Edit {...props} successMessage="User updated successfully">
-    <SimpleForm>
+    <SimpleForm validate={validatePhoneNu}>
       <TextInput
         source="full_name"
         inputProps={{ maxLength: 100 }}
@@ -114,15 +128,15 @@ const UserEdit = (props) => (
       >
         <ImageField source="profile_image" title="title" />
       </ImageInput> */}
-      <ImageInput source="profile_image" label="Upload Image" accept="image/*">
+      <ImageInput source="profile_image" validate={[required()]} label="Upload Image" accept="image/*">
         <PreviewImage />
       </ImageInput>
 
       <NumberInput
         label="Phone Number"
         source="phone"
-        inputProps={{ maxLength: 100 }}
-        validate={[required("Phone Number is required")]}
+       // inputProps={{ maxLength: 100 }}
+       // validate={[required("Phone Number is required")]}
       />
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <TimeInput

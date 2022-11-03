@@ -23,6 +23,7 @@ import { useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropertySellersMobileGrid from "./PropertySellersMobileGrid";
 import { LISTING } from "../constants";
+import CustomDateField from "../components/CustomDateField";
 
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
@@ -83,7 +84,7 @@ const PropertyList = (props) => {
               label="IsEarnestMoneyReceived"
               source="is_earnest_money_received"
             />
-            <DateField
+            <CustomDateField
               label="EarnestMoneyReceivedDate"
               source="earnest_money_received_date"
             />
@@ -91,12 +92,12 @@ const PropertyList = (props) => {
               label="IsContractToLender"
               source="is_contract_to_lender"
             />
-            <DateField
+            <CustomDateField
               label="ContractToLenderDate"
               source="contract_to_lender_date"
             />
             <BooleanField label="IsHomeWarranty" source="is_home_warranty" />
-            <DateField label="HomeWarrantyDate" source="home_warranty_date" />
+            <CustomDateField label="HomeWarrantyDate" source="home_warranty_date" />
             <BooleanField
               label="IsSurveyReceived"
               source="is_survey_received"
@@ -108,7 +109,7 @@ const PropertyList = (props) => {
               source="new_survey_info"
               className={classes.descriptionText}
             />
-            <DateField
+            <CustomDateField
               label="HomeInspectionDate"
               source="home_inspection_date"
             />
@@ -117,7 +118,7 @@ const PropertyList = (props) => {
               source="home_inspection_info"
               className={classes.descriptionText}
             />
-            <DateField
+            <CustomDateField
               label="TermiteInspectionDate"
               source="termite_inspection_date"
             />
@@ -126,7 +127,7 @@ const PropertyList = (props) => {
               source="termite_inspection_info"
               className={classes.descriptionText}
             />
-            <DateField label="AppraisalDate" source="appraisal_date" />
+            <CustomDateField label="AppraisalDate" source="appraisal_date" />
             {/* <DateField label="AppraisalDueDate" source="appraisal_due_date" /> */}
             <TextField
               label="AppraisalAdditionalInfo"
@@ -138,7 +139,7 @@ const PropertyList = (props) => {
               label="IsSwitchOverUtilities"
               source="is_switch_over_utilities"
             />
-            <DateField
+            <CustomDateField
               label="OptionPeriodEndDate"
               source="option_period_end_date"
             />

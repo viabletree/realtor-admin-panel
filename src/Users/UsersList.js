@@ -68,7 +68,7 @@ const AvailabilityFromField = (props) => {
   const record = useRecordContext(props);
   const date = `2022-10-25 ${record.availability_from}`
   const conversionTo12Hr = moment.utc(`2022-10-25 ${record.availability_from}`).local().format(
-    "hh:mm:ss A"
+    "hh:mm A"
   );
   return <span>{conversionTo12Hr}</span>;
 };
@@ -80,9 +80,12 @@ AvailabilityFromField.defaultProps = {
 
 const AvailabilityToField = (props) => {
   const record = useRecordContext(props);
+  
+  console.log(`${record.agency_name} ${record.availability_to}`)
   const conversionTo12Hr = moment.utc(`2022-10-25 ${record.availability_to}`).local().format(
-    "hh:mm:ss A"
+    "hh:mm A"
   );
+  console.log(`${record.agency_name} ${conversionTo12Hr}`)
   return <span>{conversionTo12Hr}</span>;
 };
 
@@ -139,7 +142,7 @@ const UsersList = (props) => {
                 notify(`Unable to delete`);
               }}
             />
-            <DeleteWithCustomConfirmButton
+            {/* <DeleteWithCustomConfirmButton
               title={`Delete this Property?`}
               content={DeleteConfirmContent}
               label="Delete"
@@ -148,7 +151,7 @@ const UsersList = (props) => {
               cancel="Cancel"
               CancelIcon={Close}
               undoable={true}
-            />
+            /> */}
           </Datagrid>
           <Datagrid optimized rowClick="edit">
             content

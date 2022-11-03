@@ -17,6 +17,7 @@ import {
   ImageInput,
   useNotify,
   useRedirect,
+  maxLength,
 } from "react-admin";
 import { TimeInput } from "react-admin-date-inputs2";
 import DateFnsUtils from "@date-io/date-fns";
@@ -29,14 +30,45 @@ const confirmPswdMatchedValidation = (value, allValues) => {
   }
   return undefined;
 };
+const validatePhoneNu = (values) => {
+  const errors = {};
+  //price validation
+  
+  if (_.isNil(values.phone)) {
+    errors.property_price = "Price is required";
+  } else if (values.phone > 99999999999999999999) {
+    errors.phone = "Phone should not be more than 20 digits";
+  } else if (values.phone < 9999999) {
+    errors.phone = "Phone should not be less than 08 digits";
 
+  } 
+
+  return errors;
+};
+// const confirmPhone = (value) => {
+//   console.log(value)
+//   if (value > 30 || value < 8 ) {
+//     return "Phone number should be not less than 8 digits and greater than 20 digits";
+//   }
+//   return undefined;
+// };
+const checkIsEndTimeAfterStartTime = (startTime, endTime) => {
+  const timeStart = moment(startTime, 'HH:mm:ss');
+  const timeEnd = moment(endTime, 'HH:mm:ss');
+  return timeEnd.diff(timeStart, 'minutes', true) <= 0;
+};
 const validateEndTime = (value, allValues) => {
-  let startTime = moment(allValues.availability_from).format("hh:mm:ss a");
-  let endTime = moment(value).format("hh:mm:ss a");
-
-  if (startTime >= endTime) {
-    return "End time should be greater than start time";
+  console.log({endTime:value, startTime: allValues.availability_from});
+  // let startTime = moment(allValues.availability_from);
+  // let endTime = moment(value);
+  if(checkIsEndTimeAfterStartTime(allValues.availability_from, value)){
+    return 'End Time should less than start time';
   }
+
+  // const st = moment.utc(`2022-10-25 ${allValues.availability_from}`).local();
+  // const end = moment.utc(`2022-10-25 ${value}`).local();
+  // let startTime = moment(st).format("hh:mm:ss a");
+  // let endTime = moment(end).format("hh:mm:ss a");
   return undefined;
 };
 
@@ -65,9 +97,14 @@ const validatePassword = [
   minLength(8),
   regex(
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-    "Must be a valid password"
+    "Password must contain 8 characters including 1 small letter, 1 capital letter, 1 digit and 1 special character!"
   ),
 ];
+
+// const validatePhone = [
+//   required("Phone Number is required"),
+//   confirmPhone 
+// ];
 const validateConfrimPassword = [
   required("Confirm Password is required"),
   minLength(8),
@@ -83,7 +120,7 @@ const UserCreate = (props) => {
 
   return (
     <Create {...props} onSuccess={onSuccess}>
-      <SimpleForm>
+      <SimpleForm validate={validatePhoneNu}>
         <TextInput
           source="full_name"
           inputProps={{ maxLength: 100 }}
@@ -120,8 +157,8 @@ const UserCreate = (props) => {
         <NumberInput
           label="Phone Number"
           source="phone"
-          inputProps={{ maxLength: 100 }}
-          validate={[required("Phone number is required")]}
+         // inputProps={{ maxLength: 100 }}
+        //  validate={validatePhone}
         />
         <TextInput
           multiline={true}

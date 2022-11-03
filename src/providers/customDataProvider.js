@@ -127,7 +127,7 @@ export default {
 
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
-    console.log(params.sort)
+    console.log(params.sort);
     const query = {
       sort: JSON.stringify([field, order]),
       range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
@@ -143,19 +143,23 @@ export default {
 
   getOne: (resource, params) => {
     const mResource = getResourcePath(resource);
-   
+
     return httpClient(`${BASE_URL}/${mResource}/${params.id}`).then(
       ({ json }) => {
         var newDateObj = new Date();
 
         var dateOnly = moment(newDateObj).format("YYYY-MM-DD");
 
-        var wholeDateFrom = dateOnly + " " + json.data.availability_from;
-        var wholeDateTo = dateOnly + " " + json.data.availability_to;
+        var wholeDateFrom = moment
+          .utc(`${dateOnly} ${+" " + json.data.availability_from}`)
+          .local();
+        var wholeDateTo = moment
+          .utc(`${dateOnly} ${+" " + json.data.availability_to}`)
+          .local();
 
         json.data.availability_from = wholeDateFrom;
         json.data.availability_to = wholeDateTo;
-      
+
         return {
           data: json.data,
           id: params.id,
@@ -312,7 +316,7 @@ export default {
           : params.data.property_images
       );
     }
-    
+
     if (resource === "users") {
       // availability from time conversion
       var availability_from_time = params?.data?.availability_from;
@@ -338,7 +342,7 @@ export default {
             : params.data.profile_image
         );
       }
-      
+
       let phone_num = params.data.phone;
     }
 

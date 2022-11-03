@@ -17,6 +17,7 @@ import {
   useUpdateMany,
   useDelete,
   Button,
+  useRecordContext,
   Confirm,
 } from "react-admin";
 import DeleteWithCustomConfirmButton from "ra-delete-with-custom-confirm-button";
@@ -30,7 +31,8 @@ import PropertiesMobileGrid from "./PropertiesMobileGrid";
 import { DeleteConfirmContent, LISTING } from "../constants";
 import { useState } from "react";
 import { Close, Delete, ErrorOutline } from "@material-ui/icons";
-
+import moment from 'moment';
+import CustomDateField from "../components/CustomDateField";
 const useStyles = makeStyles((theme) => ({
   descriptionText: {
     display: "block",
@@ -97,7 +99,8 @@ const PropertyList = (props) => {
               source="property_square_feet"
               className={classes.descriptionText}
             />
-            <DateField label="YearBuilt" source="property_year_built" />
+            <CustomDateField label="YearBuilt" source="property_year_built"/>
+            {/* <DateField label="YearBuilt" source="property_year_built" /> */}
             <TextField
               label="Description"
               source="property_description"
@@ -115,7 +118,7 @@ const PropertyList = (props) => {
                 notify(`Unable to delete`);
               }}
             />
-            <DeleteWithCustomConfirmButton
+            {/* <DeleteWithCustomConfirmButton
               title={`Delete this Property?`}
               content={DeleteConfirmContent}
               label="Delete"
@@ -124,7 +127,7 @@ const PropertyList = (props) => {
               cancel="Cancel"
               CancelIcon={Close}
               undoable={true}
-            />
+            /> */}
           </Datagrid>
         </>
       )}
