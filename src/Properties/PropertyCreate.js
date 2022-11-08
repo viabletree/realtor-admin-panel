@@ -29,7 +29,7 @@ const validatePropertyCreation = (values) => {
 
   if (_.isNil(values.property_price)) {
     errors.property_price = "Price is required";
-  } else if (values.property_price > 999999999) {
+  } else if (values.property_price > 9999999999) {
     errors.property_price = "Price should not be more than 10 characters";
   }
 
@@ -140,11 +140,11 @@ const UserCreate = (props) => {
         />
         <NumberInput
           source="property_price"
-          // inputProps={{ maxLength: 10 }}
+          inputProps={{ maxLength: 11 }}
           // validate={validatePrice}
         />
         <TextInput
-          // inputProps={{ maxLength: 100 }}
+          // inputProps={{ maxLength: 10 }}
           source="property_area"
           //  validate={validateArea}
         />

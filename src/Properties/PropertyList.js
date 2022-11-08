@@ -19,6 +19,9 @@ import {
   Button,
   useRecordContext,
   Confirm,
+  TextInput,
+  SelectInput
+
 } from "react-admin";
 import DeleteWithCustomConfirmButton from "ra-delete-with-custom-confirm-button";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
@@ -42,6 +45,19 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
 }));
+// const UserFilter = (props) => {
+//   return (
+//     <Filter {...props}>
+//       <SearchInput source="q" alwaysOn />
+//     </Filter>
+//   );
+// };
+const UserFilter = [
+  <TextInput label="Search By Name" source="name" alwaysOn />,
+  <TextInput label="Search By Type" source="type"  />,
+  <TextInput label="Search By Address" source="address"  />,
+  <TextInput label="Search By Title" source="title"  />
+];
 
 const PropertyList = (props) => {
   const classes = useStyles();
@@ -51,6 +67,8 @@ const PropertyList = (props) => {
   return (
     <List
       {...props}
+      filters={UserFilter}
+      // filters={FanFilter}
       exporter={false}
       title={isSmall ? " " : LISTING.properties}
       className="listWrap"

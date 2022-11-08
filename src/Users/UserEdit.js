@@ -128,7 +128,7 @@ const UserEdit = (props) => (
       >
         <ImageField source="profile_image" title="title" />
       </ImageInput> */}
-      <ImageInput source="profile_image" validate={[required()]} label="Upload Image" accept="image/*">
+      <ImageInput source="profile_image" validate={[required()]} label="Upload Image" accept=".png,.gif,.jpg,.jpeg">
         <PreviewImage />
       </ImageInput>
 

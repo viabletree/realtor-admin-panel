@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const UserFilter = (props) => {
-//   return (
-//     <Filter {...props}>
-//       <SearchInput source="q" alwaysOn />
-//     </Filter>
-//   );
-// };
+const UserFilter = (props) => {
+  return (
+    <Filter {...props}>
+      <SearchInput source="q" alwaysOn />
+    </Filter>
+  );
+};
 
 const UserEmailUsername = (props) => {
   return props.record && props.record.parentId ? (
@@ -72,7 +72,7 @@ const UsersList = (props) => {
       {...props}
       title={isSmall ? " " : LISTING.showings}
     
-      /*  filters={<UserFilter />} */
+        filters={<UserFilter />} 
       bulkActionButtons={false}
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}

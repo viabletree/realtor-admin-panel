@@ -154,6 +154,7 @@ const Menu = ({ onMenuClick, logout, dense = false }) => {
             onClick={onMenuClick}
             sidebarIsOpen={open}
             dense={dense}
+            className="menuBorder"
           />
           <MenuItemLink
             to={"/showings"}

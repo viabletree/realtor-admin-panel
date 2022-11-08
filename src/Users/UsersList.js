@@ -37,13 +37,14 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
 }));
-// const UserFilter = (props) => {
-//   return (
-//     <Filter {...props}>
-//       <SearchInput source="q" alwaysOn />
-//     </Filter>
-//   );
-// };
+const UserFilter = (props) => {
+  return (
+    <Filter {...props}>
+      <SearchInput source="q" alwaysOn />
+      
+    </Filter>
+  );
+};
 
 const UserEmailUsername = (props) => {
   return props.record && props.record.parentId ? (
@@ -104,12 +105,13 @@ const UsersList = (props) => {
     <List
       exporter={false}
       {...props}
-      title={isSmall ? " " : LISTING.settings}
-      /*  filters={<UserFilter />} */
+      title={isSmall ? " " : LISTING.users}
+        filters={<UserFilter />} 
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "created_at", order: "DESC" }}
       hasShow={true}
       className="listWrap"
+      // filters={UserFilter}
     >
       {isSmall ? (
         <UsersMobileGrid />

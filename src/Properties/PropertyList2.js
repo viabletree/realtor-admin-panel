@@ -1,4 +1,5 @@
 import {
+  TextInput,
   TextField,
   List,
   Datagrid,
@@ -15,14 +16,17 @@ import PropTypes from "prop-types";
 import MarkAsBlocked from "../components/Buttons/MarkAsBlocked";
 import { useMediaQuery } from "@material-ui/core";
 
-const UserFilter = (props) => {
-  return (
-    <Filter {...props}>
-      <SearchInput source="q" alwaysOn />
-    </Filter>
-  );
-};
-
+// const UserFilter = (props) => {
+//   return (
+//     <Filter {...props}>
+//       <SearchInput source="q" alwaysOn />
+//     </Filter>
+//   );
+// };
+const UserFilter = [
+  <TextInput label="Search" source="agent_name" alwaysOn />,
+  <TextInput label="Search" source="agent_name" alwaysOn />
+];
 const UserEmailUsername = (props) => {
   return props.record && props.record.parentId ? (
     <TextField source="username" label={props.label} />
@@ -49,7 +53,7 @@ const UsersList = (props) => {
   return (
     <List
       {...props}
-      filters={<UserFilter />}
+      // filters={UserFilter}
       bulkActionButtons={<BulkDeleteButton resourceName="users" />}
       sort={{ field: "createdAt", order: "DESC" }}
     >

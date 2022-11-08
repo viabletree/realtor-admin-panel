@@ -212,7 +212,7 @@ export default function MyLoginPage(props) {
                 style={btnStyle}
                 fullWidth
               >
-                Next
+                Sign in
               </Button>
               <Grid
                 spacing={22}
@@ -230,7 +230,7 @@ export default function MyLoginPage(props) {
                           name="checkedA"
                         />
                       }
-                      label="RememberMe"
+                      label="Remember Me"
                     />
                   </FormGroup>
                 </Grid>

@@ -14,6 +14,7 @@ import {
   BooleanField,
   useNotify,
   useRefresh,
+  TextInput
 } from "react-admin";
 import BulkDeleteButton from "../components/Buttons/BulkDeleteButton";
 import ImageAvatar from "../components/ImageAvatar";
@@ -37,7 +38,19 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
 }));
-
+// const UserFilter = (props) => {
+//   return (
+//     <Filter {...props}>
+//       <SearchInput source="q" alwaysOn />
+//     </Filter>
+//   );
+// };
+const UserFilter = [
+  <TextInput label="Search By Property" source="title" alwaysOn />,
+  <TextInput label="Search By Buyer" source="buyer"  />,
+  <TextInput label="Search By Address" source="address"  />,
+  <TextInput label="Search By Title Company Closer" source="tcc"  />
+];
 const PropertyList = (props) => {
   const classes = useStyles();
   const notify = useNotify();
@@ -46,10 +59,12 @@ const PropertyList = (props) => {
   return (
     <List {...props} 
     exporter={false}
-      
+    filters={UserFilter }
     title={isSmall ? " " : LISTING.buyers}
     
-    className="listWrap">
+    className="listWrap"
+    
+    >
       {isSmall ? (
         <PropertyBuyersMobileGrid />
       ) : (
@@ -59,10 +74,11 @@ const PropertyList = (props) => {
             <ReferenceField source="user_id" reference="users">
               <TextField source="full_name" />
             </ReferenceField>
-            <ReferenceField source="property_id" reference="properties">
+            {/* <ReferenceField source="property_id" reference="properties">
               <TextField source="property_title" />
-            </ReferenceField>
+            </ReferenceField> */}
 
+            <TextField source="property_title" label={"Property"}/>
             <TextField source="buyer_name" label={"Buyer"} />
             <TextField
               source="address"
